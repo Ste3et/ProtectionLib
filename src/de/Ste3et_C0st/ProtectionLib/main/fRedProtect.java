@@ -19,7 +19,7 @@ public class fRedProtect {
 	public boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		Region reg = RedProtect.rm.getLowRegion(this.loc);
-		if(reg==null) return true;
+		if(reg==null)return true;
 		if(reg.getOwners().contains(this.p.getName())) return true;
 		if(reg.getMembers().contains(this.p.getName())) return true;
 		return false;

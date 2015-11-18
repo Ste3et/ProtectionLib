@@ -6,6 +6,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
+import com.intellectualcrafters.plot.util.MainUtil;
 
 public class fPlotSquared {
 
@@ -21,14 +22,25 @@ public class fPlotSquared {
 		if(p==null){return true;}
 		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
 		if(pAPI.isPlotWorld(this.loc.getWorld())){
-			Plot plot = pAPI.getPlot(this.loc);
-			if(plot!=null){
-				if(plot.isAdded(this.p.getUniqueId())) return true;
-				if(plot.isOwner(this.p.getUniqueId())) return true;
+			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.loc.getWorld().getName(), 
+					(int) this.loc.getX(), 
+					(int) this.loc.getY(), 
+					(int) this.loc.getZ(), 
+					this.loc.getYaw(), 
+					this.loc.getPitch());
+			if(MainUtil.isPlotArea(loc)){
+				Plot plot = pAPI.getPlot(this.loc);
+				if(plot!=null){
+					if(plot.isAdded(this.p.getUniqueId())) return true;
+					if(plot.isOwner(this.p.getUniqueId())) return true;
+				}
+				return false;
+			}else{
+				return true;
 			}
-			return false;
+		}else{
+			return true;
 		}
-		return false;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -36,11 +48,21 @@ public class fPlotSquared {
 		if(p==null){return true;}
 		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
 		if(pAPI.isPlotWorld(this.loc.getWorld())){
-			Plot plot = pAPI.getPlot(this.loc);
-			if(plot!=null){
-				return plot.isOwner(this.p.getUniqueId());
+			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.loc.getWorld().getName(), 
+					(int) this.loc.getX(), 
+					(int) this.loc.getY(), 
+					(int) this.loc.getZ(), 
+					this.loc.getYaw(), 
+					this.loc.getPitch());
+			if(MainUtil.isPlotArea(loc)){
+				Plot plot = pAPI.getPlot(this.loc);
+				if(plot!=null) if(plot.isOwner(this.p.getUniqueId())) return true;
+				return false;
+			}else{
+				return true;
 			}
+		}else{
+			return true;
 		}
-		return false;
 	}
 }

@@ -18,6 +18,7 @@ public class ProtectionClass {
 		this.isLoaded = Bukkit.getPluginManager().isPluginEnabled(this.name);
 		if(isLoaded && isEnable){
 			this.plugin = Bukkit.getPluginManager().getPlugin(this.name);
+			ProtectionLib.getInstance().getLogger().info("Protection lib hook into: " + plugin.getName() + " " + plugin.getDescription().getVersion());
 		}
 	}
 }
