@@ -18,18 +18,15 @@ public class fRedProtect {
 	
 	public boolean canBuild(Plugin p){
 		if(p==null){return true;}
-		Region reg = RedProtect.rm.getLowRegion(this.loc);
+		Region reg = RedProtect.rm.getTopRegion(this.loc);
 		if(reg==null)return true;
-		if(reg.getOwners().contains(this.p.getName())) return true;
-		if(reg.getMembers().contains(this.p.getName())) return true;
-		return false;
+		return reg.canBuild(this.p);
 	}
 	
 	public boolean isOwner(Plugin p){
 		if(p==null){return true;}
-		Region reg = RedProtect.rm.getLowRegion(this.loc);
+		Region reg = RedProtect.rm.getTopRegion(this.loc);
 		if(reg==null) return true;
-		if(reg.getOwners().contains(this.p.getName())) return true;
-		return false;
+		return reg.isOwner(this.p);
 	}
 }

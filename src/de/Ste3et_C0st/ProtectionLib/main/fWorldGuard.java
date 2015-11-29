@@ -1,11 +1,14 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.sk89q.worldedit.bukkit.BukkitUtil;
 import com.sk89q.worldguard.LocalPlayer;
+import com.sk89q.worldguard.bukkit.BukkitUtil;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
@@ -30,12 +33,16 @@ public class fWorldGuard {
 	public boolean isOwner(Plugin p) {
 		if(p==null){return true;}
 		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
-		LocalPlayer player = wgp.wrapPlayer(this.p);
-		RegionManager wgCurrWorldRM = wgp.getRegionManager(loc.getWorld());
-		if(wgCurrWorldRM==null) return true;
-		ProtectedRegion check = new ProtectedCuboidRegion("check", BukkitUtil.toVector(this.loc.getBlock()),
-		BukkitUtil.toVector(this.loc.getBlock()));
-		return check.isOwner(player);
+        RegionManager regionManager = wgp.getRegionManager(this.p.getWorld());
+        if(regionManager != null){
+            ProtectedRegion check = new ProtectedCuboidRegion("check", BukkitUtil.toVector(this.loc.getBlock()),BukkitUtil.toVector(this.loc.getBlock()));
+            List<ProtectedRegion> intersects = check.getIntersectingRegions(new ArrayList<ProtectedRegion>(regionManager.getRegions().values()));
+            LocalPlayer player = wgp.wrapPlayer(this.p);
+            for (ProtectedRegion intersect : intersects) {
+            	return intersect.isOwner(player);
+            }
+        }
+        return true;
 	}
 
 }
