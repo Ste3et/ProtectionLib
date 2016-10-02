@@ -1,20 +1,37 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
-import com.intellectualcrafters.plot.util.MainUtil;
+import com.intellectualcrafters.plot.object.RegionWrapper;
+import com.plotsquared.bukkit.events.PlotClearEvent;
 
-public class fPlotSquared {
+public class fPlotSquared implements Listener{
 
 	Player p;
 	Location loc;
+	
 	public fPlotSquared(Location loc, Player p){
 		this.p = p;
 		this.loc = loc;
+		Bukkit.getServer().getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+	}
+	
+	@EventHandler
+	private void onClear(PlotClearEvent e){
+		RegionWrapper reg = e.getPlot().getArea().getRegion();
+		World world = Bukkit.getWorld(e.getWorld());
+		Location loc1 = new Location(world, reg.maxX, reg.maxY, reg.maxZ);
+		Location loc2 = new Location(world, reg.minX, reg.minY, reg.minZ);
+		RegionClearEvent event = new RegionClearEvent(loc1, loc2);
+		Bukkit.getPluginManager().callEvent(event);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -28,7 +45,7 @@ public class fPlotSquared {
 					(int) this.loc.getZ(), 
 					this.loc.getYaw(), 
 					this.loc.getPitch());
-			if(MainUtil.isPlotArea(loc)){
+			if(loc.isPlotArea()){
 				Plot plot = pAPI.getPlot(this.loc);
 				if(plot!=null){
 					if(plot.isAdded(this.p.getUniqueId())) return true;
@@ -54,7 +71,7 @@ public class fPlotSquared {
 					(int) this.loc.getZ(), 
 					this.loc.getYaw(), 
 					this.loc.getPitch());
-			if(MainUtil.isPlotArea(loc)){
+			if(loc.isPlotArea()){
 				Plot plot = pAPI.getPlot(this.loc);
 				if(plot!=null) if(plot.isOwner(this.p.getUniqueId())) return true;
 				return false;

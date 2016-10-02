@@ -13,7 +13,7 @@ import com.palmergames.bukkit.towny.object.WorldCoord;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import com.palmergames.bukkit.util.BukkitTools;
 
-public class fTowny {
+public class fTowny{
 
 	Player p;
 	Location loc;

@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ProtectionLib extends JavaPlugin {
+public class ProtectionLib extends JavaPlugin{
 	
 	List<ProtectionClass> protectList = new ArrayList<ProtectionClass>();
 	private static ProtectionLib instance;
