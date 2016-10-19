@@ -1,9 +1,9 @@
 name: ProtectionLib
-version: 0.5.7
+version: 0.6
 description: NA
 author: Ste3et_C0st
 website: http://dicecraft.de
-softdepend: [WorldGuard, Plotz, PlotMe, PlotSquared, Towny, GriefPrevention, Landlord, uSkyBlock, aSkyBlock, RedProtect, Residence, Vault]
+softdepend: [WorldGuard, Plotz, PlotMe, PlotSquared, Towny, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault]
 main: de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
 
 permissions:

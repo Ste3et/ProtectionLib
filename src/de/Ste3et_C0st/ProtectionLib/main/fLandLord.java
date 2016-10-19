@@ -6,16 +6,27 @@ import org.bukkit.plugin.Plugin;
 
 import com.jcdesimp.landlord.persistantData.OwnedLand;
 
-public class fLandLord {
+public class fLandLord extends ProtectinObj {
 	Player p;
 	Location loc;
 	
-	public fLandLord(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
+	public fLandLord(Plugin pl){
+		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p){
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		OwnedLand land = OwnedLand.getApplicableLand(this.loc);
 		if(land==null) return true;
@@ -24,7 +35,7 @@ public class fLandLord {
 		return false;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		OwnedLand land = OwnedLand.getApplicableLand(this.loc);
 		if(land==null) return true;

@@ -9,16 +9,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
-public class fPlotz {
-
+public class fPlotz extends ProtectinObj implements Listener {
 	Player p;
 	Location loc;
-	public fPlotz(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
+	
+	public fPlotz(Plugin pl){
+		super(pl);
+		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
 	}
+	
 	
 	@EventHandler
 	private void onClear(PlotResetEvent e){
@@ -28,7 +30,19 @@ public class fPlotz {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Plugin p){
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		if(!PlotMap.isPlotWorld(loc.getWorld())){return true;}
 		if(Plotz.isOnPlot(this.loc)){
@@ -39,7 +53,7 @@ public class fPlotz {
 		return false;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		if(!PlotMap.isPlotWorld(loc.getWorld())){return true;}
 		if(Plotz.isOnPlot(this.loc)){

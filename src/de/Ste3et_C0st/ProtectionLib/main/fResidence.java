@@ -8,16 +8,27 @@ import com.bekvon.bukkit.residence.Residence;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 import com.bekvon.bukkit.residence.protection.FlagPermissions;
 
-public class fResidence {
-
+public class fResidence extends ProtectinObj {
 	Player p;
 	Location loc;
-	public fResidence(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
+	
+	public fResidence(Plugin pl){
+		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p){
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		ClaimedResidence residence = Residence.getResidenceManager().getByLoc(this.loc);
 		if(residence==null) return true;
@@ -28,7 +39,7 @@ public class fResidence {
 		return hasplace;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		ClaimedResidence residence = Residence.getResidenceManager().getByLoc(this.loc);
 		if(residence==null) return true;

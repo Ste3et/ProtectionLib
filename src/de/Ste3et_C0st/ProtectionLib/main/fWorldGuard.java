@@ -14,23 +14,33 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
-public class fWorldGuard {
-
+public class fWorldGuard extends ProtectinObj {
 	Player p;
 	Location loc;
 	
-	public fWorldGuard(Location loc, Player p) {
-		this.p = p;
+	public fWorldGuard(Plugin pl){
+		super(pl);
+	}
+	
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
 		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
 	}
 
-	public boolean canBuild(Plugin p) {
+	private boolean canBuild(Plugin p) {
 		if(p==null){return true;}
 		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
 		return wgp.canBuild(this.p, this.loc);
 	}
 	
-	public boolean isOwner(Plugin p) {
+	private boolean isOwner(Plugin p) {
 		if(p==null){return true;}
 		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
         RegionManager regionManager = wgp.getRegionManager(this.p.getWorld());

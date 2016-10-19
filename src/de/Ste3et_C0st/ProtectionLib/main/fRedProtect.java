@@ -10,13 +10,24 @@ import br.net.fabiozumbi12.RedProtect.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Region;
 import br.net.fabiozumbi12.RedProtect.events.DeleteRegionEvent;
 
-public class fRedProtect {
-
+public class fRedProtect extends ProtectinObj {
 	Player p;
 	Location loc;
-	public fRedProtect(Location loc, Player p){
-		this.p = p;
+	
+	public fRedProtect(Plugin pl){
+		super(pl);
+	}
+	
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
 		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
 	}
 	
 	@EventHandler
@@ -27,14 +38,14 @@ public class fRedProtect {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Plugin p){
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		Region reg = RedProtect.rm.getTopRegion(this.loc);
 		if(reg==null)return true;
 		return reg.canBuild(this.p);
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		Region reg = RedProtect.rm.getTopRegion(this.loc);
 		if(reg==null) return true;

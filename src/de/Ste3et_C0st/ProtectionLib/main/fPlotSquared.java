@@ -13,15 +13,13 @@ import com.intellectualcrafters.plot.object.Plot;
 import com.intellectualcrafters.plot.object.RegionWrapper;
 import com.plotsquared.bukkit.events.PlotClearEvent;
 
-public class fPlotSquared implements Listener{
-
+public class fPlotSquared extends ProtectinObj implements Listener{
 	Player p;
 	Location loc;
 	
-	public fPlotSquared(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
-		Bukkit.getServer().getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+	public fPlotSquared(Plugin pl){
+		super(pl);
+		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
 	}
 	
 	@EventHandler
@@ -34,8 +32,20 @@ public class fPlotSquared implements Listener{
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
 	@SuppressWarnings("deprecation")
-	public boolean canBuild(Plugin p){
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
 		if(pAPI.isPlotWorld(this.loc.getWorld())){
@@ -61,7 +71,7 @@ public class fPlotSquared implements Listener{
 	}
 	
 	@SuppressWarnings("deprecation")
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
 		if(pAPI.isPlotWorld(this.loc.getWorld())){

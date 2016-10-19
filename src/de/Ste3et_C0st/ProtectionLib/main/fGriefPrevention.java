@@ -9,15 +9,28 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
-public class fGriefPrevention {
+public class fGriefPrevention extends ProtectinObj implements Listener {
 	Player p;
 	Location loc;
 	
-	public fGriefPrevention(Location loc, Player p){
-		this.p = p;
+	public fGriefPrevention(Plugin pl){
+		super(pl);
+		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+	}
+	
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
 		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
 	}
 	
 	@EventHandler
@@ -28,7 +41,7 @@ public class fGriefPrevention {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Plugin p){
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.loc, true, null);
 		if(claim==null) return true;
@@ -38,7 +51,7 @@ public class fGriefPrevention {
 		return false;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.loc, true, null);
 		if(claim==null) return true;

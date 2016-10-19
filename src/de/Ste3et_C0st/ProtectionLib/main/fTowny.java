@@ -13,16 +13,27 @@ import com.palmergames.bukkit.towny.object.WorldCoord;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import com.palmergames.bukkit.util.BukkitTools;
 
-public class fTowny{
-
+public class fTowny extends ProtectinObj {
 	Player p;
 	Location loc;
-	public fTowny(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
+	
+	public fTowny(Plugin pl){
+		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p){
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		 try {
 			if (!WorldCoord.parseWorldCoord(this.p).getTownBlock().hasTown()) {return true;}
@@ -33,7 +44,7 @@ public class fTowny{
 		}
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		 try {
 			if (!WorldCoord.parseWorldCoord(this.p).getTownBlock().hasTown()) {return true;}

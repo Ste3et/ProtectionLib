@@ -8,16 +8,27 @@ import us.talabrek.ultimateskyblock.uSkyBlock;
 import us.talabrek.ultimateskyblock.handler.WorldGuardHandler;
 import us.talabrek.ultimateskyblock.island.IslandInfo;
 
-public class fuSkyblock {
-
+public class fuSkyblock extends ProtectinObj {
 	Player p;
 	Location loc;
-	public fuSkyblock(Location loc, Player p){
-		this.p = p;
-		this.loc = loc;
+	
+	public fuSkyblock(Plugin pl){
+		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p){
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
+	}
+	
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		if(!uSkyBlock.getInstance().isSkyWorld(this.loc.getWorld())) return true;
 		if(!uSkyBlock.getInstance().islandAtLocation(this.loc)) return true;
@@ -27,7 +38,7 @@ public class fuSkyblock {
 		return false;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		if(!uSkyBlock.getInstance().isSkyWorld(this.loc.getWorld())) return true;
 		if(!uSkyBlock.getInstance().islandAtLocation(this.loc)) return true;

@@ -13,10 +13,24 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ProtectionLib extends JavaPlugin{
 	
 	List<ProtectionClass> protectList = new ArrayList<ProtectionClass>();
-	private static ProtectionLib instance;
-	public static ProtectionLib getInstance(){return instance;}
+	private static JavaPlugin instance;
+	public static JavaPlugin getInstance(){return instance;}
 	private boolean isVaultEnable = false;
+	private faSkyBlock skyBlock;
+	private fGriefPrevention GriefPrevention;
+	private fLandLord landLord;
+	private fPlotMe plotMe;
+	private fPlotSquared plotsquared;
+	private fPlotz plotz;
+	private fRedProtect redProtect;
+	private fResidence residence;
+	private fTowny towny;
+	private fuSkyblock uSkyBlock;
+	private fWorldGuard worldGuard;
+	
+	
 	Plugin pWorldGuard, pPlotz, pPlotSquared, pPlotMe, pTowny, pGriefPrevention, pLandLord, puSkyBlock, paSkyBlock, pRedProtect, pResidence;
+	
 	ProtectionVaultPermission permissions = null;
 	@Override
 	public void onEnable(){
@@ -44,6 +58,18 @@ public class ProtectionLib extends JavaPlugin{
 		paSkyBlock = isLoadet("aSkyBlock");
 		pRedProtect = isLoadet("RedProtect");
 		pResidence = isLoadet("Residence");
+		
+		if(pWorldGuard!=null) worldGuard = new fWorldGuard(this);
+		if(puSkyBlock!=null) uSkyBlock = new fuSkyblock(this);
+		if(pPlotz!=null) plotz = new fPlotz(getInstance());
+		if(pPlotSquared!=null) plotsquared = new fPlotSquared(getInstance());
+		if(pPlotMe!=null) plotMe = new fPlotMe(getInstance());
+		if(pTowny!=null) towny = new fTowny(getInstance());
+		if(pGriefPrevention!=null) GriefPrevention = new fGriefPrevention(getInstance());
+		if(pLandLord!=null) landLord = new fLandLord(getInstance());
+		if(paSkyBlock!=null) skyBlock = new faSkyBlock(getInstance());
+		if(pRedProtect!=null) redProtect = new fRedProtect(getInstance());
+		if(pResidence!=null) residence = new fResidence(getInstance());
 		
 		if(Bukkit.getPluginManager().isPluginEnabled("Vault")){
 			isVaultEnable = true;
@@ -77,36 +103,36 @@ public class ProtectionLib extends JavaPlugin{
 		}
 		return null;
 	}
-	boolean debug = false;
-	public boolean canBuild(Location loc, Player p){
-		if(hasPermissions(p)) return true;
+	boolean debug = true;
+	public boolean canBuild(Location loc, Player player){
+		if(hasPermissions(player)) return true;
 		boolean fWG = true, fPlotz = true, fPlotSquared = true, fPlotMe = true, 
 				fTowny = true, fGriefPrevention = true, fLandLord = true, fuSkyBlock = true,
 				faSkyBlock = true, fRedProtect = true, fResidence = true;
-		if(pWorldGuard !=null) fWG = new fWorldGuard(loc, p).canBuild(pWorldGuard);
-		if(pPlotz!=null)fPlotz = new fPlotz(loc, p).canBuild(pPlotz);
-		if(pPlotSquared!=null)fPlotSquared = new fPlotSquared(loc, p).canBuild(pPlotSquared);
-		if(pPlotMe!=null) fPlotMe = new fPlotMe(loc, p).canBuild(pPlotMe);
-		if(pTowny!=null) fTowny = new fTowny(loc, p).canBuild(pTowny);
-		if(pGriefPrevention!=null) fGriefPrevention = new fGriefPrevention(loc, p).canBuild(pGriefPrevention);
-		if(pLandLord!=null) fLandLord = new fLandLord(loc, p).canBuild(pLandLord);
-		if(puSkyBlock!=null) fuSkyBlock = new fuSkyblock(loc, p).canBuild(puSkyBlock);
-		if(paSkyBlock!=null) faSkyBlock = new faSkyBlock(loc, p).canBuild(paSkyBlock);
-		if(pRedProtect!=null) fRedProtect = new fRedProtect(loc, p).canBuild(pRedProtect);
-		if(pResidence!=null) fResidence = new fResidence(loc, p).canBuild(pResidence);
 		
+		if(pWorldGuard!=null)fWG = worldGuard.canBuild(pWorldGuard, player, loc);
+		if(pPlotz!=null)fPlotz = plotz.canBuild(pPlotz, player, loc);
+		if(pPlotSquared!=null)fPlotSquared = plotsquared.canBuild(pPlotSquared, player, loc);
+		if(pPlotMe!=null)fPlotMe = plotMe.canBuild(pPlotMe, player, loc);
+		if(pTowny!=null)fTowny = towny.canBuild(pTowny, player, loc);
+		if(pGriefPrevention!=null)fGriefPrevention = GriefPrevention.canBuild(pGriefPrevention, player, loc);
+		if(pLandLord!=null)fLandLord = landLord.canBuild(pLandLord, player, loc);
+		if(puSkyBlock!=null)fuSkyBlock = uSkyBlock.canBuild(puSkyBlock, player, loc);
+		if(paSkyBlock!=null)faSkyBlock = skyBlock.canBuild(paSkyBlock, player, loc);
+		if(pRedProtect!=null)fRedProtect = redProtect.canBuild(pRedProtect, player, loc);
+		if(pResidence!=null)fResidence = residence.canBuild(pResidence, player, loc);
 		if(debug){
-			p.sendMessage("WorldGuard:" + fWG);
-			p.sendMessage("Plotz:" + fPlotz);
-			p.sendMessage("PlotSquared:" + fPlotSquared);
-			p.sendMessage("PlotMe:" + fPlotMe);
-			p.sendMessage("Towny:" + fTowny);
-			p.sendMessage("GriefPrevention:" + fGriefPrevention);
-			p.sendMessage("LandLord:" + fLandLord);
-			p.sendMessage("uSkyBlock:" + fuSkyBlock);
-			p.sendMessage("aSkyBlock:" + faSkyBlock);
-			p.sendMessage("RedProtect:" + fRedProtect);
-			p.sendMessage("Residence:" + fResidence);
+			player.sendMessage("WorldGuard:" + fWG);
+			player.sendMessage("Plotz:" + fPlotz);
+			player.sendMessage("PlotSquared:" + fPlotSquared);
+			player.sendMessage("PlotMe:" + fPlotMe);
+			player.sendMessage("Towny:" + fTowny);
+			player.sendMessage("GriefPrevention:" + fGriefPrevention);
+			player.sendMessage("LandLord:" + fLandLord);
+			player.sendMessage("uSkyBlock:" + fuSkyBlock);
+			player.sendMessage("aSkyBlock:" + faSkyBlock);
+			player.sendMessage("RedProtect:" + fRedProtect);
+			player.sendMessage("Residence:" + fResidence);
 		}
 		
 		if(fWG&&fPlotz&&fPlotSquared&&fPlotMe&&fTowny&&fGriefPrevention&&fLandLord&&fuSkyBlock&&faSkyBlock&&fRedProtect&&fResidence){
@@ -115,35 +141,36 @@ public class ProtectionLib extends JavaPlugin{
 		return false;
 	}
 	
-	public boolean isOwner(Location loc, Player p){
-		if(hasPermissions(p)) return true;
+	public boolean isOwner(Location loc, Player player){
+		if(hasPermissions(player)) return true;
 		boolean fWG = true, fPlotz = true, fPlotSquared = true, fPlotMe = true, 
 				fTowny = true, fGriefPrevention = true, fLandLord = true, fuSkyBlock = true,
 				faSkyBlock = true, fRedProtect = true, fResidence = true;
-		if(pWorldGuard !=null) fWG = new fWorldGuard(loc, p).isOwner(pWorldGuard);
-		if(pPlotz!=null)fPlotz = new fPlotz(loc, p).isOwner(pPlotz);
-		if(pPlotSquared!=null)fPlotSquared = new fPlotSquared(loc, p).isOwner(pPlotSquared);
-		if(pPlotMe!=null) fPlotMe = new fPlotMe(loc, p).isOwner(pPlotMe);
-		if(pTowny!=null) fTowny = new fTowny(loc, p).isOwner(pTowny);
-		if(pGriefPrevention!=null) fGriefPrevention = new fGriefPrevention(loc, p).isOwner(pGriefPrevention);
-		if(pLandLord!=null) fLandLord = new fLandLord(loc, p).isOwner(pLandLord);
-		if(puSkyBlock!=null) fuSkyBlock = new fuSkyblock(loc, p).isOwner(puSkyBlock);
-		if(paSkyBlock!=null) faSkyBlock = new faSkyBlock(loc, p).isOwner(paSkyBlock);
-		if(pRedProtect!=null) fRedProtect = new fRedProtect(loc, p).isOwner(pRedProtect);
-		if(pResidence!=null) fResidence = new fResidence(loc, p).isOwner(pResidence);		
+		
+		if(pWorldGuard!=null)fWG = worldGuard.canBuild(pWorldGuard, player, loc);
+		if(pPlotz!=null)fPlotz = plotz.canBuild(pPlotz, player, loc);
+		if(pPlotSquared!=null)fPlotSquared = plotsquared.canBuild(pPlotSquared, player, loc);
+		if(pPlotMe!=null)fPlotMe = plotMe.canBuild(pPlotMe, player, loc);
+		if(pTowny!=null)fTowny = towny.canBuild(pTowny, player, loc);
+		if(pGriefPrevention!=null)fGriefPrevention = GriefPrevention.canBuild(pGriefPrevention, player, loc);
+		if(pLandLord!=null)fLandLord = landLord.canBuild(pLandLord, player, loc);
+		if(puSkyBlock!=null)fuSkyBlock = uSkyBlock.canBuild(puSkyBlock, player, loc);
+		if(paSkyBlock!=null)faSkyBlock = skyBlock.canBuild(paSkyBlock, player, loc);
+		if(pRedProtect!=null)fRedProtect = redProtect.canBuild(pRedProtect, player, loc);
+		if(pResidence!=null)fResidence = residence.canBuild(pResidence, player, loc);
 		
 		if(debug){
-			p.sendMessage("WorldGuard:" + fWG);
-			p.sendMessage("Plotz:" + fPlotz);
-			p.sendMessage("PlotSquared:" + fPlotSquared);
-			p.sendMessage("PlotMe:" + fPlotMe);
-			p.sendMessage("Towny:" + fTowny);
-			p.sendMessage("GriefPrevention:" + fGriefPrevention);
-			p.sendMessage("LandLord:" + fLandLord);
-			p.sendMessage("uSkyBlock:" + fuSkyBlock);
-			p.sendMessage("aSkyBlock:" + faSkyBlock);
-			p.sendMessage("RedProtect:" + fRedProtect);
-			p.sendMessage("Residence:" + fResidence);
+			player.sendMessage("WorldGuard:" + fWG);
+			player.sendMessage("Plotz:" + fPlotz);
+			player.sendMessage("PlotSquared:" + fPlotSquared);
+			player.sendMessage("PlotMe:" + fPlotMe);
+			player.sendMessage("Towny:" + fTowny);
+			player.sendMessage("GriefPrevention:" + fGriefPrevention);
+			player.sendMessage("LandLord:" + fLandLord);
+			player.sendMessage("uSkyBlock:" + fuSkyBlock);
+			player.sendMessage("aSkyBlock:" + faSkyBlock);
+			player.sendMessage("RedProtect:" + fRedProtect);
+			player.sendMessage("Residence:" + fResidence);
 		}
 		
 		if(fWG&&fPlotz&&fPlotSquared&&fPlotMe&&fTowny&&fGriefPrevention&&fLandLord&&fuSkyBlock&&faSkyBlock&&fRedProtect&&fResidence){

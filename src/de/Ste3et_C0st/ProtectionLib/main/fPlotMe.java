@@ -12,13 +12,24 @@ import com.worldcretornica.plotme_core.api.ILocation;
 import com.worldcretornica.plotme_core.bukkit.api.BukkitLocation;
 import com.worldcretornica.plotme_core.bukkit.event.PlotResetEvent;
 
-public class fPlotMe {
-
+public class fPlotMe extends ProtectinObj {
 	Player p;
 	Location loc;
-	public fPlotMe(Location loc, Player p){
-		this.p = p;
+	
+	public fPlotMe(Plugin pl){
+		super(pl);
+	}
+	
+	public boolean canBuild(Plugin p, Player player, Location loc){
+		this.p = player;
 		this.loc = loc;
+		return canBuild(p);
+	}
+	
+	public boolean isOwner(Plugin p, Player player, Location loc){
+		this.p = player;
+		this.loc = loc;
+		return isOwner(p);
 	}
 	
 	@EventHandler
@@ -29,7 +40,7 @@ public class fPlotMe {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Plugin p){
+	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
 		ILocation loc = new BukkitLocation(this.loc);
@@ -43,7 +54,7 @@ public class fPlotMe {
 		return false;
 	}
 	
-	public boolean isOwner(Plugin p){
+	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
 		ILocation loc = new BukkitLocation(this.loc);
