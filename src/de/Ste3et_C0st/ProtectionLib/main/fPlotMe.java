@@ -42,6 +42,17 @@ public class fPlotMe extends ProtectinObj {
 	
 	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
+//		if(PlotManager.isPlotWorld(loc)){
+//			Plot plot = PlotManager.getPlotById(loc);
+//			if(plot==null) return true;
+//			if(plot.isAllowed(this.p.getName())){
+//				return true;
+//			}else{
+//				return false;
+//			}
+//		}else{
+//			return true;
+//		}
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
 		ILocation loc = new BukkitLocation(this.loc);
 		if(!manager.isPlotWorld(loc)){return true;}
@@ -56,6 +67,18 @@ public class fPlotMe extends ProtectinObj {
 	
 	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
+//		if(PlotManager.isPlotWorld(loc)){
+//			Plot plot = PlotManager.getPlotById(loc);
+//			if(plot==null) return true;
+//			if(plot.getOwner().equalsIgnoreCase(this.p.getName())){
+//				return true;
+//			}else{
+//				return false;
+//			}
+//		}else{
+//			return true;
+//		}
+//		
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
 		ILocation loc = new BukkitLocation(this.loc);
 		if(!manager.isPlotWorld(loc)){return true;}
