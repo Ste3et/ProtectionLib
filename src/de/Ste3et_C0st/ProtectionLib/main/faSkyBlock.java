@@ -32,12 +32,12 @@ public class faSkyBlock extends ProtectinObj {
 	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
 		ASkyBlockAPI api = ASkyBlockAPI.getInstance();
-		if(api.getIslandWorld()==null) return true;
-		if(!api.getIslandWorld().equals(this.loc.getWorld())) return true;
-		if(!api.islandAtLocation(this.loc)) return true;
+		if(api.getIslandWorld()==null){return true;}
+		if(!api.getIslandWorld().equals(this.loc.getWorld())){return true;}
+		if(!api.islandAtLocation(this.loc)){return true;}
 		UUID uuid = api.getOwner(this.loc);
-		if(uuid==null) return true;
-		if(uuid.equals(this.p.getUniqueId())) return true;
+		if(uuid==null){return true;}
+		if(uuid.equals(this.p.getUniqueId())){return true;}
 		return api.getTeamMembers(uuid).contains(this.p.getUniqueId());
 	}
 	

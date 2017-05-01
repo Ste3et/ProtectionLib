@@ -4,10 +4,10 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.bekvon.bukkit.residence.Residence;
 import com.bekvon.bukkit.residence.api.ResidenceApi;
+import com.bekvon.bukkit.residence.containers.Flags;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
-import com.bekvon.bukkit.residence.protection.FlagPermissions;
+import com.bekvon.bukkit.residence.protection.ResidencePermissions;
 
 public class fResidence extends ProtectinObj {
 	Player p;
@@ -33,10 +33,8 @@ public class fResidence extends ProtectinObj {
 		if(p==null){return true;}
 		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.loc);
 		if(residence==null) return true;
-		FlagPermissions perms = Residence.getInstance().getPermsByLocForPlayer(this.loc, this.p);
-		boolean hasplace = perms.playerHas(this.p.getName(), 
-		this.loc.getWorld().getName(), "place", perms.playerHas(this.p.getName(), this.loc.getWorld().getName(), "build", true));
-		return hasplace;
+		ResidencePermissions perms = residence.getPermissions();
+		return perms.playerHas(this.p, Flags.build, true);
 	}
 	
 	private boolean isOwner(Plugin p){
@@ -44,6 +42,7 @@ public class fResidence extends ProtectinObj {
 		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.loc);
 		if(residence==null) return true;
 		if(residence.getOwner().equalsIgnoreCase(this.p.getName())) return true;
+		if(residence.getOwner().equalsIgnoreCase(this.p.getUniqueId().toString())) return true;
 		return false;
 	}
 }

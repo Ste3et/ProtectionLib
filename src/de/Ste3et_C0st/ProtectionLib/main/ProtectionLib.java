@@ -45,7 +45,7 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("GriefPrevention");
 		addProtectionPlugin("Landlord");
 		addProtectionPlugin("uSkyBlock");
-		addProtectionPlugin("aSkyBlock");
+		addProtectionPlugin("ASkyBlock");
 		addProtectionPlugin("RedProtect");
 		addProtectionPlugin("Residence");
 		addProtectionPlugin("Kingdoms");
@@ -58,7 +58,7 @@ public class ProtectionLib extends JavaPlugin{
 		pGriefPrevention = isLoadet("GriefPrevention");
 		pLandLord = isLoadet("Landlord");
 		puSkyBlock = isLoadet("uSkyBlock");
-		paSkyBlock = isLoadet("aSkyBlock");
+		paSkyBlock = isLoadet("ASkyBlock");
 		pRedProtect = isLoadet("RedProtect");
 		pResidence = isLoadet("Residence");
 		pKingdoms = isLoadet("Kingdoms");
