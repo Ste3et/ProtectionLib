@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
 
-import br.net.fabiozumbi12.RedProtect.RedProtect;
-import br.net.fabiozumbi12.RedProtect.Region;
-import br.net.fabiozumbi12.RedProtect.events.DeleteRegionEvent;
+import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
+import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
+import br.net.fabiozumbi12.RedProtect.Bukkit.events.DeleteRegionEvent;
 
 public class fRedProtect extends ProtectinObj {
 	Player p;
@@ -30,6 +30,8 @@ public class fRedProtect extends ProtectinObj {
 		return isOwner(p);
 	}
 	
+	
+	
 	@EventHandler
 	private void onClear(DeleteRegionEvent e){
 		Location loc1 = e.getRegion().getMaxLocation();
@@ -40,14 +42,14 @@ public class fRedProtect extends ProtectinObj {
 	
 	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
-		Region reg = RedProtect.rm.getTopRegion(this.loc);
+		Region reg = RedProtect.get().getAPI().getRegion(this.loc);
 		if(reg==null)return true;
 		return reg.canBuild(this.p);
 	}
 	
 	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
-		Region reg = RedProtect.rm.getTopRegion(this.loc);
+		Region reg = RedProtect.get().getAPI().getRegion(this.loc);
 		if(reg==null) return true;
 		return reg.isLeader(this.p);
 	}

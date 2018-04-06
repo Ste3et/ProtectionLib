@@ -3,6 +3,7 @@ package de.Ste3et_C0st.ProtectionLib.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -10,6 +11,9 @@ import org.bukkit.plugin.Plugin;
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.bukkit.BukkitUtil;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -34,9 +38,27 @@ public class fWorldGuard extends ProtectinObj {
 		return isOwner(p);
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean canBuild(Plugin p) {
 		if(p==null){return true;}
 		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
+		boolean b = true;
+		if(wgp.getRegionManager(loc.getWorld()).getRegion("__global__") != null) {
+			Bukkit.broadcastMessage("global detect");
+			RegionManager regionManager = wgp.getRegionManager(loc.getWorld());
+			ProtectedRegion r = regionManager.getRegion(ProtectedRegion.GLOBAL_REGION);
+			ApplicableRegionSet set = wgp.getRegionManager(loc.getWorld()).getApplicableRegions(r);
+			if(set.getFlag(DefaultFlag.BUILD) == State.DENY) {
+				b = false;
+				Bukkit.broadcastMessage("false");
+			}
+			Bukkit.broadcastMessage("true");
+		}
+		if(!b && wgp.canBuild(this.p, this.loc)) {
+			return true;
+		}else if(!b) {
+			return false;
+		}
 		return wgp.canBuild(this.p, this.loc);
 	}
 	

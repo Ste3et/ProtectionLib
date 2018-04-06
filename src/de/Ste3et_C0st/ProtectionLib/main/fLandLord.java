@@ -4,7 +4,10 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.jcdesimp.landlord.persistantData.OwnedLand;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+
+import biz.princeps.landlord.api.LandLordAPI;
+import biz.princeps.landlord.util.OwnedLand;
 
 public class fLandLord extends ProtectinObj {
 	Player p;
@@ -28,18 +31,19 @@ public class fLandLord extends ProtectinObj {
 	
 	private boolean canBuild(Plugin p){
 		if(p==null){return true;}
-		OwnedLand land = OwnedLand.getApplicableLand(this.loc);
+		OwnedLand land = LandLordAPI.getInstance().getLand(this.loc);
 		if(land==null) return true;
-		if(land.getOwnerUUID().equals(this.p.getUniqueId()))return true;
-		if(land.isFriend(this.p)){return true;}
+		if(land.isOwner(this.p.getUniqueId())){return true;}
+		WorldGuardPlugin wgp = WorldGuardPlugin.inst();
+		if(land.getLand().isMember(wgp.wrapPlayer(this.p))){return true;}
 		return false;
 	}
 	
 	private boolean isOwner(Plugin p){
 		if(p==null){return true;}
-		OwnedLand land = OwnedLand.getApplicableLand(this.loc);
+		OwnedLand land = LandLordAPI.getInstance().getLand(this.loc);
 		if(land==null) return true;
-		if(land.getOwnerUUID().equals(this.p.getUniqueId()))return true;
+		if(land.isOwner(this.p.getUniqueId())){return true;}
 		return false;
 	}
 }

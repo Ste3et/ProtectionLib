@@ -6,8 +6,6 @@
 	<classpathentry kind="lib" path="C:/Plugins/jars/worldguard-6.1.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/worldedit-bukkit-6.1.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/Plotz.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/PlotSquared.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Landlord.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/GriefPrevention.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/Towny.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/uSkyBlock.jar"/>
@@ -16,8 +14,10 @@
 	<classpathentry kind="lib" path="C:/Plugins/jars/PreciousStones-10.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/PlotMe-Core.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/Residence4.5._13.1.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/RedProtect-7.0.3-b71.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/Kingdoms.jar"/>
 	<classpathentry kind="lib" path="C:/Plugins/jars/GLib.jar"/>
+	<classpathentry kind="lib" path="C:/Plugins/jars/Landlord-v2.jar"/>
+	<classpathentry kind="lib" path="C:/Plugins/jars/PlotSquared.jar"/>
+	<classpathentry kind="lib" path="C:/Plugins/jars/RedProtect-7.3.0-b68-Universal.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
