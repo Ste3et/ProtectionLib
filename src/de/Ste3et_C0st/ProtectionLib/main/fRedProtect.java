@@ -11,23 +11,21 @@ import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.events.DeleteRegionEvent;
 
 public class fRedProtect extends ProtectinObj {
-	Player p;
-	Location loc;
-	
+
 	public fRedProtect(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
 	
@@ -40,17 +38,17 @@ public class fRedProtect extends ProtectinObj {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		Region reg = RedProtect.get().getAPI().getRegion(this.loc);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		Region reg = RedProtect.get().getAPI().getRegion(this.getLocation());
 		if(reg==null)return true;
-		return reg.canBuild(this.p);
+		return reg.canBuild(this.getPlayer());
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		Region reg = RedProtect.get().getAPI().getRegion(this.loc);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		Region reg = RedProtect.get().getAPI().getRegion(this.getLocation());
 		if(reg==null) return true;
-		return reg.isLeader(this.p);
+		return reg.isLeader(this.getPlayer());
 	}
 }

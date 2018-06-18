@@ -10,39 +10,37 @@ import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 import com.bekvon.bukkit.residence.protection.ResidencePermissions;
 
 public class fResidence extends ProtectinObj {
-	Player p;
-	Location loc;
-	
+
 	public fResidence(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.loc);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.getLocation());
 		if(residence==null) return true;
 		ResidencePermissions perms = residence.getPermissions();
-		return perms.playerHas(this.p, Flags.build, true);
+		return perms.playerHas(this.getPlayer(), Flags.build, true);
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.loc);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.getLocation());
 		if(residence==null) return true;
-		if(residence.getOwner().equalsIgnoreCase(this.p.getName())) return true;
-		if(residence.getOwner().equalsIgnoreCase(this.p.getUniqueId().toString())) return true;
+		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getName())) return true;
+		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getUniqueId().toString())) return true;
 		return false;
 	}
 }

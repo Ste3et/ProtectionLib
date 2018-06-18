@@ -13,24 +13,21 @@ import org.kingdoms.events.KingdomPlayerWonEvent;
 import org.kingdoms.manager.game.GameManagement;
 
 public class fKingdoms extends ProtectinObj {
-
-	private Player p;
-	private Location loc;
-
+	
 	public fKingdoms(Plugin plugin) {
 		super(plugin);
 	}
 
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
 	@EventHandler
@@ -57,32 +54,32 @@ public class fKingdoms extends ProtectinObj {
 		}
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(loc.getChunk());
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(getLocation().getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
 		if(l == null){return true;}
 		String owner = l.getOwner();
 		if(owner == null){return true;}
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
-		KingdomPlayer player = GameManagement.getPlayerManager().getSession(this.p);
+		KingdomPlayer player = GameManagement.getPlayerManager().getSession(this.getPlayer());
 		if(player == null){return true;}
 		if(k.isEnemyMember(player)){return true;}
-		if(k.getKing().equals(this.p.getUniqueId())){return true;}
+		if(k.getKing().equals(this.getPlayer().getUniqueId())){return true;}
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(loc.getChunk());
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(getLocation().getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
 		if(l == null){return true;}
 		String owner = l.getOwner();
 		if(owner == null){return true;}
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
-		return k.getKing().equals(this.p.getUniqueId());
+		return k.getKing().equals(this.getPlayer().getUniqueId());
 	}
 	
 }

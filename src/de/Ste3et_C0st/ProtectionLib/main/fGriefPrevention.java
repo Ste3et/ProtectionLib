@@ -13,24 +13,22 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 public class fGriefPrevention extends ProtectinObj implements Listener {
-	Player p;
-	Location loc;
-	
+
 	public fGriefPrevention(Plugin pl){
 		super(pl);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
 	@EventHandler
@@ -41,21 +39,21 @@ public class fGriefPrevention extends ProtectinObj implements Listener {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.loc, true, null);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.getLocation(), true, null);
 		if(claim==null) return true;
-		if(claim.getOwnerName().equalsIgnoreCase(this.p.getName())) return true;
-		if(claim.allowAccess(this.p)==null) return true;
-		if(claim.allowBuild(this.p, Material.DIAMOND_BLOCK)==null) return true;
+		if(claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName())) return true;
+		if(claim.allowAccess(this.getPlayer())==null) return true;
+		if(claim.allowBuild(this.getPlayer(), Material.DIAMOND_BLOCK)==null) return true;
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.loc, true, null);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.getLocation(), true, null);
 		if(claim==null) return true;
-		if(claim.getOwnerName().equalsIgnoreCase(this.p.getName())) return true;
+		if(claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName())) return true;
 		return false;
 	}
 }

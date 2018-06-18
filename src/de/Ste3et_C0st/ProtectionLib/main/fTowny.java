@@ -14,43 +14,41 @@ import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import com.palmergames.bukkit.util.BukkitTools;
 
 public class fTowny extends ProtectinObj {
-	Player p;
-	Location loc;
 	
 	public fTowny(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
 		 try {
-			if (!WorldCoord.parseWorldCoord(this.p).getTownBlock().hasTown()) {return true;}
-			boolean b =PlayerCacheUtil.getCachePermission(this.p, this.loc, BukkitTools.getTypeId(this.loc.getBlock()), BukkitTools.getData(this.loc.getBlock()), TownyPermission.ActionType.BUILD);
+			if (!WorldCoord.parseWorldCoord(this.getPlayer()).getTownBlock().hasTown()) {return true;}
+			boolean b =PlayerCacheUtil.getCachePermission(this.getPlayer(), this.getLocation(), BukkitTools.getTypeId(this.getLocation().getBlock()), BukkitTools.getData(this.getLocation().getBlock()), TownyPermission.ActionType.BUILD);
 			return b;
 		} catch (NotRegisteredException e) {
 			return true;
 		}
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
 		 try {
-			if (!WorldCoord.parseWorldCoord(this.p).getTownBlock().hasTown()) {return true;}
-			Town town = WorldCoord.parseWorldCoord(this.p).getTownBlock().getTown();
+			if (!WorldCoord.parseWorldCoord(this.getPlayer()).getTownBlock().hasTown()) {return true;}
+			Town town = WorldCoord.parseWorldCoord(this.getPlayer()).getTownBlock().getTown();
 			if(town==null) return true;
-			Resident resi = TownyUniverse.getDataSource().getResident(this.p.getName());
+			Resident resi = TownyUniverse.getDataSource().getResident(this.getPlayer().getName());
 			if(resi==null) return false;
 			return town.isMayor(resi);
 		} catch (NotRegisteredException e) {

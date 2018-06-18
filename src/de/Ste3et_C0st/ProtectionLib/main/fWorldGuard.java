@@ -3,7 +3,6 @@ package de.Ste3et_C0st.ProtectionLib.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -19,57 +18,55 @@ import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class fWorldGuard extends ProtectinObj {
-	Player p;
-	Location loc;
 	
 	public fWorldGuard(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 
 	@SuppressWarnings("deprecation")
-	private boolean canBuild(Plugin p) {
-		if(p==null){return true;}
-		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
+	private boolean canBuild() {
+		if(getPlugin()==null){return true;}
+		WorldGuardPlugin wgp = (WorldGuardPlugin) getPlugin();
 		boolean b = true;
-		if(wgp.getRegionManager(loc.getWorld()).getRegion("__global__") != null) {
-			Bukkit.broadcastMessage("global detect");
-			RegionManager regionManager = wgp.getRegionManager(loc.getWorld());
+		if(wgp.getRegionManager(getLocation().getWorld()).getRegion("__global__") != null) {
+			RegionManager regionManager = wgp.getRegionManager(getLocation().getWorld());
 			ProtectedRegion r = regionManager.getRegion(ProtectedRegion.GLOBAL_REGION);
-			ApplicableRegionSet set = wgp.getRegionManager(loc.getWorld()).getApplicableRegions(r);
-			if(set.getFlag(DefaultFlag.BUILD) == State.DENY) {
+			ApplicableRegionSet set = wgp.getRegionManager(getLocation().getWorld()).getApplicableRegions(r);
+			if(set == null) return b;
+			LocalPlayer player = wgp.wrapPlayer(this.getPlayer());
+			if(set.getFlag(DefaultFlag.BUILD, player) == null) return b;
+			if(set.getFlag(DefaultFlag.BUILD, player) == State.DENY) {
 				b = false;
-				Bukkit.broadcastMessage("false");
 			}
-			Bukkit.broadcastMessage("true");
 		}
-		if(!b && wgp.canBuild(this.p, this.loc)) {
+		if(!b && wgp.canBuild(this.getPlayer(), this.getLocation())) {
 			return true;
 		}else if(!b) {
 			return false;
 		}
-		return wgp.canBuild(this.p, this.loc);
+		return wgp.canBuild(this.getPlayer(), this.getLocation());
 	}
 	
-	private boolean isOwner(Plugin p) {
-		if(p==null){return true;}
-		WorldGuardPlugin wgp = (WorldGuardPlugin) p;
-        RegionManager regionManager = wgp.getRegionManager(this.p.getWorld());
+	private boolean isOwner() {
+		if(getPlugin()==null){return true;}
+		WorldGuardPlugin wgp = (WorldGuardPlugin) getPlugin();
+        RegionManager regionManager = wgp.getRegionManager(this.getPlayer().getWorld());
         if(regionManager != null){
-            ProtectedRegion check = new ProtectedCuboidRegion("check", BukkitUtil.toVector(this.loc.getBlock()),BukkitUtil.toVector(this.loc.getBlock()));
+            ProtectedRegion check = new ProtectedCuboidRegion("check", BukkitUtil.toVector(this.getLocation().getBlock()),BukkitUtil.toVector(this.getLocation().getBlock()));
             List<ProtectedRegion> intersects = check.getIntersectingRegions(new ArrayList<ProtectedRegion>(regionManager.getRegions().values()));
-            LocalPlayer player = wgp.wrapPlayer(this.p);
+            LocalPlayer player = wgp.wrapPlayer(this.getPlayer());
             for (ProtectedRegion intersect : intersects) {
             	return intersect.isOwner(player);
             }

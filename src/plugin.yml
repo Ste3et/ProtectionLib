@@ -1,12 +1,20 @@
 name: ProtectionLib
-version: 0.9.2-DEV
+version: 0.9.3
 description: NA
 author: Ste3et_C0st
 website: http://dicecraft.de
-softdepend: [WorldGuard, Plotz, PlotMe, PlotSquared, Towny, PreciousStones, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault, Kingdoms]
+softdepend: [WorldGuard, Plotz, PlotMe, IslandWorld,PlotSquared, Towny, PreciousStones, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault, Kingdoms]
 main: de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
 
+commands:
+  protectionlib:
+    description: Protectionlib Commands
+    usage:  /<command>
+    aliases: [protl, ptl]
+    permission: protectionlib.command
+    permission-message: §cYou dont have permission
+
 permissions:
-  ProtectionLib.admin:
+  protectionlib.admin:
     description: "Permission to place furnitures without acces."
     default: op

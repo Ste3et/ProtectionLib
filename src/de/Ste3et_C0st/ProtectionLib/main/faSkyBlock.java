@@ -10,46 +10,44 @@ import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 public class faSkyBlock extends ProtectinObj {
 
-	Player p;
-	Location loc;
-	
 	public faSkyBlock(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
+	
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
 		ASkyBlockAPI api = ASkyBlockAPI.getInstance();
 		if(api.getIslandWorld()==null){return true;}
-		if(!api.getIslandWorld().equals(this.loc.getWorld())){return true;}
-		if(!api.islandAtLocation(this.loc)){return true;}
-		UUID uuid = api.getOwner(this.loc);
+		if(!api.getIslandWorld().equals(this.getLocation().getWorld())){return true;}
+		if(!api.islandAtLocation(this.getLocation())){return false;}
+		UUID uuid = api.getOwner(this.getLocation());
 		if(uuid==null){return true;}
-		if(uuid.equals(this.p.getUniqueId())){return true;}
-		return api.getTeamMembers(uuid).contains(this.p.getUniqueId());
+		if(uuid.equals(this.getPlayer().getUniqueId())){return true;}
+		return api.getTeamMembers(uuid).contains(this.getPlayer().getUniqueId());
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
 		ASkyBlockAPI api = ASkyBlockAPI.getInstance();
 		if(api.getIslandWorld()==null) return true;
-		if(!api.getIslandWorld().equals(this.loc.getWorld())) return true;
-		if(!api.islandAtLocation(this.loc)) return true;
-		UUID uuid = api.getOwner(this.loc);
+		if(!api.getIslandWorld().equals(this.getLocation().getWorld())) return true;
+		if(!api.islandAtLocation(this.getLocation())) return false;
+		UUID uuid = api.getOwner(this.getLocation());
 		if(uuid==null) return true;
-		if(uuid.equals(this.p.getUniqueId())) return true;
+		if(uuid.equals(this.getPlayer().getUniqueId())) return true;
 		return false;
 	}
 }

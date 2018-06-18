@@ -13,9 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 public class fPlotz extends ProtectinObj implements Listener {
-	Player p;
-	Location loc;
-	
+
 	public fPlotz(Plugin pl){
 		super(pl);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
@@ -30,36 +28,36 @@ public class fPlotz extends ProtectinObj implements Listener {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		if(!PlotMap.isPlotWorld(loc.getWorld())){return true;}
-		if(Plotz.isOnPlot(this.loc)){
-			Plot plot = Plotz.getPlotByLocation(this.loc);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		if(!PlotMap.isPlotWorld(getLocation().getWorld())){return true;}
+		if(Plotz.isOnPlot(this.getLocation())){
+			Plot plot = Plotz.getPlotByLocation(this.getLocation());
 			if(plot == null){return false;}
-			return plot.isAllowed(this.p);
+			return plot.isAllowed(this.getPlayer());
 		}
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		if(!PlotMap.isPlotWorld(loc.getWorld())){return true;}
-		if(Plotz.isOnPlot(this.loc)){
-			Plot plot = Plotz.getPlotByLocation(this.loc);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		if(!PlotMap.isPlotWorld(getLocation().getWorld())){return true;}
+		if(Plotz.isOnPlot(this.getLocation())){
+			Plot plot = Plotz.getPlotByLocation(this.getLocation());
 			if(plot == null){return false;}
-			return plot.isOwner(this.p);
+			return plot.isOwner(this.getPlayer());
 		}
 		return false;
 	}

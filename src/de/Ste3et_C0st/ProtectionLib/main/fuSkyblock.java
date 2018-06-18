@@ -9,41 +9,39 @@ import us.talabrek.ultimateskyblock.handler.WorldGuardHandler;
 import us.talabrek.ultimateskyblock.island.IslandInfo;
 
 public class fuSkyblock extends ProtectinObj {
-	Player p;
-	Location loc;
-	
+
 	public fuSkyblock(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		if(!uSkyBlock.getInstance().isSkyWorld(this.loc.getWorld())) return true;
-		if(!uSkyBlock.getInstance().islandAtLocation(this.loc)) return true;
-		IslandInfo island = uSkyBlock.getInstance().getIslandInfo(WorldGuardHandler.getIslandNameAt(this.loc));
-		if(island.isLeader(this.p)) return true;
-		if(island.getMembers().contains(this.p.getName()) || island.getTrustees().contains(this.p.getName())) return true;
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		if(!uSkyBlock.getInstance().isSkyWorld(this.getLocation().getWorld())) return true;
+		if(!uSkyBlock.getInstance().islandAtLocation(this.getLocation())) return true;
+		IslandInfo island = uSkyBlock.getInstance().getIslandInfo(WorldGuardHandler.getIslandNameAt(this.getLocation()));
+		if(island.isLeader(this.getPlayer())) return true;
+		if(island.getMembers().contains(this.getPlayer().getName()) || island.getTrustees().contains(this.getPlayer().getName())) return true;
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		if(!uSkyBlock.getInstance().isSkyWorld(this.loc.getWorld())) return true;
-		if(!uSkyBlock.getInstance().islandAtLocation(this.loc)) return true;
-		IslandInfo island = uSkyBlock.getInstance().getIslandInfo(WorldGuardHandler.getIslandNameAt(this.loc));
-		if(island.isLeader(this.p)) return true;
+	private boolean isOwner(){
+		if(getPlayer()==null){return true;}
+		if(!uSkyBlock.getInstance().isSkyWorld(this.getLocation().getWorld())) return true;
+		if(!uSkyBlock.getInstance().islandAtLocation(this.getLocation())) return true;
+		IslandInfo island = uSkyBlock.getInstance().getIslandInfo(WorldGuardHandler.getIslandNameAt(this.getLocation()));
+		if(island.isLeader(this.getPlayer())) return true;
 		return false;
 	}
 }

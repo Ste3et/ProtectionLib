@@ -9,32 +9,30 @@ import org.bukkit.plugin.Plugin;
 
 public class fPreciousStones extends ProtectinObj  {
 
-	Player p;
-	Location loc;
-	
+
 	public fPreciousStones(Plugin pl) {
 		super(pl);
 	}
 
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		return PreciousStones.API().canBreak(this.p, this.loc);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		return PreciousStones.API().canBreak(this.getPlayer(), this.getLocation());
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		return PreciousStones.getInstance().getForceFieldManager().isOwned(new Field(loc.getBlock()), this.p);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		return PreciousStones.getInstance().getForceFieldManager().isOwned(new Field(getLocation().getBlock()), this.getPlayer());
 	}
 }

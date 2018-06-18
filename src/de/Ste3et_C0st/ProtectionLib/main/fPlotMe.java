@@ -13,23 +13,21 @@ import com.worldcretornica.plotme_core.bukkit.api.BukkitLocation;
 import com.worldcretornica.plotme_core.bukkit.event.PlotResetEvent;
 
 public class fPlotMe extends ProtectinObj {
-	Player p;
-	Location loc;
-	
+
 	public fPlotMe(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
 	@EventHandler
@@ -40,8 +38,8 @@ public class fPlotMe extends ProtectinObj {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
 //		if(PlotManager.isPlotWorld(loc)){
 //			Plot plot = PlotManager.getPlotById(loc);
 //			if(plot==null) return true;
@@ -54,19 +52,19 @@ public class fPlotMe extends ProtectinObj {
 //			return true;
 //		}
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
-		ILocation loc = new BukkitLocation(this.loc);
+		ILocation loc = new BukkitLocation(this.getLocation());
 		if(!manager.isPlotWorld(loc)){return true;}
 		String id = manager.getPlotId(loc);
 		if(id==null) return false;
 		Plot plot = manager.getPlotById(id, loc.getWorld());
 		if(plot==null) return false;
-		if(plot.isAllowed(this.p.getUniqueId())) return true;
-		if(plot.getOwnerId().equals(this.p.getUniqueId())) return true;
+		if(plot.isAllowed(this.getPlayer().getUniqueId())) return true;
+		if(plot.getOwnerId().equals(this.getPlayer().getUniqueId())) return true;
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
 //		if(PlotManager.isPlotWorld(loc)){
 //			Plot plot = PlotManager.getPlotById(loc);
 //			if(plot==null) return true;
@@ -80,13 +78,13 @@ public class fPlotMe extends ProtectinObj {
 //		}
 //		
 		PlotMeCoreManager manager = PlotMeCoreManager.getInstance();
-		ILocation loc = new BukkitLocation(this.loc);
+		ILocation loc = new BukkitLocation(this.getLocation());
 		if(!manager.isPlotWorld(loc)){return true;}
 		String id = manager.getPlotId(loc);
 		if(id==null) return false;
 		Plot plot = manager.getPlotById(id, loc.getWorld());
 		if(plot==null) return false;
-		if(plot.getOwnerId().equals(this.p.getUniqueId())) return true;
+		if(plot.getOwnerId().equals(this.getPlayer().getUniqueId())) return true;
 		return false;
 	}
 }

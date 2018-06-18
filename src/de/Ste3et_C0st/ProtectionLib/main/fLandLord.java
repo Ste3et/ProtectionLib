@@ -10,40 +10,38 @@ import biz.princeps.landlord.api.LandLordAPI;
 import biz.princeps.landlord.util.OwnedLand;
 
 public class fLandLord extends ProtectinObj {
-	Player p;
-	Location loc;
-	
+
 	public fLandLord(Plugin pl){
 		super(pl);
 	}
 	
-	public boolean canBuild(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return canBuild(p);
+	public boolean canBuild(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return canBuild();
 	}
 	
-	public boolean isOwner(Plugin p, Player player, Location loc){
-		this.p = player;
-		this.loc = loc;
-		return isOwner(p);
+	public boolean isOwner(Player player, Location loc){
+		this.setPlayer(player);
+		this.setLocation(loc);
+		return isOwner();
 	}
 	
-	private boolean canBuild(Plugin p){
-		if(p==null){return true;}
-		OwnedLand land = LandLordAPI.getInstance().getLand(this.loc);
+	private boolean canBuild(){
+		if(getPlugin()==null){return true;}
+		OwnedLand land = LandLordAPI.getInstance().getLand(this.getLocation());
 		if(land==null) return true;
-		if(land.isOwner(this.p.getUniqueId())){return true;}
+		if(land.isOwner(this.getPlayer().getUniqueId())){return true;}
 		WorldGuardPlugin wgp = WorldGuardPlugin.inst();
-		if(land.getLand().isMember(wgp.wrapPlayer(this.p))){return true;}
+		if(land.getLand().isMember(wgp.wrapPlayer(this.getPlayer()))){return true;}
 		return false;
 	}
 	
-	private boolean isOwner(Plugin p){
-		if(p==null){return true;}
-		OwnedLand land = LandLordAPI.getInstance().getLand(this.loc);
+	private boolean isOwner(){
+		if(getPlugin()==null){return true;}
+		OwnedLand land = LandLordAPI.getInstance().getLand(this.getLocation());
 		if(land==null) return true;
-		if(land.isOwner(this.p.getUniqueId())){return true;}
+		if(land.isOwner(this.getPlayer().getUniqueId())){return true;}
 		return false;
 	}
 }
