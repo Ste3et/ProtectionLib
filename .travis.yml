@@ -12,4 +12,5 @@ before_script:
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/Towny.jar
 script:
     - mvn -B verify
+    - mvn -B clean install
 install: true
