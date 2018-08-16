@@ -13,4 +13,3 @@ before_script:
 script:
     - mvn -B verify
     - mvn -B clean install
-install: true
