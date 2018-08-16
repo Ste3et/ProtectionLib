@@ -2,7 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 before_script:
-    mkdir -p lib/
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/GLib.jar
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/IslandWorld.jar
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/Kingdoms.jar
