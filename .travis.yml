@@ -10,6 +10,7 @@ before_script:
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/PreciousStones-1.12.jar
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/Residence4.8.0.2.jar
     wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/Towny.jar
+    wget -P "lib/" https://github.com/Ste3et/ProtectionLib/raw/master/lib/askyblock.jar
 script:
     - mvn -B verify
     - mvn -B clean install
