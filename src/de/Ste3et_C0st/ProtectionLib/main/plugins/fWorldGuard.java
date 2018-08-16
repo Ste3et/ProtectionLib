@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,8 @@ import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fWorldGuard extends ProtectinObj {
 	

@@ -2,43 +2,184 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <version>0.9.2-DEV</version>
+  <version>0.9.3</version>
   <packaging>jar</packaging>
 
   <name>ProtectionLib</name>
-  
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-  </build>
-  
-<repositories>
-    <repository>
-        <id>spigot-repo</id>
-        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-    </repository>
+  <groupId>de.Ste3et_C0st.ProtectionLib.main</groupId>
+  <artifactId>de.Ste3et_C0st.ProtectionLib.main</artifactId>
 
-    <repository>
-			<id>worldedit-repo</id>
-			<url>http://maven.sk89q.com/repo/</url>
-	</repository>
-</repositories>
+  <repositories>  
+	    <repository>
+		  	<id>bintray-tastybento-maven-repo</id>
+		  	<name>bintray</name>
+		  	<url>http://dl.bintray.com/tastybento/maven-repo</url>
+	    </repository>
+	  
+	  	<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+	 	</repository>
+	 	
+	    <repository>
+	       <id>spigot-repo</id>
+	       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+	    </repository>
+	 	
+	 	<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+	 	</repository>
 
-
+        <repository>
+	        <id>vault-repo</id>
+	        <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+        
+        <repository>
+	        <id>sk89q-repo</id>
+	        <url>http://maven.sk89q.com/repo/</url>
+   		</repository>
+   		
+   		<repository>  
+		    <id>redprotect-repo</id>  
+		    <url>https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/</url>  
+		</repository>  
+   		
+   		<repository>
+		    <id>uSkyBlock-mvn-repo</id>
+		    <url>https://raw.github.com/rlf/uSkyBlock/mvn-repo/</url>
+		    <snapshots>
+		      <enabled>true</enabled>
+		      <updatePolicy>always</updatePolicy>
+		    </snapshots>
+		</repository>
+	 	
+  </repositories>  
   
-	<groupId>de.Ste3et_C0st</groupId>
-	<artifactId>ProtectionLib</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>org.spigotmc</groupId>"pom.xml"
-			<artifactId>spigot-api</artifactId>
-			<version>1.12.2-R0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sk89q.worldguard</groupId>
-			<artifactId>worldguard-legacy</artifactId>
-			<version>6.0</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.wasteofplastic</groupId>
+  		<artifactId>askyblock</artifactId>
+  		<version>3.0.9</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.bukkit</groupId>
+  		<artifactId>bukkit</artifactId>
+  		<version>1.13-R0.1-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.spigotmc</groupId>
+  		<artifactId>spigot-api</artifactId>
+  		<version>1.13-R0.1-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<dependency>
+	    <groupId>com.github.TechFortress</groupId>
+	    <artifactId>GriefPrevention</artifactId>
+	    <version>16.9.alpha</version>
+	    <scope>provided</scope>
+  	</dependency>
+	
+	<dependency>
+       <groupId>net.milkbowl.vault</groupId>
+       <artifactId>VaultAPI</artifactId>
+       <version>1.6</version>
+       <scope>provided</scope>
+    </dependency>
+	
+	<dependency>
+      <groupId>biz.princeps</groupId>
+      <artifactId>Towny</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Towny.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.intellectualcrafters</groupId>
+      <artifactId>PlotSquared</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/PlotSquared.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jblas</groupId>
+      <artifactId>Glib</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Glib.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>biz.princeps</groupId>
+      <artifactId>Landlord</artifactId>
+      <version>2.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Landlord-v2.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.sacredlabrinth</groupId>
+  	  <artifactId>PreciousStones</artifactId>
+  	  <version>10.7.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/PreciousStones-1.12.jar</systemPath>
+    </dependency>
+    
+   <dependency>
+      <groupId>pl.IslandWorld</groupId>
+  	  <artifactId>IslandWorld</artifactId>
+  	  <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.bekvon</groupId>
+  	  <artifactId>Residence</artifactId>
+  	  <version>4.8.0.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Residence4.8.0.2.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.kingdoms</groupId>
+  	  <artifactId>kingdoms</artifactId>
+  	  <version>4.8.0.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Kingdoms.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.sk89q.worldedit</groupId>
+        <artifactId>worldedit-bukkit</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </dependency>
+    
+     <dependency>
+        <groupId>com.sk89q.worldguard</groupId>
+        <artifactId>worldguard-legacy</artifactId>
+        <version>6.2</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>com.github.rlf</groupId>
+		<artifactId>uSkyBlock-API</artifactId>
+		<version>2.6.4</version>
+	 </dependency>
+	 
+	 <dependency>  
+	    <groupId>br.net.fabiozumbi12.RedProtect</groupId>  
+	    <artifactId>RedProtect-Spigot</artifactId>  
+	    <version>7.3.1</version>  
+	    <scope>provided</scope>  
+	 </dependency>   
+  </dependencies>
 </project>

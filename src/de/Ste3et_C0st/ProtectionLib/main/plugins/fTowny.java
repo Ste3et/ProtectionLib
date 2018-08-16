@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -12,6 +12,8 @@ import com.palmergames.bukkit.towny.object.TownyUniverse;
 import com.palmergames.bukkit.towny.object.WorldCoord;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import com.palmergames.bukkit.util.BukkitTools;
+
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fTowny extends ProtectinObj {
 	

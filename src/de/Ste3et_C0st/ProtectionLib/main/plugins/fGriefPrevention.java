@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import me.ryanhamshire.GriefPrevention.Claim;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
@@ -11,6 +11,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
+
+import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fGriefPrevention extends ProtectinObj implements Listener {
 

@@ -11,6 +11,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquared;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuard;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
+
 public class ProtectionLib extends JavaPlugin{
 	
 	private List<ProtectionClass> protectList = new ArrayList<ProtectionClass>();
@@ -39,9 +52,7 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public void addWatchers() {
 		addProtectionPlugin("WorldGuard");
-		addProtectionPlugin("Plotz");
 		addProtectionPlugin("PlotSquared");
-		addProtectionPlugin("PlotMe");
 		addProtectionPlugin("Towny");
 		addProtectionPlugin("GriefPrevention");
 		addProtectionPlugin("Landlord");
@@ -60,9 +71,7 @@ public class ProtectionLib extends JavaPlugin{
 			Plugin pl = Bukkit.getPluginManager().getPlugin(a);
 			switch (a) {
 				case "WorldGuard": protectionClass.add(new fWorldGuard(pl));break;
-				case "Plotz": protectionClass.add(new fPlotz(pl));break;
 				case "PlotSquared": protectionClass.add(new fPlotSquared(pl));break;
-				case "PlotMe": protectionClass.add(new fPlotMe(pl));break;
 				case "Towny": protectionClass.add(new fTowny(pl));break;
 				case "GriefPrevention": protectionClass.add(new fGriefPrevention(pl));break;
 				case "Landlord": protectionClass.add(new fLandLord(pl));break;
@@ -73,6 +82,24 @@ public class ProtectionLib extends JavaPlugin{
 				case "Kingdoms": protectionClass.add(new fKingdoms(pl));break;
 				case "IslandWorld": protectionClass.add(new fIslandWorld(pl));break;
 			default:break;
+			}
+		}
+	}
+	
+	public void addPrivateProtectionPlugin(String pluginName, ProtectinObj protectionClass) {
+		ProtectionClass ppL = new ProtectionClass(pluginName);
+		if(!this.protectList.contains(ppL)) {
+			this.protectList.add(ppL);
+			if(ppL.isLoaded()) {
+				if(!this.protectionClass.contains(protectionClass)) {
+					this.protectionClass.add(protectionClass);
+				}else {
+					try {
+						throw(new ProtectionCreateException("", null));
+					} catch (ProtectionCreateException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 	}

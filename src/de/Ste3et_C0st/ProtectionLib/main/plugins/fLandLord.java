@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -8,6 +8,7 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 import biz.princeps.landlord.api.LandLordAPI;
 import biz.princeps.landlord.util.OwnedLand;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fLandLord extends ProtectinObj {
 

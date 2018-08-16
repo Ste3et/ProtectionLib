@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -8,6 +8,8 @@ import com.bekvon.bukkit.residence.api.ResidenceApi;
 import com.bekvon.bukkit.residence.containers.Flags;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 import com.bekvon.bukkit.residence.protection.ResidencePermissions;
+
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fResidence extends ProtectinObj {
 

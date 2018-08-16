@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -11,6 +11,9 @@ import org.kingdoms.constants.land.SimpleChunkLocation;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.events.KingdomPlayerWonEvent;
 import org.kingdoms.manager.game.GameManagement;
+
+import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fKingdoms extends ProtectinObj {
 	

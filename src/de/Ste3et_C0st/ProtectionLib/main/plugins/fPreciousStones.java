@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
 import net.sacredlabyrinth.Phaed.PreciousStones.field.Field;
@@ -6,6 +6,8 @@ import net.sacredlabyrinth.Phaed.PreciousStones.field.Field;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fPreciousStones extends ProtectinObj  {
 

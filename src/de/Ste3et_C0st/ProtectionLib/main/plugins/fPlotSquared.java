@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -11,6 +11,10 @@ import org.bukkit.plugin.Plugin;
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
 import com.plotsquared.bukkit.events.PlotClearEvent;
+
+import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fPlotSquared extends ProtectinObj implements Listener{
 
@@ -45,7 +49,7 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 	@SuppressWarnings("deprecation")
 	private boolean canBuild(){
 		if(getPlugin()==null){return true;}
-		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
+		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
 			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 
@@ -71,7 +75,7 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 	@SuppressWarnings("deprecation")
 	private boolean isOwner(){
 		if(getPlugin()==null){return true;}
-		PlotAPI pAPI = new PlotAPI(ProtectionLib.getInstance());
+		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
 			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 

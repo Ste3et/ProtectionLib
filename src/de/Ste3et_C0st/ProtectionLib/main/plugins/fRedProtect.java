@@ -1,4 +1,4 @@
-package de.Ste3et_C0st.ProtectionLib.main;
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -9,6 +9,8 @@ import org.bukkit.plugin.Plugin;
 import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.events.DeleteRegionEvent;
+import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 
 public class fRedProtect extends ProtectinObj {
 

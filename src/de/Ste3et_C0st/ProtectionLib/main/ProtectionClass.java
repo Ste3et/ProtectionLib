@@ -9,7 +9,7 @@ public class ProtectionClass {
 	private Plugin plugin;
 	private String name;
 	
-	public ProtectionClass(String name){this.name = name;checkLoaded();}
+	public ProtectionClass(String pluginName){this.name = pluginName;checkLoaded();}
 	public Plugin getPlugin(){return this.plugin;}
 	public String getName(){return this.name;}
 	public boolean isLoaded(){return this.isLoaded;}

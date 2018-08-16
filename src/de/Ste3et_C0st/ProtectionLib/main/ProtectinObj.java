@@ -12,7 +12,6 @@ public abstract class ProtectinObj {
 	private Plugin pl;
 	public ProtectinObj(Plugin plugin){
 		this.pl = plugin;
-		//System.out.println("ProtectionLib hook into " + pl.getName());
 	}
 	
 	public Plugin getPlugin(){

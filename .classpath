@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/spigot_server.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Plotz.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/GriefPrevention.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Towny.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/uSkyBlock.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/askyblock.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Vault.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/PreciousStones-10.4.0.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/PlotMe-Core.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Kingdoms.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Landlord-v2.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/RedProtect-7.3.0-b68-Universal.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/worldedit-bukkit-6.1.9-SNAPSHOT-dist (1).jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/worldguard-legacy-6.2.2-SNAPSHOT-dist.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/PlotSquared-Bukkit-18.03.19-39084be-1974.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/GLib.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/IslandWorld.jar"/>
-	<classpathentry kind="lib" path="C:/Plugins/jars/Residence4.7.8.2.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
