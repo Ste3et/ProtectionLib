@@ -11,15 +11,19 @@
 
   <repositories>  
 	  
+	    <repository>
+	       <id>spigot-repo</id>
+	       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+	       <releases>
+	            <enabled>true</enabled>
+	            <updatePolicy>never</updatePolicy>
+	        </releases>
+	    </repository>  
+	  
 	  	<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
 	 	</repository>
-	 	
-	    <repository>
-	       <id>spigot-repo</id>
-	       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-	    </repository>
 
         <repository>
 	        <id>vault-repo</id>
@@ -48,16 +52,17 @@
   </repositories>  
   
   <dependencies>
-  	<dependency>
-  		<groupId>org.bukkit</groupId>
-  		<artifactId>bukkit</artifactId>
-  		<version>1.13-R0.1-SNAPSHOT</version>
-  		<scope>provided</scope>
-  	</dependency>
-  	
+
   	<dependency>
   		<groupId>org.spigotmc</groupId>
   		<artifactId>spigot-api</artifactId>
+  		<version>1.13-R0.1-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  
+  	<dependency>
+  		<groupId>org.bukkit</groupId>
+  		<artifactId>bukkit</artifactId>
   		<version>1.13-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
