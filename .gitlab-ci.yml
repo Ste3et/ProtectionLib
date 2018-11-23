@@ -1,13 +1,4 @@
-image: kaiwinter/docker-java8-maven
+image: maven:3-jdk-7
 
-variables:
-  CI_DEBUG_SERVICES: trace
-
-compile:
-  stage: build
-  script:
-    - mvn compile --batch-mode
- 
-verify:
-  script:
-    - mvn verify --batch-mode
+build:
+  script: "mvn clean install"
