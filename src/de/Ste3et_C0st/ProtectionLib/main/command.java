@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 
 public class command implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("protectionlib")) {
 			String info = "ProtectionLib §a" + ProtectionLib.getInstance().getDescription().getVersion()

@@ -20,7 +20,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquared;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
-import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuard;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
 
@@ -70,7 +70,7 @@ public class ProtectionLib extends JavaPlugin{
 			protectList.add(ppL);
 			Plugin pl = Bukkit.getPluginManager().getPlugin(a);
 			switch (a) {
-				case "WorldGuard": protectionClass.add(new fWorldGuard(pl));break;
+				case "WorldGuard": protectionClass.add(new fWorldGuardv7(pl));break;
 				case "PlotSquared": protectionClass.add(new fPlotSquared(pl));break;
 				case "Towny": protectionClass.add(new fTowny(pl));break;
 				case "GriefPrevention": protectionClass.add(new fGriefPrevention(pl));break;
@@ -153,6 +153,6 @@ public class ProtectionLib extends JavaPlugin{
 				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6isOwner§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc)));
 			}
 		}
-		return !this.protectionClass.stream().filter(protection -> protection.canBuild(player, loc) == false).findFirst().isPresent();
+		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
 	}
 }
