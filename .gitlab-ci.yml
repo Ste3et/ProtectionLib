@@ -1,9 +1,10 @@
 image: maven:3-jdk-8
 
-stages:
-  - build
-  - test
-  - deploy
-
-build:
-  script: "mvn install -B"
+compile:
+  stage: build
+  script:
+    - mvn compile --batch-mode
+ 
+verify:
+  script:
+    - mvn verify --batch-mode
