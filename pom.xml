@@ -139,7 +139,7 @@
     </dependency>
     
     <dependency>
-      <groupId>org.jblas</groupId>
+      <groupId>org.generallib</groupId>
       <artifactId>Glib</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>system</scope>
