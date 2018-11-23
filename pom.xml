@@ -199,7 +199,7 @@
   	  <artifactId>WorldEdit</artifactId>
   	  <version>7.0.0</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/WorldEdit.jar</systemPath>
+      <systemPath>${project.basedir}/lib/worldedit.jar</systemPath>
     </dependency>
     
     <dependency>
