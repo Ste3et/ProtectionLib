@@ -5,7 +5,7 @@ stages:
 - deploy
 - tag
 
-maven_build:
+ProtectionLib:
   stage: build
   script:
      - mvn clean package
