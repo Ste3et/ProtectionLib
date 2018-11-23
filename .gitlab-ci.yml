@@ -1,5 +1,8 @@
 image: maven:3-jdk-8
 
+variables:
+  CI_DEBUG_SERVICES: trace
+
 compile:
   stage: build
   script:
