@@ -6,12 +6,11 @@ stages:
 - tag
 
 maven_build:
-stage: build
+  stage: build
   script:
-   - mvn clean package
-   artifacts:
-  paths:
-   - target/*.jar
+     - mvn clean package
+  artifacts:
+     paths:
+     - target/*.jar
   only:
     - master
-    
