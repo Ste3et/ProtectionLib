@@ -11,6 +11,7 @@ maven_build:
      - mvn clean package
   artifacts:
      paths:
-     - target/*.jar
+     - *.jar
+     expire_in: 10d
   only:
     - master
