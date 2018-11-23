@@ -1,5 +1,6 @@
 image: maven:3-jdk-8
-tags:
-  - furniturelib-runner
+jobs:
+    tags:
+      - furniturelib-runner
 build:
   script: "mvn clean install -X"
