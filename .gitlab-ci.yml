@@ -14,10 +14,13 @@ ProtectionLib:
      - target/*.jar
   only:
     - master
-    
+  
 ProtectionLib-repo:
-   stage: deploy
-   script:
-     - 'mvn deploy -s ci_settings.xml'
-   only:
-     - master
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: staging
+    url: https://staging.example.com
+  only:
+  - master
