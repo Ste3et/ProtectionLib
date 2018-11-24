@@ -14,10 +14,3 @@ ProtectionLib:
      - target/*.jar
   only:
     - master
-  
-deploy:
-  stage: deploy
-  script:
-    - mvn $MAVEN_CLI_OPTS verify
-  only:
-    - master
