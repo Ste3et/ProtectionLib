@@ -22,5 +22,8 @@ ProtectionLib-repo:
   environment:
     name: staging
     url: https://staging.example.com
+  artifacts:
+    paths:
+    - target/staging
   only:
   - master
