@@ -1,9 +1,17 @@
 image: maven:3-jdk-8
 
 stages:
-  - build
-  - test
-  - deploy
+- build
+- deploy
+- tag
 
-build:
-  script: "mvn install -B"
+ProtectionLib:
+  stage: build
+  script:
+     - mvn clean package
+  artifacts:
+     paths:
+     - target/*.jar
+     expire_in: 10d
+  only:
+    - master
