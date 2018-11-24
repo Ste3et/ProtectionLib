@@ -6,8 +6,8 @@
   <packaging>jar</packaging>
 
   <name>ProtectionLib</name>
-  <groupId>de.Ste3et_C0st.ProtectionLib.main</groupId>
-  <artifactId>de.Ste3et_C0st.ProtectionLib.main</artifactId>
+  <groupId>de.Ste3et_C0st.furniture</groupId>
+  <artifactId>ProtectionLib</artifactId>
 
   <build>
 	<defaultGoal>clean package install</defaultGoal>
