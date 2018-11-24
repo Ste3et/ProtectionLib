@@ -50,7 +50,13 @@
     </plugins>
   </build>
 
-  <repositories>  
+  <repositories>
+  
+		<repository>
+		    <id>gitlab-maven</id>
+		    <url>http://207.180.192.228:8081/repository/ProtectionLib/</url>
+		</repository>
+  
 	    <repository>
 	       <id>spigot-repo</id>
 	       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
