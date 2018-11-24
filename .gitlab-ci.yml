@@ -14,4 +14,8 @@ ProtectionLib:
      - target/*.jar
      expire_in: 10d
   only:
+<<<<<<< HEAD
     - master
+=======
+    - master
+>>>>>>> branch 'master' of https://build.dicecraft.de/furniturelib/protectionlib.git
