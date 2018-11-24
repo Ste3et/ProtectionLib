@@ -15,15 +15,9 @@ ProtectionLib:
   only:
     - master
   
-ProtectionLib-repo:
+deploy:
   stage: deploy
   script:
-    - echo "Deploy to staging server"
-  environment:
-    name: staging
-    url: https://staging.example.com
-  artifacts:
-    paths:
-    - target/staging
+    - mvn $MAVEN_CLI_OPTS verify
   only:
-  - master
+    - master
