@@ -13,7 +13,7 @@ public class command implements CommandExecutor {
 			String info = "ProtectionLib §a" + ProtectionLib.getInstance().getDescription().getVersion()
 					+ "\n§fAuthor §e" + ProtectionLib.getInstance().getDescription().getAuthors().get(0)
 					+ "\n§f/protectionlib §aplugins" 
-					+ "\n§f/protectionlibs §adebug"
+					+ "\n§f/protectionlib §adebug"
 					+ "\n§f/protectionlib §adebug <player>"
 					+ "\n§f/protectionlib §areload";
 			
