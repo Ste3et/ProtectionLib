@@ -18,6 +18,6 @@ ProtectionLib:
 ProtectionLib-Nexus:
   stage: deploy
   script:
-     - mvn clean deploy
+     - mvn deploy -U -Dmaven.test.skip=true
   only:
     - master
