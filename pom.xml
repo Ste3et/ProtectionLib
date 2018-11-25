@@ -115,6 +115,7 @@
   </repositories>  
   
 	<distributionManagement>
+		<downloadUrl>http://207.180.192.228:8081/repository/ProtectionLib/</downloadUrl>
 	    <repository>
 	      <uniqueVersion>false</uniqueVersion>
 	      <id>dev-repo</id>
