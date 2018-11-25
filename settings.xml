@@ -1,7 +1,7 @@
 <settings>
 <servers>
    <server>
-      <id>nexus-snapshots</id>
+      <id>dev-repo</id>
       <username>admin</username>
       <password>aoSC4YKV651b706</password>
    </server>

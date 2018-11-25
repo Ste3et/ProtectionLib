@@ -137,7 +137,7 @@
 	<distributionManagement>
 	    <repository>
 	      <uniqueVersion>false</uniqueVersion>
-	      <id>nexus-snapshots</id>
+	      <id>dev-repo</id>
 	      <name>Corporate Repository</name>
 	      <url>http://207.180.192.228:8081/repository/ProtectionLib/</url>
 	      <layout>default</layout>
