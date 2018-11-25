@@ -1,15 +1,9 @@
 <settings>
-  <servers>
-    <server>
-      <id>gitlab-maven</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>Private-Token</name>
-            <value>fd8dba8a-5c3c-3505-a591-998e8451b533</value>
-          </property>
-        </httpHeaders>
-      </configuration>
-    </server>
-  </servers>
+<servers>
+   <server>
+      <id>nexus-snapshots</id>
+      <username>admin</username>
+      <password>aoSC4YKV651b706</password>
+   </server>
+</servers>
 </settings>
