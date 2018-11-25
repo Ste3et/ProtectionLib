@@ -18,6 +18,6 @@ ProtectionLib:
 ProtectionLib-Nexus:
   stage: deploy
   script:
-     - mvn deploy -U -Dmaven.test.skip=true
+     - mvn deploy -U -Dmaven.test.skip=true -Duser=admin -Dpassword=aoSC4YKV651b706
   only:
     - master
