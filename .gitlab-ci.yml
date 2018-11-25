@@ -14,3 +14,10 @@ ProtectionLib:
      - target/*.jar
   only:
     - master
+    
+ProtectionLib-Nexus:
+  stage: deploy
+  script:
+     - mvn clean deploy
+  only:
+    - master
