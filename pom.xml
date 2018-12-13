@@ -82,6 +82,11 @@
 	            <updatePolicy>never</updatePolicy>
 	        </releases>
 	    </repository>  
+	    
+	      <repository>
+		    <id>codemc-repo</id>
+		    <url>https://repo.codemc.org/repository/maven-public/</url>
+		  </repository>
 	  
 	  	<repository>
 		    <id>jitpack.io</id>
@@ -162,6 +167,8 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/lib/Towny.jar</systemPath>
     </dependency>
+    
+    
     
     <dependency>
       <groupId>com.intellectualcrafters</groupId>
@@ -244,6 +251,14 @@
     </dependency>
     
     <dependency>
+      <groupId>de.Ste3et_C0st</groupId>
+  	  <artifactId>DiceChunk</artifactId>
+  	  <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/DiceChunkPublic.jar</systemPath>
+    </dependency>
+    
+    <dependency>
 	    <groupId>com.github.rlf</groupId>
 		<artifactId>uSkyBlock-API</artifactId>
 		<version>2.6.4</version>
@@ -255,5 +270,12 @@
 	    <version>7.5.5</version>  
 	    <scope>provided</scope>  
 	 </dependency>   
+	 
+	   <dependency>
+	    <groupId>world.bentobox</groupId>
+	    <artifactId>bentobox</artifactId>
+	    <version>LATEST</version>
+	    <scope>provided</scope>
+	  </dependency>
   </dependencies>
 </project>

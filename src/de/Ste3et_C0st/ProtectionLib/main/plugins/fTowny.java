@@ -43,6 +43,8 @@ public class fTowny extends ProtectinObj {
 	private boolean isOwner(){
 		if(getPlugin()==null){return true;}
 		 try {
+			 if(TownyUniverse.getDataSource() == null) return true;
+			 if(TownyUniverse.getDataSource().getWorld(getLocation().getWorld().getName()) == null) return true;
 			 if (!TownyUniverse.getDataSource().getWorld(getLocation().getWorld().getName()).isUsingTowny()) return true;
 			 Town town = WorldCoord.parseWorldCoord(this.getPlayer()).getTownBlock().getTown();
 			 if(town==null) return true;

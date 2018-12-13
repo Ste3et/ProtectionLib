@@ -12,6 +12,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fDiceChunk;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
@@ -62,6 +64,8 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("Residence");
 		addProtectionPlugin("Kingdoms");
 		addProtectionPlugin("IslandWorld");
+		addProtectionPlugin("BentoBox");
+		addProtectionPlugin("DiceChunk");
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -81,6 +85,8 @@ public class ProtectionLib extends JavaPlugin{
 				case "Residence": protectionClass.add(new fResidence(pl));break;
 				case "Kingdoms": protectionClass.add(new fKingdoms(pl));break;
 				case "IslandWorld": protectionClass.add(new fIslandWorld(pl));break;
+				case "BentoBox": protectionClass.add(new fBentobox(pl));break;
+				case "DiceChunk": protectionClass.add(new fDiceChunk(pl));break;
 			default:break;
 			}
 		}
