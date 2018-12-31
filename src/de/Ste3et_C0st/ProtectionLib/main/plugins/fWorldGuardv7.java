@@ -49,7 +49,7 @@ public class fWorldGuardv7 extends ProtectinObj {
 		if(getPlugin()==null){return true;}
 		com.sk89q.worldedit.util.Location location = BukkitAdapter.adapt(getLocation());
 		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(getLocation().getWorld());
-		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(location.getDirection().toBlockPoint());
+		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(location.toVector().toBlockPoint());
 		if(set==null){return true;}
 		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(null);
 		if(region==null){return true;}
