@@ -34,7 +34,6 @@ public class fWorldGuardv7 extends ProtectinObj {
 
 	private boolean canBuild() {
 		if(getPlugin()==null){return true;}
-		
 		RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
         com.sk89q.worldedit.util.Location loc = BukkitAdapter.adapt(getLocation());
         if (!hasBypass()) {
@@ -51,7 +50,7 @@ public class fWorldGuardv7 extends ProtectinObj {
 		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(getLocation().getWorld());
 		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(location.toVector().toBlockPoint());
 		if(set==null){return true;}
-		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(null);
+		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
 		if(region==null){return true;}
 		return region.isOwner(WorldGuardPlugin.inst().wrapPlayer(getPlayer()));
 	}
