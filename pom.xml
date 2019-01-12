@@ -221,9 +221,9 @@
     <dependency>
       <groupId>com.bekvon</groupId>
   	  <artifactId>Residence</artifactId>
-  	  <version>4.8.0.2</version>
+  	  <version>4.8.4.4</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Residence4.8.0.2.jar</systemPath>
+      <systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
     </dependency>
     
     <dependency>
