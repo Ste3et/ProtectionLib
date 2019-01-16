@@ -116,7 +116,6 @@
 		      <updatePolicy>always</updatePolicy>
 		    </snapshots>
 		</repository>
-	 	
   </repositories>  
   
 	<distributionManagement>
@@ -135,14 +134,14 @@
   	<dependency>
   		<groupId>org.spigotmc</groupId>
   		<artifactId>spigot-api</artifactId>
-  		<version>1.13-R0.1-SNAPSHOT</version>
+  		<version>1.13.2-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
   
   	<dependency>
   		<groupId>org.bukkit</groupId>
   		<artifactId>bukkit</artifactId>
-  		<version>1.13-R0.1-SNAPSHOT</version>
+  		<version>1.13.2-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
   	
@@ -159,6 +158,14 @@
        <version>1.6</version>
        <scope>provided</scope>
     </dependency>
+    
+    <dependency>
+      <groupId>com.plotsquared</groupId>
+      <artifactId>plotsquared-api</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/PlotSquared.jar</systemPath>
+    </dependency>
 	
 	<dependency>
       <groupId>biz.princeps</groupId>
@@ -166,16 +173,6 @@
       <version>1.0-SNAPSHOT</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/lib/Towny.jar</systemPath>
-    </dependency>
-    
-    
-    
-    <dependency>
-      <groupId>com.intellectualcrafters</groupId>
-      <artifactId>PlotSquared</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/PlotSquared.jar</systemPath>
     </dependency>
     
     <dependency>
