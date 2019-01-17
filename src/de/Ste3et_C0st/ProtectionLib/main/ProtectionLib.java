@@ -19,6 +19,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquared;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredLegacy;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
@@ -75,7 +76,14 @@ public class ProtectionLib extends JavaPlugin{
 			Plugin pl = Bukkit.getPluginManager().getPlugin(a);
 			switch (a) {
 				case "WorldGuard": protectionClass.add(new fWorldGuardv7(pl));break;
-				case "PlotSquared": protectionClass.add(new fPlotSquared(pl));break;
+				case "PlotSquared":
+					if(pl.getDescription().getAPIVersion().equalsIgnoreCase("1.13")) {
+						protectionClass.add(new fPlotSquared(pl));
+					}else {
+						protectionClass.add(new fPlotSquaredLegacy(pl));
+					}
+					break;
+				
 				case "Towny": protectionClass.add(new fTowny(pl));break;
 				case "GriefPrevention": protectionClass.add(new fGriefPrevention(pl));break;
 				case "Landlord": protectionClass.add(new fLandLord(pl));break;
