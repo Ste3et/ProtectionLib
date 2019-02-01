@@ -10,6 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
+import com.intellectualcrafters.plot.object.PlotPlayer;
 import com.plotsquared.bukkit.events.PlotClearEvent;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
@@ -51,6 +52,8 @@ public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
+			PlotPlayer player = getPlotPlayer();
+			if(player == null) return false;
 			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 
 					(int) this.getLocation().getY(), 
@@ -60,8 +63,8 @@ public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
 			if(loc.isPlotArea()){
 				Plot plot = pAPI.getPlot(this.getLocation());
 				if(plot!=null){
-					if(plot.isAdded(this.getPlayer().getUniqueId())) return true;
-					if(plot.isOwner(this.getPlayer().getUniqueId())) return true;
+					if(plot.isOwner(player.getUUID())) return true;
+					if(plot.isAdded(player.getUUID())) return true;
 				}
 				return false;
 			}else{
@@ -77,6 +80,8 @@ public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
+			PlotPlayer player = getPlotPlayer();
+			if(player == null) return false;
 			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 
 					(int) this.getLocation().getY(), 
@@ -85,7 +90,7 @@ public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
 					this.getLocation().getPitch());
 			if(loc.isPlotArea()){
 				Plot plot = pAPI.getPlot(this.getLocation());
-				if(plot!=null) if(plot.isOwner(this.getPlayer().getUniqueId())) return true;
+				if(plot!=null) if(plot.isOwner(player.getUUID())) return true;
 				return false;
 			}else{
 				return true;
@@ -93,5 +98,9 @@ public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
 		}else{
 			return true;
 		}
+	}
+	
+	private PlotPlayer getPlotPlayer() {
+		return PlotPlayer.wrap(this.getPlayer());
 	}
 }

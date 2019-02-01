@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 import com.github.intellectualsites.plotsquared.bukkit.events.PlotClearEvent;
 import com.github.intellectualsites.plotsquared.plot.PlotSquared;
 import com.github.intellectualsites.plotsquared.plot.object.Plot;
+import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
@@ -49,6 +50,8 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 	private boolean canBuild(){
 		if(getPlugin()==null){return true;}
 		if(PlotSquared.get().hasPlotArea(getLocation().getWorld().getName())){
+			PlotPlayer player = getPlotPlayer();
+			if(player == null) return false;
 			com.github.intellectualsites.plotsquared.plot.object.Location loc = new com.github.intellectualsites.plotsquared.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 
 					(int) this.getLocation().getY(), 
@@ -58,8 +61,8 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 			if(loc.isPlotArea()) {
 				Plot p = loc.getPlot();
 				if(p != null) {
-					if(p.isAdded(this.getPlayer().getUniqueId())) return true;
-					if(p.isOwner(this.getPlayer().getUniqueId())) return true;
+					if(p.isAdded(player.getUUID())) return true;
+					if(p.isOwner(player.getUUID())) return true;
 				}
 				return false;
 			}
@@ -72,6 +75,8 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 	private boolean isOwner(){
 		if(getPlugin()==null){return true;}
 		if(PlotSquared.get().hasPlotArea(getLocation().getWorld().getName())){
+			PlotPlayer player = getPlotPlayer();
+			if(player == null) return false;
 			com.github.intellectualsites.plotsquared.plot.object.Location loc = new com.github.intellectualsites.plotsquared.plot.object.Location(this.getLocation().getWorld().getName(), 
 					(int) this.getLocation().getX(), 
 					(int) this.getLocation().getY(), 
@@ -81,7 +86,7 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 			if(loc.isPlotArea()) {
 				Plot p = loc.getPlot();
 				if(p != null) {
-					if(p.isOwner(this.getPlayer().getUniqueId())) return true;
+					if(p.isOwner(player.getUUID())) return true;
 				}
 				return false;
 			}
@@ -89,5 +94,9 @@ public class fPlotSquared extends ProtectinObj implements Listener{
 		}else {
 			return true;
 		}
+	}
+	
+	private PlotPlayer getPlotPlayer() {
+		return PlotPlayer.wrap(this.getPlayer());
 	}
 }
