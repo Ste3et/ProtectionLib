@@ -146,10 +146,25 @@
   	</dependency>
   	
   	<dependency>
+      <groupId>com.sk89q</groupId>
+  	  <artifactId>WorldGuard</artifactId>
+  	  <version>7.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/worldguard.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.sk89q</groupId>
+  	  <artifactId>WorldEdit</artifactId>
+  	  <version>7.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/worldedit.jar</systemPath>
+    </dependency>
+  	
+  	<dependency>
 	    <groupId>com.github.TechFortress</groupId>
 	    <artifactId>GriefPrevention</artifactId>
-	    <version>16.9.alpha</version>
-	    <scope>provided</scope>
+	    <version>16.7.1</version>
   	</dependency>
 	
 	<dependency>
@@ -232,19 +247,11 @@
     </dependency>
     
     <dependency>
-      <groupId>com.sk89q</groupId>
-  	  <artifactId>WorldGuard</artifactId>
-  	  <version>7.0.0</version>
+      <groupId>me.wiefferink</groupId>
+      <artifactId>areashop</artifactId>
+      <version>2.6.0</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/WorldGuard.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.sk89q</groupId>
-  	  <artifactId>WorldEdit</artifactId>
-  	  <version>7.0.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/worldedit.jar</systemPath>
+      <systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
     </dependency>
     
     <dependency>
