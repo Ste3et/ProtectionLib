@@ -24,6 +24,7 @@ public class fAreaShop extends ProtectinObj implements Listener{
 	public void onClear(UnrentingRegionEvent e){
 		RentRegion r = e.getRegion();
 		if(r == null) return;
+		//test
 		Location l1 = r.getMinimumPoint().toLocation(r.getWorld());
 		Location l2 = r.getMaximumPoint().toLocation(r.getWorld());
 		RegionClearEvent event = new RegionClearEvent(l1, l2);
