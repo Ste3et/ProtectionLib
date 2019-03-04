@@ -11,8 +11,8 @@ env:
   - MC=1.13
 before_install:
 - echo "test"
-- echo "${project.version}"
-- export TRAVIS_TAG=${project.version}
+- echo "${version}"
+- export TRAVIS_TAG=${version}
 - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 - mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
 deploy:
