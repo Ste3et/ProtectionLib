@@ -2,22 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <version>0.9.7-Snapshot</version>
+  <version>0.9.7</version>
   <packaging>jar</packaging>
 
   <name>ProtectionLib</name>
   <groupId>de.Ste3et_C0st.furniture</groupId>
   <artifactId>ProtectionLib</artifactId>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <github.global.server>github</github.global.server>
-    </properties>
-    <scm>
-        <connection>scm:git:git://github.com/Ste3et/ProtectionLib.git</connection>
-        <developerConnection>scm:git:git://github.com/Ste3et/ProtectionLib.git</developerConnection>
-        <url>https://github.com/Ste3et/ProtectionLib.git</url>
-        <tag>${project.version}</tag>
-    </scm>
 
   <build>
 	<defaultGoal>clean package install</defaultGoal>
@@ -41,33 +31,46 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-
-   		<plugin>
-            <groupId>com.github.github</groupId>
-            <artifactId>site-maven-plugin</artifactId>
-            <version>0.11</version>
-            <configuration>
-                <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
-                <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-                <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-                <branch>refs/heads/master</branch>                       <!-- remote branch name -->
-                  <includes>
-                     <include>**/${project.artifactId}/**</include>
-                  </includes>
-                <repositoryName>mvn-repo</repositoryName>      <!-- github repo name -->
-                <repositoryOwner>Ste3et</repositoryOwner>    <!-- github username  -->
-                <merge>true</merge>
-            </configuration>
-            <executions>
-              <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
-              <execution>
-                <goals>
-                  <goal>site</goal>
-                </goals>
-                <phase>deploy</phase>
-              </execution>
-            </executions>
+	  
+	    <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>
+                  de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
+                </mainClass>
+              </manifest>
+            </archive>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+            <appendAssemblyId>false</appendAssemblyId>
+          </configuration>
         </plugin>
+        
+        <plugin>
+		   <artifactId>maven-deploy-plugin</artifactId>
+		   <version>2.8.1</version>
+		   <executions>
+		      <execution>
+		         <id>default-deploy</id>
+		         <phase>deploy</phase>
+		         <goals>
+		            <goal>deploy</goal>
+		         </goals>
+		      </execution>
+		   </executions>
+		</plugin>
+		
+		<plugin>
+		   <groupId>org.apache.maven.plugins</groupId>
+		   <artifactId>maven-deploy-plugin</artifactId>
+		   <version>3.0.0-M1</version>
+		   <configuration>
+		      <skip>false</skip>
+		   </configuration>
+		</plugin>
     </plugins>
   </build>
 
@@ -115,15 +118,6 @@
 		    </snapshots>
 		</repository>
   </repositories>  
-
-   <distributionManagement>
-        <repository>
-            <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/mvn-repo</url>
-        </repository>
-    </distributionManagement>
-
   <dependencies>
 
   	<dependency>
@@ -285,5 +279,4 @@
 	    <scope>provided</scope>
 	  </dependency>
   </dependencies>
-  <description>Manage the Owner and Buildingrights check for amount of plugins.</description>
 </project>
