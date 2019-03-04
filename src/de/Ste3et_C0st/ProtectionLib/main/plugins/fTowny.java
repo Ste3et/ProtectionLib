@@ -5,19 +5,16 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.palmergames.bukkit.towny.Towny;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
-import com.palmergames.bukkit.towny.object.Coord;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
-import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.TownyPermission.ActionType;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
 import com.palmergames.bukkit.towny.object.WorldCoord;
 import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fTowny extends ProtectinObj {
+public class fTowny extends protectionObj {
 	
 	public fTowny(Plugin pl){
 		super(pl);

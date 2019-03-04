@@ -6,13 +6,13 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.lists.Flags;
 
 //BentoBox
-public class fBentobox extends ProtectinObj{
+public class fBentobox extends protectionObj{
 
 	public fBentobox(Plugin plugin) {
 		super(plugin);

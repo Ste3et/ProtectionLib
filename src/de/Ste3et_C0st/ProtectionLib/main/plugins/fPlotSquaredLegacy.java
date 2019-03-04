@@ -14,10 +14,10 @@ import com.intellectualcrafters.plot.object.PlotPlayer;
 import com.plotsquared.bukkit.events.PlotClearEvent;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPlotSquaredLegacy extends ProtectinObj implements Listener{
+public class fPlotSquaredLegacy extends protectionObj implements Listener{
 
 	public fPlotSquaredLegacy(Plugin pl){
 		super(pl);

@@ -5,9 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import de.Ste3et_C0st.DiceChunk.DiceChunk;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fDiceChunk extends ProtectinObj{ 
+public class fDiceChunk extends protectionObj{ 
 	
 	public fDiceChunk(Plugin plugin) {
 		super(plugin);

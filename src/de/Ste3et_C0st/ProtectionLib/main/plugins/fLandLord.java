@@ -8,9 +8,9 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 import biz.princeps.landlord.api.LandLordAPI;
 import biz.princeps.landlord.util.OwnedLand;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fLandLord extends ProtectinObj {
+public class fLandLord extends protectionObj {
 
 	public fLandLord(Plugin pl){
 		super(pl);

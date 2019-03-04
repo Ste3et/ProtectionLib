@@ -7,9 +7,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPreciousStones extends ProtectinObj  {
+public class fPreciousStones extends protectionObj  {
 
 
 	public fPreciousStones(Plugin pl) {

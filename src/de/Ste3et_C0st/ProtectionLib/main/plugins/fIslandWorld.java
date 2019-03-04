@@ -4,12 +4,12 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import pl.islandworld.IslandWorld;
 import pl.islandworld.api.IslandWorldApi;
 import pl.islandworld.entity.SimpleIsland;
 
-public class fIslandWorld extends ProtectinObj{
+public class fIslandWorld extends protectionObj{
 
 	public fIslandWorld(Plugin plugin) {
 		super(plugin);

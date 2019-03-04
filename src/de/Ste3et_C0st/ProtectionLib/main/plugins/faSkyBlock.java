@@ -8,9 +8,9 @@ import org.bukkit.plugin.Plugin;
 
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class faSkyBlock extends ProtectinObj {
+public class faSkyBlock extends protectionObj {
 
 	public faSkyBlock(Plugin pl){
 		super(pl);

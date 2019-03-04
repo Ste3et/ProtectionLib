@@ -10,9 +10,9 @@ import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.events.DeleteRegionEvent;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fRedProtect extends ProtectinObj {
+public class fRedProtect extends protectionObj {
 
 	public fRedProtect(Plugin pl){
 		super(pl);

@@ -12,9 +12,9 @@ import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fWorldGuardv7 extends ProtectinObj {
+public class fWorldGuardv7 extends protectionObj {
 	
 	public fWorldGuardv7(Plugin pl){
 		super(pl);

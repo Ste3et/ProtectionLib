@@ -4,11 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import us.talabrek.ultimateskyblock.api.IslandInfo;
 import us.talabrek.ultimateskyblock.api.uSkyBlockAPI;
 
-public class fuSkyblock extends ProtectinObj {
+public class fuSkyblock extends protectionObj {
 
 	public fuSkyblock(Plugin pl){
 		super(pl);

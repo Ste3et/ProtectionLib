@@ -9,9 +9,9 @@ import com.bekvon.bukkit.residence.containers.Flags;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 import com.bekvon.bukkit.residence.protection.ResidencePermissions;
 
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fResidence extends ProtectinObj {
+public class fResidence extends protectionObj {
 
 	public fResidence(Plugin pl){
 		super(pl);

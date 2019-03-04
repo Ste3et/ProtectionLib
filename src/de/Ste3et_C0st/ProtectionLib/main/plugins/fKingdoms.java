@@ -13,9 +13,9 @@ import org.kingdoms.events.KingdomPlayerWonEvent;
 import org.kingdoms.manager.game.GameManagement;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fKingdoms extends ProtectinObj {
+public class fKingdoms extends protectionObj {
 	
 	public fKingdoms(Plugin plugin) {
 		super(plugin);

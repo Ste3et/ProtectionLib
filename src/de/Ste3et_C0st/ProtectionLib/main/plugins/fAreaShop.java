@@ -8,12 +8,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import me.wiefferink.areashop.events.ask.UnrentingRegionEvent;
 import me.wiefferink.areashop.regions.RentRegion;
 
-public class fAreaShop extends ProtectinObj implements Listener{
+public class fAreaShop extends protectionObj implements Listener{
 
 	public fAreaShop(Plugin pl) {
 		super(pl);

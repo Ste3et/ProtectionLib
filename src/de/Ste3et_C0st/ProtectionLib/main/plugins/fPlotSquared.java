@@ -14,10 +14,10 @@ import com.github.intellectualsites.plotsquared.plot.object.Plot;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPlotSquared extends ProtectinObj implements Listener{
+public class fPlotSquared extends protectionObj implements Listener{
 
 	public fPlotSquared(Plugin pl){
 		super(pl);

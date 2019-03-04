@@ -13,10 +13,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectinObj;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fGriefPrevention extends ProtectinObj implements Listener {
+public class fGriefPrevention extends protectionObj implements Listener {
 
 	public fGriefPrevention(Plugin pl){
 		super(pl);

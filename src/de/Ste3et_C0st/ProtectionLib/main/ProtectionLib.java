@@ -35,7 +35,7 @@ public class ProtectionLib extends JavaPlugin{
 	public static ProtectionLib getInstance(){return instance;}
 	
 	private boolean isVaultEnable = false;
-	private List<ProtectinObj> protectionClass = new ArrayList<ProtectinObj>();
+	private List<protectionObj> protectionClass = new ArrayList<protectionObj>();
 	private ProtectionVaultPermission permissions = null;
 	private List<UUID> playerList = new ArrayList<UUID>();
 	
@@ -103,7 +103,7 @@ public class ProtectionLib extends JavaPlugin{
 		}
 	}
 	
-	public void addPrivateProtectionPlugin(String pluginName, ProtectinObj protectionClass) {
+	public void addPrivateProtectionPlugin(String pluginName, protectionObj protectionClass) {
 		ProtectionClass ppL = new ProtectionClass(pluginName);
 		if(!this.protectList.contains(ppL)) {
 			this.protectList.add(ppL);
@@ -145,7 +145,7 @@ public class ProtectionLib extends JavaPlugin{
 		}
 	}
 	
-	public List<ProtectinObj> getWatchers(){
+	public List<protectionObj> getWatchers(){
 		return this.protectionClass;
 	}
 
