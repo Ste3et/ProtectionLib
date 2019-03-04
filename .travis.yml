@@ -1,12 +1,21 @@
 language: java
 jdk: oraclejdk8
+branches:
+  only:
+  - master
+  - /v\d+\.\d+[a-z]/
 script:
   - mvn clean package
 env:
   matrix:
   - MC=1.13
+before_install:
+- export TRAVIS_TAG=$GIT_TAG
+- echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
+- mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
 deploy:
   provider: releases
+  tag_name: $TRAVIS_TAG
   api-key: "${GITHUB_TOKEN}"
   file_glob: true
   file:
