@@ -9,9 +9,10 @@ script:
 env:
   matrix:
   - MC=1.13
+  - version=0.9.7-Snapshot
 before_install:
 - echo "test"
-- echo "${version}"
+- echo "$TRAVIS_BUILD_NUMBER"
 - export TRAVIS_TAG=${version}
 - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 - mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
