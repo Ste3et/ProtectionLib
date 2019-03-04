@@ -8,6 +8,16 @@
   <name>ProtectionLib</name>
   <groupId>de.Ste3et_C0st.furniture</groupId>
   <artifactId>ProtectionLib</artifactId>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <travis.buildNumber>dev</travis.buildNumber>
+        <github.global.server>github</github.global.server>
+    </properties>
+    <scm>
+        <connection>scm:git:git://github.com/Ste3et/ProtectionLib.git</connection>
+        <developerConnection>scm:git:git://github.com/Ste3et/ProtectionLib.git</developerConnection>
+        <url>https://github.com/Ste3et/ProtectionLib.git</url>
+    </scm>
 
   <build>
 	<defaultGoal>clean package install</defaultGoal>
@@ -31,47 +41,7 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-	  
-	    <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>
-                  de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
-                </mainClass>
-              </manifest>
-            </archive>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <appendAssemblyId>false</appendAssemblyId>
-          </configuration>
-        </plugin>
-        
-        <plugin>
-		   <artifactId>maven-deploy-plugin</artifactId>
-		   <version>2.8.1</version>
-		   <executions>
-		      <execution>
-		         <id>default-deploy</id>
-		         <phase>deploy</phase>
-		         <goals>
-		            <goal>deploy</goal>
-		         </goals>
-		      </execution>
-		   </executions>
-		</plugin>
-		
-		<plugin>
-		   <groupId>org.apache.maven.plugins</groupId>
-		   <artifactId>maven-deploy-plugin</artifactId>
-		   <version>3.0.0-M1</version>
-		   <configuration>
-		      <skip>false</skip>
-		   </configuration>
-		</plugin>
-		
+
 		<plugin>
            <groupId>com.github.github</groupId>
            <artifactId>site-maven-plugin</artifactId>
