@@ -10,7 +10,9 @@ env:
   matrix:
   - MC=1.13
 before_install:
-- export TRAVIS_TAG=$GIT_TAG
+- echo "test"
+- echo "${project.version}"
+- export TRAVIS_TAG=${project.version}
 - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
 - mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
 deploy:
