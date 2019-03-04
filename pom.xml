@@ -17,6 +17,7 @@
         <connection>scm:git:git://github.com/Ste3et/ProtectionLib.git</connection>
         <developerConnection>scm:git:git://github.com/Ste3et/ProtectionLib.git</developerConnection>
         <url>https://github.com/Ste3et/ProtectionLib.git</url>
+        <tag>${project.version}</tag>
     </scm>
 
   <build>

@@ -5,8 +5,6 @@ script:
 env:
   matrix:
   - MC=1.13
-before_install:
-- mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
 deploy:
   provider: releases
   api-key: "${GITHUB_TOKEN}"
