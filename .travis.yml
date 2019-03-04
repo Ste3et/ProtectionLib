@@ -2,19 +2,9 @@ language: java
 jdk: oraclejdk8
 script:
   - mvn clean package
-git:
-  submodules: false
 env:
   matrix:
   - MC=1.13
-before_install:
-- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-- git submodule update --init --recursive
-- mvn versions:set -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -DnewVersion=${TRAVIS_TAG:1}
-install:
-- mvn -nsu -Dtravis.buildNumber=${TRAVIS_BUILD_NUMBER} -Pi18n,${MC},we700,wg700 install
-before_deploy:
-- mv ProtectionLib/target/ProtectionLib.jar ProtectionLib/target/ProtectionLib${MC}.jar
 deploy:
   provider: releases
   api-key: "${GITHUB_TOKEN}"
