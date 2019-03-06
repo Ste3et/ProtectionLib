@@ -148,7 +148,7 @@ public class ProtectionLib extends JavaPlugin{
 	public List<protectionObj> getWatchers(){
 		return this.protectionClass;
 	}
-
+	
 	public boolean canBuild(Location loc, Player player){
 		if(hasPermissions(player)) return true;
 		if(playerList.contains(player.getUniqueId())) {
