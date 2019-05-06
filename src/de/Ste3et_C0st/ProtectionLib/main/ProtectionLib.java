@@ -15,6 +15,7 @@ import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fDiceChunk;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
@@ -69,6 +70,7 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("BentoBox");
 		addProtectionPlugin("DiceChunk");
 		addProtectionPlugin("AreaShop");
+		addProtectionPlugin("Factions");
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -98,6 +100,7 @@ public class ProtectionLib extends JavaPlugin{
 				case "BentoBox": protectionClass.add(new fBentobox(pl));break;
 				case "DiceChunk": protectionClass.add(new fDiceChunk(pl));break;
 				case "AreaShop" : protectionClass.add(new fAreaShop(pl));break;
+				case "Factions" : protectionClass.add(new fFactions(pl));break;
 			default:break;
 			}
 		}

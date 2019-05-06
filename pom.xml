@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <version>0.9.7</version>
+  <version>0.9.8</version>
   <packaging>jar</packaging>
 
   <name>ProtectionLib</name>
@@ -259,6 +259,22 @@
       <systemPath>${project.basedir}/lib/DiceChunkPublic.jar</systemPath>
     </dependency>
     
+     <dependency>
+      <groupId>com.massivecraft</groupId>
+  	  <artifactId>Factions</artifactId>
+  	  <version>3.2.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Factions.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.massivecraft</groupId>
+  	  <artifactId>MassiveCore</artifactId>
+  	  <version>3.2.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/MassiveCore.jar</systemPath>
+    </dependency>
+        
     <dependency>
 	    <groupId>com.github.rlf</groupId>
 		<artifactId>uSkyBlock-API</artifactId>
