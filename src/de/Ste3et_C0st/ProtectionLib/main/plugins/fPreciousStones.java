@@ -35,6 +35,11 @@ public class fPreciousStones extends protectionObj  {
 	
 	private boolean isOwner(){
 		if(getPlugin()==null){return true;}
-		return PreciousStones.getInstance().getForceFieldManager().isOwned(new Field(getLocation().getBlock()), this.getPlayer());
+		try {
+			return PreciousStones.API().canBreak(this.getPlayer(), this.getLocation());
+		}catch(Exception ex) {
+			return true;
+		}
+		
 	}
 }

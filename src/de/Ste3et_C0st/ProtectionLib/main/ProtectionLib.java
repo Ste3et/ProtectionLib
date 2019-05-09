@@ -22,6 +22,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquared;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredLegacy;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
@@ -71,6 +72,7 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("DiceChunk");
 		addProtectionPlugin("AreaShop");
 		addProtectionPlugin("Factions");
+		addProtectionPlugin("PreciousStones");
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -101,6 +103,7 @@ public class ProtectionLib extends JavaPlugin{
 				case "DiceChunk": protectionClass.add(new fDiceChunk(pl));break;
 				case "AreaShop" : protectionClass.add(new fAreaShop(pl));break;
 				case "Factions" : protectionClass.add(new fFactions(pl));break;
+				case "PreciousStones" : protectionClass.add(new fPreciousStones(pl));break;
 			default:break;
 			}
 		}
