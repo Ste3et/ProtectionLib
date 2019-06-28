@@ -178,4 +178,16 @@ public class ProtectionLib extends JavaPlugin{
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
 	}
+	
+//	public int getRegions(Location loc,Player player) {
+//		int i = 0;
+//		if(hasPermissions(player)) return i;
+//		if(playerList.contains(player.getUniqueId())) {
+//			if(getWatchers().isEmpty()) {
+//				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
+//			}else {
+//				protectionClass.stream().forEach(pro);
+//			}
+//		}
+//	}
 }

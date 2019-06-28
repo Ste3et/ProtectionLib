@@ -38,6 +38,7 @@ public class fTowny extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		 try {
 			 if(TownyUniverse.getDataSource() == null) return true;
@@ -47,6 +48,7 @@ public class fTowny extends protectionObj {
 			 if(town==null) return true;
 			 Resident resi = TownyUniverse.getDataSource().getResident(this.getPlayer().getName());
 			 if(resi==null) return false;
+			 this.setRegions(1);
 			 return town.isMayor(resi);
 		} catch (NotRegisteredException e) {
 			e.printStackTrace();

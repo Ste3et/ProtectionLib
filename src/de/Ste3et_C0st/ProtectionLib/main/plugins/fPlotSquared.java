@@ -73,6 +73,7 @@ public class fPlotSquared extends protectionObj implements Listener{
 	}
 	
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		if(PlotSquared.get().hasPlotArea(getLocation().getWorld().getName())){
 			PlotPlayer player = getPlotPlayer();
@@ -86,7 +87,8 @@ public class fPlotSquared extends protectionObj implements Listener{
 			if(loc.isPlotArea()) {
 				Plot p = loc.getPlot();
 				if(p != null) {
-					if(p.isOwner(player.getUUID())) return true;
+					this.setRegions(1);
+					return p.isOwner(player.getUUID());
 				}
 				return false;
 			}

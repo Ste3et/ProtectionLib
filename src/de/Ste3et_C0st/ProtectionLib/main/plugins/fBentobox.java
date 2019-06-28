@@ -40,9 +40,12 @@ public class fBentobox extends protectionObj{
 	}
 
 	private boolean isOwner() {
+		setRegions(0);
 		if(getPlugin() == null) return true;
 		if(!BentoBox.getInstance().getIWM().inWorld(getLocation())) return true;
 		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(getLocation());
+		if(is==null) return true;
+		setRegions(1);
 		return is.filter(x -> x.getOwner().equals(getPlayer().getUniqueId())).isPresent();
 	}
 }

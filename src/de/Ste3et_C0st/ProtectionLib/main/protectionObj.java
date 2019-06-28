@@ -74,5 +74,14 @@ public abstract class protectionObj {
 		this.loc = loc;
 	}
 	
+	private int regions = 0;
+	
+	public int getRegions() {
+		return regions;
+	}
+	
+	public void setRegions(int i) {
+		this.regions = i;
+	}
 	
 }

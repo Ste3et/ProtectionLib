@@ -77,6 +77,7 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 	
 	@SuppressWarnings("deprecation")
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
@@ -90,7 +91,10 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 					this.getLocation().getPitch());
 			if(loc.isPlotArea()){
 				Plot plot = pAPI.getPlot(this.getLocation());
-				if(plot!=null) if(plot.isOwner(player.getUUID())) return true;
+				if(plot!=null) {
+					this.setRegions(1);
+					return plot.isOwner(player.getUUID());
+				}
 				return false;
 			}else{
 				return true;

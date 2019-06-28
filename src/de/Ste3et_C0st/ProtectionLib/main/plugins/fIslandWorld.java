@@ -36,11 +36,13 @@ public class fIslandWorld extends protectionObj{
 	}
 
 	private boolean isOwner() {
+		setRegions(0);
 		if(getPlugin() == null) return true;
 		if(!IslandWorldApi.getIslandWorld().equals(getLocation().getWorld())) return true;
 		IslandWorld world = IslandWorld.getInstance();
 		SimpleIsland simpleIsland = world.xgetIslandOnLoc(getLocation());
 		if(simpleIsland == null) return true;
+		setRegions(1);
 		return simpleIsland.getOwnerUUID().equals(getPlayer().getUniqueId());
 	}
 

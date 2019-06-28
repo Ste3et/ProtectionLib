@@ -54,10 +54,11 @@ public class fGriefPrevention extends protectionObj implements Listener {
 	}
 	
 	private boolean isOwner(){
+		setRegions(0);
 		if(getPlugin()==null){return true;}
 		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.getLocation(), true, null);
 		if(claim==null) return true;
-		if(claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName())) return true;
-		return false;
+		setRegions(1);
+		return claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName());
 	}
 }

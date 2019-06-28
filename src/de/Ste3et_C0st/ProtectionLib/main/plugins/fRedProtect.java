@@ -48,9 +48,11 @@ public class fRedProtect extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		Region reg = RedProtect.get().getAPI().getRegion(this.getLocation());
 		if(reg==null) return true;
+		this.setRegions(1);
 		return reg.isLeader(this.getPlayer());
 	}
 }

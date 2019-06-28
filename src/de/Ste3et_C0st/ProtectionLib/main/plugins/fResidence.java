@@ -38,9 +38,11 @@ public class fResidence extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.getLocation());
 		if(residence==null) return true;
+		this.setRegions(1);
 		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getName())) return true;
 		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getUniqueId().toString())) return true;
 		return false;

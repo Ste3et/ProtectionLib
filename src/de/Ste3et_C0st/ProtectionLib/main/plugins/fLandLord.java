@@ -39,10 +39,11 @@ public class fLandLord extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		setRegions(0);
 		if(getPlugin()==null){return true;}
 		OwnedLand land = LandLordAPI.getInstance().getLand(this.getLocation());
 		if(land==null) return true;
-		if(land.isOwner(this.getPlayer().getUniqueId())){return true;}
-		return false;
+		setRegions(1);
+		return land.isOwner(this.getPlayer().getUniqueId());
 	}
 }

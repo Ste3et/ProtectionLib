@@ -74,6 +74,7 @@ public class fKingdoms extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		setRegions(0);
 		if(getPlugin()==null){return true;}
 		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(getLocation().getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
@@ -82,6 +83,7 @@ public class fKingdoms extends protectionObj {
 		if(owner == null){return true;}
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
+		setRegions(1);
 		return k.getKing().equals(this.getPlayer().getUniqueId());
 	}
 	

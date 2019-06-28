@@ -37,10 +37,12 @@ public class fuSkyblock extends protectionObj {
 	}
 	
 	private boolean isOwner(){
+		this.setRegions(0);
 		if(getPlayer()==null){return true;}
 		uSkyBlockAPI api = (uSkyBlockAPI) getPlugin();
 		IslandInfo info = api.getIslandInfo(getLocation());
 		if(info == null) return true;
+		this.setRegions(1);
 		if(info.isLeader(this.getPlayer())) return true;
 		return false;
 	}

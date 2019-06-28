@@ -42,10 +42,12 @@ public class fFactions extends protectionObj{
 	}
 	
 	private boolean isOwner() {
+		setRegions(0);
 		MPlayer player = MPlayer.get(getPlayer());
 		if(player == null) return true;
 		Faction faction = BoardColl.get().getFactionAt(PS.valueOf(getLocation()));
 		if(faction == null) return true;
+		setRegions(1);
 		return faction.getLeader().equals(player);
 	}
 	
