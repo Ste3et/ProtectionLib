@@ -16,6 +16,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fDiceChunk;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactionsUUID;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
@@ -102,7 +103,12 @@ public class ProtectionLib extends JavaPlugin{
 				case "BentoBox": protectionClass.add(new fBentobox(pl));break;
 				case "DiceChunk": protectionClass.add(new fDiceChunk(pl));break;
 				case "AreaShop" : protectionClass.add(new fAreaShop(pl));break;
-				case "Factions" : protectionClass.add(new fFactions(pl));break;
+				case "Factions" : 
+					if(pl.getDescription().getAuthors().stream().filter(b -> b.equalsIgnoreCase("drtshock")).findFirst().isPresent()) {
+						protectionClass.add(new fFactionsUUID(pl));break;
+					}else {
+						protectionClass.add(new fFactions(pl));break;
+					}
 				case "PreciousStones" : protectionClass.add(new fPreciousStones(pl));break;
 			default:break;
 			}
@@ -161,7 +167,7 @@ public class ProtectionLib extends JavaPlugin{
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
-				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6canBuild§f] " + protection.getPlugin().getName() + ": " + protection.canBuild(player, loc)));
+				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6canBuild§f->§a"+protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": " + protection.canBuild(player, loc)));
 			}
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.canBuild(player, loc) == false).findFirst().isPresent();
@@ -173,7 +179,7 @@ public class ProtectionLib extends JavaPlugin{
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
-				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6isOwner§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc)));
+				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc)));
 			}
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();

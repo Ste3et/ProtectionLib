@@ -117,6 +117,11 @@
 		      <updatePolicy>always</updatePolicy>
 		    </snapshots>
 		</repository>
+		
+		<repository>
+		  <id>factions-repo</id>
+		  <url>http://ci.ender.zone/plugin/repository/everything/</url>
+		</repository>
   </repositories>  
   <dependencies>
 
@@ -261,10 +266,10 @@
     
      <dependency>
       <groupId>com.massivecraft</groupId>
-  	  <artifactId>Factions</artifactId>
+  	  <artifactId>FactionsLegacy</artifactId>
   	  <version>3.2.0</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Factions.jar</systemPath>
+      <systemPath>${project.basedir}/lib/FactionsLegacy.jar</systemPath>
     </dependency>
     
     <dependency>
@@ -286,13 +291,22 @@
 	    <artifactId>RedProtect-Spigot</artifactId>  
 	    <version>7.5.5</version>  
 	    <scope>provided</scope>  
-	 </dependency>   
+	 </dependency>
+	
+	<dependency>
+		  <groupId>com.massivecraft</groupId>
+		  <artifactId>Factions</artifactId>
+		  <version>1.6.9.5-U0.4.0</version>
+		  <scope>provided</scope>
+	</dependency>
 	 
-	   <dependency>
+	<dependency>
 	    <groupId>world.bentobox</groupId>
 	    <artifactId>bentobox</artifactId>
 	    <version>LATEST</version>
 	    <scope>provided</scope>
-	  </dependency>
+	</dependency>
+	
+	<!-- 1.6.9.5-U0.3.0b133 -->
   </dependencies>
 </project>
