@@ -17,35 +17,21 @@ public class fBentobox extends protectionObj{
 	public fBentobox(Plugin plugin) {
 		super(plugin);
 	}
-
-	@Override
-	public boolean canBuild(Player player, Location loc) {
-		this.setLocation(loc);
-		this.setPlayer(player);
-		return canBuild();
-	}
-
-	@Override
-	public boolean isOwner(Player player, Location loc) {
-		this.setLocation(loc);
-		this.setPlayer(player);
-		return isOwner();
-	}
 	
-	private boolean canBuild() {
+	public boolean canBuild(Player player, Location loc) {
 		if(getPlugin() == null) return true;
-		if(!BentoBox.getInstance().getIWM().inWorld(getLocation())) return true;
-		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(getLocation());
-		return is.map(x -> x.isAllowed(Flags.PLACE_BLOCKS)).orElse(Flags.PLACE_BLOCKS.isSetForWorld(getLocation().getWorld()));
+		if(!BentoBox.getInstance().getIWM().inWorld(loc)) return true;
+		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(loc);
+		return is.map(x -> x.isAllowed(Flags.PLACE_BLOCKS)).orElse(Flags.PLACE_BLOCKS.isSetForWorld(loc.getWorld()));
 	}
 
-	private boolean isOwner() {
+	public boolean isOwner(Player player, Location loc) {
 		setRegions(0);
 		if(getPlugin() == null) return true;
-		if(!BentoBox.getInstance().getIWM().inWorld(getLocation())) return true;
-		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(getLocation());
+		if(!BentoBox.getInstance().getIWM().inWorld(loc)) return true;
+		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(loc);
 		if(is==null) return true;
 		setRegions(1);
-		return is.filter(x -> x.getOwner().equals(getPlayer().getUniqueId())).isPresent();
+		return is.filter(x -> x.getOwner().equals(player.getUniqueId())).isPresent();
 	}
 }

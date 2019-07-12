@@ -14,36 +14,22 @@ public class fIslandWorld extends protectionObj{
 	public fIslandWorld(Plugin plugin) {
 		super(plugin);
 	}
-
-	@Override
-	public boolean canBuild(Player player, Location loc) {
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-
-	@Override
-	public boolean isOwner(Player player, Location loc) {
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
 	
-	private boolean canBuild() {
+	public boolean canBuild(Player player, Location loc) {
 		if(getPlugin() == null) return true;
-		if(!IslandWorldApi.getIslandWorld().equals(getLocation().getWorld())) return true;
-		return IslandWorldApi.canBuildOnLocation(getPlayer(), getLocation(), true);
+		if(!IslandWorldApi.getIslandWorld().equals(loc.getWorld())) return true;
+		return IslandWorldApi.canBuildOnLocation(player, loc, true);
 	}
 
-	private boolean isOwner() {
+	public boolean isOwner(Player player, Location loc) {
 		setRegions(0);
 		if(getPlugin() == null) return true;
-		if(!IslandWorldApi.getIslandWorld().equals(getLocation().getWorld())) return true;
+		if(!IslandWorldApi.getIslandWorld().equals(loc.getWorld())) return true;
 		IslandWorld world = IslandWorld.getInstance();
-		SimpleIsland simpleIsland = world.xgetIslandOnLoc(getLocation());
+		SimpleIsland simpleIsland = world.xgetIslandOnLoc(loc);
 		if(simpleIsland == null) return true;
 		setRegions(1);
-		return simpleIsland.getOwnerUUID().equals(getPlayer().getUniqueId());
+		return simpleIsland.getOwnerUUID().equals(player.getUniqueId());
 	}
 
 }

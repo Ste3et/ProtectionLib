@@ -12,20 +12,12 @@ public class fDiceChunk extends protectionObj{
 	public fDiceChunk(Plugin plugin) {
 		super(plugin);
 	}
-	
-	@Override
+
 	public boolean canBuild(Player player, Location loc) {
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
+		return DiceChunk.getInstance().canBuild(loc, player);
 	}
 
-	private boolean canBuild() {
-		return DiceChunk.getInstance().canBuild(getLocation(), getPlayer());
-	}
-
-	@Override
 	public boolean isOwner(Player player, Location loc) {
-		return DiceChunk.getInstance().getOwner(getLocation()).equals(getPlayer().getUniqueId());
+		return DiceChunk.getInstance().getOwner(loc).equals(player.getUniqueId());
 	}
 }

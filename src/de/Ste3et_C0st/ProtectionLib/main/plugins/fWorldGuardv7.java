@@ -9,7 +9,6 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.Flags;
-import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
@@ -21,30 +20,18 @@ public class fWorldGuardv7 extends protectionObj {
 	public fWorldGuardv7(Plugin pl){
 		super(pl);
 	}
-	
-	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
 
-	private boolean canBuild() {
+	public boolean canBuild(Player player, Location loc) {
 		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 		RegionQuery query = container.createQuery();
-		return query.testState(BukkitAdapter.adapt(getLocation()), WorldGuardPlugin.inst().wrapPlayer(getPlayer()), Flags.BUILD);
+		return query.testState(BukkitAdapter.adapt(loc), WorldGuardPlugin.inst().wrapPlayer(player), Flags.BUILD);
 	}
 	
-	private ProtectedRegion getRegion() {
-		com.sk89q.worldedit.util.Location location = BukkitAdapter.adapt(getLocation());
-		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(getLocation().getWorld());
+	private ProtectedRegion getRegion(Location loc) {
+		com.sk89q.worldedit.util.Location location = BukkitAdapter.adapt(loc);
+		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(loc.getWorld());
 		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(location.toVector().toBlockPoint());
 		if(set==null){return null;}
 		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
@@ -52,16 +39,12 @@ public class fWorldGuardv7 extends protectionObj {
 		return region;
 	}
 	
-	private boolean isOwner() {
+	public boolean isOwner(Player player, Location loc) {
 		this.setRegions(0);
 		if(getPlugin()==null){return true;}
-		ProtectedRegion region = getRegion();
+		ProtectedRegion region = getRegion(loc);
 		if(region==null){return true;}
 		this.setRegions(1);
-		return region.isOwner(WorldGuardPlugin.inst().wrapPlayer(getPlayer()));
+		return region.isOwner(WorldGuardPlugin.inst().wrapPlayer(player));
 	}
-
-    public boolean hasBypass() {
-        return WorldGuard.getInstance().getPlatform().getSessionManager().hasBypass(WorldGuardPlugin.inst().wrapPlayer(getPlayer()), BukkitAdapter.adapt(getLocation().getWorld()));
-    }
 }

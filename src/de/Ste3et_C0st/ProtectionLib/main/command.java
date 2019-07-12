@@ -20,7 +20,9 @@ public class command implements CommandExecutor {
 			if(args.length == 1) {
 				if(args[0].equalsIgnoreCase("plugins")) {
 					if(!ProtectionLib.getInstance().getWatchers().isEmpty()) {
-						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion()));
+						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> sender.sendMessage(
+								"§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion() + " §f-> §a" + plugin.getClass().getSimpleName() + ".class"
+							));
 					}else {
 						sender.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 					}

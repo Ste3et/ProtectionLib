@@ -23,18 +23,6 @@ public class fGriefPrevention extends protectionObj implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
 	}
 	
-	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
 	@EventHandler
 	private void onClear(ClaimDeletedEvent e){
 		Location loc1 = e.getClaim().getGreaterBoundaryCorner();
@@ -43,22 +31,21 @@ public class fGriefPrevention extends protectionObj implements Listener {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	private boolean canBuild(){
+	public boolean canBuild(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.getLocation(), true, null);
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(loc, true, null);
 		if(claim==null) return true;
-		if(claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName())) return true;
-		if(claim.allowAccess(this.getPlayer())==null) return true;
-		if(claim.allowBuild(this.getPlayer(), Material.DIAMOND_BLOCK)==null) return true;
+		if(claim.getOwnerName().equalsIgnoreCase(player.getName())) return true;
+		if(claim.allowAccess(player)==null) return true;
+		if(claim.allowBuild(player, Material.DIAMOND_BLOCK)==null) return true;
 		return false;
 	}
 	
-	private boolean isOwner(){
-		setRegions(0);
+	public boolean isOwner(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(this.getLocation(), true, null);
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(loc, true, null);
 		if(claim==null) return true;
 		setRegions(1);
-		return claim.getOwnerName().equalsIgnoreCase(this.getPlayer().getName());
+		return claim.getOwnerName().equalsIgnoreCase(player.getName());
 	}
 }

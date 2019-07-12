@@ -15,35 +15,21 @@ public class fuSkyblock extends protectionObj {
 	}
 	
 	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
-	private boolean canBuild(){
 		if(getPlugin()==null){return true;}
 		uSkyBlockAPI api = (uSkyBlockAPI) getPlugin();
-		IslandInfo info = api.getIslandInfo(getLocation());
+		IslandInfo info = api.getIslandInfo(loc);
 		if(info == null) return true;
-		if(info.isLeader(this.getPlayer())) return true;
-		if(info.getMembers().contains(this.getPlayer().getName()) || info.getTrustees().contains(this.getPlayer().getName())) return true;
+		if(info.isLeader(player)) return true;
+		if(info.getMembers().contains(player.getName()) || info.getTrustees().contains(player.getName())) return true;
 		return false;
 	}
 	
-	private boolean isOwner(){
-		this.setRegions(0);
-		if(getPlayer()==null){return true;}
+	public boolean isOwner(Player player, Location loc){
+		if(player==null){return true;}
 		uSkyBlockAPI api = (uSkyBlockAPI) getPlugin();
-		IslandInfo info = api.getIslandInfo(getLocation());
+		IslandInfo info = api.getIslandInfo(loc);
 		if(info == null) return true;
-		this.setRegions(1);
-		if(info.isLeader(this.getPlayer())) return true;
+		if(info.isLeader(player)) return true;
 		return false;
 	}
 }

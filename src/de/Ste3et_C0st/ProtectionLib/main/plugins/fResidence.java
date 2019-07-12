@@ -16,35 +16,21 @@ public class fResidence extends protectionObj {
 	public fResidence(Plugin pl){
 		super(pl);
 	}
-	
+
 	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
+		if(getPlugin()==null){return true;}
+		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(loc);
+		if(residence==null) return true;
+		ResidencePermissions perms = residence.getPermissions();
+		return perms.playerHas(player, Flags.build, true);
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
-	private boolean canBuild(){
 		if(getPlugin()==null){return true;}
-		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.getLocation());
+		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(loc);
 		if(residence==null) return true;
-		ResidencePermissions perms = residence.getPermissions();
-		return perms.playerHas(this.getPlayer(), Flags.build, true);
-	}
-	
-	private boolean isOwner(){
-		this.setRegions(0);
-		if(getPlugin()==null){return true;}
-		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(this.getLocation());
-		if(residence==null) return true;
-		this.setRegions(1);
-		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getName())) return true;
-		if(residence.getOwner().equalsIgnoreCase(this.getPlayer().getUniqueId().toString())) return true;
+		if(residence.getOwner().equalsIgnoreCase(player.getName())) return true;
+		if(residence.getOwner().equalsIgnoreCase(player.getUniqueId().toString())) return true;
 		return false;
 	}
 }

@@ -82,7 +82,7 @@
 	            <enabled>true</enabled>
 	            <updatePolicy>never</updatePolicy>
 	        </releases>
-	    </repository>  
+	    </repository>
 	    
 	      <repository>
 		    <id>codemc-repo</id>
@@ -299,13 +299,29 @@
 		  <version>1.6.9.5-U0.4.0</version>
 		  <scope>provided</scope>
 	</dependency>
-	 
+
 	<dependency>
 	    <groupId>world.bentobox</groupId>
 	    <artifactId>bentobox</artifactId>
 	    <version>LATEST</version>
 	    <scope>provided</scope>
 	</dependency>
+	
+	<dependency>
+      <groupId>me.angeschossen.Lands</groupId>
+      <artifactId>Lands</artifactId>
+      <version>3.7.3.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/LandsAPI.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>me.ellbristow.mychunk</groupId>
+      <artifactId>MyChunk</artifactId>
+      <version>1.14.3-3.1.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
+    </dependency>
 	
 	<!-- 1.6.9.5-U0.3.0b133 -->
   </dependencies>

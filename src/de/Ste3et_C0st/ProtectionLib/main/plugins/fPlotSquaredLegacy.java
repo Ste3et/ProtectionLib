@@ -35,36 +35,24 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
 	@SuppressWarnings("deprecation")
-	private boolean canBuild(){
+	public boolean canBuild(Player player, Location loc){
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
-		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
-			PlotPlayer player = getPlotPlayer();
-			if(player == null) return false;
-			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
-					(int) this.getLocation().getX(), 
-					(int) this.getLocation().getY(), 
-					(int) this.getLocation().getZ(), 
-					this.getLocation().getYaw(), 
-					this.getLocation().getPitch());
-			if(loc.isPlotArea()){
-				Plot plot = pAPI.getPlot(this.getLocation());
+		if(pAPI.isPlotWorld(loc.getWorld())){
+			PlotPlayer plotPlayer = PlotPlayer.wrap(player);
+			if(plotPlayer == null) return false;
+			com.intellectualcrafters.plot.object.Location plotLoc = new com.intellectualcrafters.plot.object.Location(loc.getWorld().getName(), 
+					(int) loc.getX(), 
+					(int) loc.getY(), 
+					(int) loc.getZ(), 
+					loc.getYaw(), 
+					loc.getPitch());
+			if(plotLoc.isPlotArea()){
+				Plot plot = plotLoc.getPlot();
 				if(plot!=null){
-					if(plot.isOwner(player.getUUID())) return true;
-					if(plot.isAdded(player.getUUID())) return true;
+					if(plot.isOwner(plotPlayer.getUUID())) return true;
+					if(plot.isAdded(plotPlayer.getUUID())) return true;
 				}
 				return false;
 			}else{
@@ -76,24 +64,23 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 	}
 	
 	@SuppressWarnings("deprecation")
-	private boolean isOwner(){
+	public boolean isOwner(Player player, Location loc){
 		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
-		if(pAPI.isPlotWorld(this.getLocation().getWorld())){
-			PlotPlayer player = getPlotPlayer();
-			if(player == null) return false;
-			com.intellectualcrafters.plot.object.Location loc = new com.intellectualcrafters.plot.object.Location(this.getLocation().getWorld().getName(), 
-					(int) this.getLocation().getX(), 
-					(int) this.getLocation().getY(), 
-					(int) this.getLocation().getZ(), 
-					this.getLocation().getYaw(), 
-					this.getLocation().getPitch());
-			if(loc.isPlotArea()){
-				Plot plot = pAPI.getPlot(this.getLocation());
+		if(pAPI.isPlotWorld(loc.getWorld())){
+			PlotPlayer plotPlayer = PlotPlayer.wrap(player);
+			if(plotPlayer == null) return false;
+			com.intellectualcrafters.plot.object.Location plotLoc = new com.intellectualcrafters.plot.object.Location(loc.getWorld().getName(), 
+					(int) loc.getX(), 
+					(int) loc.getY(), 
+					(int) loc.getZ(), 
+					loc.getYaw(), 
+					loc.getPitch());
+			if(plotLoc.isPlotArea()){
+				Plot plot = plotLoc.getPlot();
 				if(plot!=null) {
-					this.setRegions(1);
-					return plot.isOwner(player.getUUID());
+					return plot.isOwner(plotPlayer.getUUID());
 				}
 				return false;
 			}else{
@@ -102,9 +89,5 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 		}else{
 			return true;
 		}
-	}
-	
-	private PlotPlayer getPlotPlayer() {
-		return PlotPlayer.wrap(this.getPlayer());
 	}
 }

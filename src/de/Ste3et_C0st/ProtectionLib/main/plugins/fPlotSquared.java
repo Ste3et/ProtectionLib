@@ -36,59 +36,46 @@ public class fPlotSquared extends protectionObj implements Listener{
 	}
 	
 	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
+		if(getPlugin()==null){return true;}
+		if(PlotSquared.get().hasPlotArea(loc.getWorld().getName())){
+			PlotPlayer plotPlayer = PlotPlayer.wrap(player);
+			if(player == null) return false;
+			com.github.intellectualsites.plotsquared.plot.object.Location pLoc = new com.github.intellectualsites.plotsquared.plot.object.Location(loc.getWorld().getName(), 
+					(int) loc.getX(), 
+					(int) loc.getY(), 
+					(int) loc.getZ(), 
+					loc.getYaw(), 
+					loc.getPitch());
+			if(pLoc.isPlotArea()) {
+				Plot p = pLoc.getPlot();
+				if(p != null) {
+					if(p.isAdded(plotPlayer.getUUID())) return true;
+					if(p.isOwner(plotPlayer.getUUID())) return true;
+				}
+				return false;
+			}
+			return true;
+		}else {
+			return true;
+		}
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
-	private boolean canBuild(){
-		if(getPlugin()==null){return true;}
-		if(PlotSquared.get().hasPlotArea(getLocation().getWorld().getName())){
-			PlotPlayer player = getPlotPlayer();
-			if(player == null) return false;
-			com.github.intellectualsites.plotsquared.plot.object.Location loc = new com.github.intellectualsites.plotsquared.plot.object.Location(this.getLocation().getWorld().getName(), 
-					(int) this.getLocation().getX(), 
-					(int) this.getLocation().getY(), 
-					(int) this.getLocation().getZ(), 
-					this.getLocation().getYaw(), 
-					this.getLocation().getPitch());
-			if(loc.isPlotArea()) {
-				Plot p = loc.getPlot();
-				if(p != null) {
-					if(p.isAdded(player.getUUID())) return true;
-					if(p.isOwner(player.getUUID())) return true;
-				}
-				return false;
-			}
-			return true;
-		}else {
-			return true;
-		}
-	}
-	
-	private boolean isOwner(){
 		this.setRegions(0);
 		if(getPlugin()==null){return true;}
-		if(PlotSquared.get().hasPlotArea(getLocation().getWorld().getName())){
-			PlotPlayer player = getPlotPlayer();
+		if(PlotSquared.get().hasPlotArea(loc.getWorld().getName())){
+			PlotPlayer plotPlayer = PlotPlayer.wrap(player);
 			if(player == null) return false;
-			com.github.intellectualsites.plotsquared.plot.object.Location loc = new com.github.intellectualsites.plotsquared.plot.object.Location(this.getLocation().getWorld().getName(), 
-					(int) this.getLocation().getX(), 
-					(int) this.getLocation().getY(), 
-					(int) this.getLocation().getZ(), 
-					this.getLocation().getYaw(), 
-					this.getLocation().getPitch());
-			if(loc.isPlotArea()) {
-				Plot p = loc.getPlot();
+			com.github.intellectualsites.plotsquared.plot.object.Location pLoc = new com.github.intellectualsites.plotsquared.plot.object.Location(loc.getWorld().getName(), 
+					(int) loc.getX(), 
+					(int) loc.getY(), 
+					(int) loc.getZ(), 
+					loc.getYaw(), 
+					loc.getPitch());
+			if(pLoc.isPlotArea()) {
+				Plot p = pLoc.getPlot();
 				if(p != null) {
-					this.setRegions(1);
-					return p.isOwner(player.getUUID());
+					if(p.isOwner(plotPlayer.getUUID())) return true;
 				}
 				return false;
 			}
@@ -96,9 +83,5 @@ public class fPlotSquared extends protectionObj implements Listener{
 		}else {
 			return true;
 		}
-	}
-	
-	private PlotPlayer getPlotPlayer() {
-		return PlotPlayer.wrap(this.getPlayer());
 	}
 }

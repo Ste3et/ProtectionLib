@@ -32,14 +32,10 @@ public class fAreaShop extends protectionObj implements Listener{
 	}
 
 	public boolean canBuild(Player player, Location loc) {
-		this.setLocation(loc);
-		this.setPlayer(player);
 		return true;
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		this.setLocation(loc);
-		this.setPlayer(player);
 		return true;
 	}
 	

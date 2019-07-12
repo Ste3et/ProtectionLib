@@ -17,33 +17,19 @@ public class fLandLord extends protectionObj {
 	}
 	
 	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
-	private boolean canBuild(){
 		if(getPlugin()==null){return true;}
-		OwnedLand land = LandLordAPI.getInstance().getLand(this.getLocation());
+		OwnedLand land = LandLordAPI.getInstance().getLand(loc);
 		if(land==null) return true;
-		if(land.isOwner(this.getPlayer().getUniqueId())){return true;}
+		if(land.isOwner(player.getUniqueId())){return true;}
 		WorldGuardPlugin wgp = WorldGuardPlugin.inst();
-		if(land.getLand().isMember(wgp.wrapPlayer(this.getPlayer()))){return true;}
+		if(land.getLand().isMember(wgp.wrapPlayer(player))){return true;}
 		return false;
 	}
 	
-	private boolean isOwner(){
-		setRegions(0);
+	public boolean isOwner(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		OwnedLand land = LandLordAPI.getInstance().getLand(this.getLocation());
+		OwnedLand land = LandLordAPI.getInstance().getLand(loc);
 		if(land==null) return true;
-		setRegions(1);
-		return land.isOwner(this.getPlayer().getUniqueId());
+		return land.isOwner(player.getUniqueId());
 	}
 }

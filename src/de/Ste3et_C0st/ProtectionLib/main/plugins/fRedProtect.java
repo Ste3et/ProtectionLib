@@ -18,18 +18,6 @@ public class fRedProtect extends protectionObj {
 		super(pl);
 	}
 	
-	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
 	
 	
 	@EventHandler
@@ -40,19 +28,17 @@ public class fRedProtect extends protectionObj {
 		Bukkit.getPluginManager().callEvent(event);
 	}
 	
-	private boolean canBuild(){
+	public boolean canBuild(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		Region reg = RedProtect.get().getAPI().getRegion(this.getLocation());
+		Region reg = RedProtect.get().getAPI().getRegion(loc);
 		if(reg==null)return true;
-		return reg.canBuild(this.getPlayer());
+		return reg.canBuild(player);
 	}
 	
-	private boolean isOwner(){
-		this.setRegions(0);
+	public boolean isOwner(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		Region reg = RedProtect.get().getAPI().getRegion(this.getLocation());
+		Region reg = RedProtect.get().getAPI().getRegion(loc);
 		if(reg==null) return true;
-		this.setRegions(1);
-		return reg.isLeader(this.getPlayer());
+		return reg.isLeader(player);
 	}
 }

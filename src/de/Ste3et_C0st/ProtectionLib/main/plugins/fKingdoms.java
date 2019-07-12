@@ -20,18 +20,6 @@ public class fKingdoms extends protectionObj {
 	public fKingdoms(Plugin plugin) {
 		super(plugin);
 	}
-
-	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
-	}
-	
-	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
 	
 	@EventHandler
 	private void onWin(KingdomPlayerWonEvent event){
@@ -57,26 +45,26 @@ public class fKingdoms extends protectionObj {
 		}
 	}
 	
-	private boolean canBuild(){
+	public boolean canBuild(Player player, Location loc){
 		if(getPlugin()==null){return true;}
-		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(getLocation().getChunk());
+		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(loc.getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
 		if(l == null){return true;}
 		String owner = l.getOwner();
 		if(owner == null){return true;}
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
-		KingdomPlayer player = GameManagement.getPlayerManager().getSession(this.getPlayer());
-		if(player == null){return true;}
-		if(k.isEnemyMember(player)){return true;}
-		if(k.getKing().equals(this.getPlayer().getUniqueId())){return true;}
+		KingdomPlayer kPlayer = GameManagement.getPlayerManager().getSession(player);
+		if(kPlayer == null){return true;}
+		if(k.isEnemyMember(kPlayer)){return true;}
+		if(k.getKing().equals(player.getUniqueId())){return true;}
 		return false;
 	}
 	
-	private boolean isOwner(){
+	public boolean isOwner(Player player, Location loc){
 		setRegions(0);
 		if(getPlugin()==null){return true;}
-		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(getLocation().getChunk());
+		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(loc.getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
 		if(l == null){return true;}
 		String owner = l.getOwner();
@@ -84,7 +72,7 @@ public class fKingdoms extends protectionObj {
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
 		setRegions(1);
-		return k.getKing().equals(this.getPlayer().getUniqueId());
+		return k.getKing().equals(player.getUniqueId());
 	}
 	
 }

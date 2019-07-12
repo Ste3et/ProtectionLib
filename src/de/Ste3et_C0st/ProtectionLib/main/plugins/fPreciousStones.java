@@ -1,8 +1,6 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
-import net.sacredlabyrinth.Phaed.PreciousStones.field.Field;
-
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -15,28 +13,16 @@ public class fPreciousStones extends protectionObj  {
 	public fPreciousStones(Plugin pl) {
 		super(pl);
 	}
-
+	
 	public boolean canBuild(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return canBuild();
+		if(getPlugin()==null){return true;}
+		return PreciousStones.API().canBreak(player, loc);
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		this.setPlayer(player);
-		this.setLocation(loc);
-		return isOwner();
-	}
-	
-	private boolean canBuild(){
-		if(getPlugin()==null){return true;}
-		return PreciousStones.API().canBreak(this.getPlayer(), this.getLocation());
-	}
-	
-	private boolean isOwner(){
 		if(getPlugin()==null){return true;}
 		try {
-			return PreciousStones.API().canBreak(this.getPlayer(), this.getLocation());
+			return PreciousStones.API().canBreak(player, loc);
 		}catch(Exception ex) {
 			return true;
 		}

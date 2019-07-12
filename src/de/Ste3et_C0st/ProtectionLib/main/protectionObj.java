@@ -46,6 +46,7 @@ public abstract class protectionObj {
 	 * Get the Player of the object
 	 * @return the Player of the object
 	 */
+	@Deprecated
 	public Player getPlayer() {
 		return p;
 	}
@@ -54,6 +55,7 @@ public abstract class protectionObj {
 	 * Set the Player of the object
 	 * @param p
 	 */
+	@Deprecated
 	public void setPlayer(Player p) {
 		this.p = p;
 	}
@@ -62,6 +64,7 @@ public abstract class protectionObj {
 	 * Get the Location of the object
 	 * @return the Location of the Object
 	 */
+	@Deprecated
 	public Location getLocation() {
 		return loc;
 	}
@@ -70,6 +73,7 @@ public abstract class protectionObj {
 	 * Set the location of the object
 	 * @param loc
 	 */
+	@Deprecated
 	public void setLocation(Location loc) {
 		this.loc = loc;
 	}
