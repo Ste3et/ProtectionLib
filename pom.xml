@@ -122,6 +122,11 @@
 		  <id>factions-repo</id>
 		  <url>http://ci.ender.zone/plugin/repository/everything/</url>
 		</repository>
+		
+		<repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
   </repositories>  
   <dependencies>
 
@@ -321,6 +326,12 @@
       <version>1.14.3-3.1.2</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.OmerBenGera</groupId>
+      <artifactId>SuperiorSkyblockAPI</artifactId>
+      <version>b7</version>
     </dependency>
 	
 	<!-- 1.6.9.5-U0.3.0b133 -->

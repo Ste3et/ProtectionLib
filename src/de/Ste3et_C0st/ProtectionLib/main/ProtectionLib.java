@@ -28,6 +28,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredLegacy;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
@@ -78,6 +79,7 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("PreciousStones");
 		addProtectionPlugin("MyChunk");
 		addProtectionPlugin("Lands");
+		addProtectionPlugin("SuperiorSkyblock2");
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -109,6 +111,7 @@ public class ProtectionLib extends JavaPlugin{
 				case "AreaShop" : protectionClass.add(new fAreaShop(pl));break;
 				case "MyChunk" : protectionClass.add(new fMyChunk(pl));break;
 				case "Lands" : protectionClass.add(new fLands(pl));break;
+				case "SuperiorSkyblock2" : protectionClass.add(new fSuperiorSkyblock(pl));break;
 				case "Factions" : 
 					if(pl.getDescription().getAuthors().stream().filter(b -> b.equalsIgnoreCase("drtshock")).findFirst().isPresent()) {
 						protectionClass.add(new fFactionsUUID(pl));break;
