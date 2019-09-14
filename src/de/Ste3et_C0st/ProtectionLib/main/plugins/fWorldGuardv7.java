@@ -23,16 +23,16 @@ public class fWorldGuardv7 extends protectionObj {
 
 	public boolean canBuild(Player player, Location loc) {
 		this.setRegions(0);
-		if(getPlugin()==null){return true;}
+		if(getPlugin()==null) return true;
+		
 		RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 		RegionQuery query = container.createQuery();
 		return query.testState(BukkitAdapter.adapt(loc), WorldGuardPlugin.inst().wrapPlayer(player), Flags.BUILD);
 	}
 	
 	private ProtectedRegion getRegion(Location loc) {
-		com.sk89q.worldedit.util.Location location = BukkitAdapter.adapt(loc);
 		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(loc.getWorld());
-		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(location.toVector().toBlockPoint());
+		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(loc);
 		if(set==null){return null;}
 		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
 		if(region==null){return null;}

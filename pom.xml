@@ -1,334 +1,344 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <version>0.9.8</version>
-  <packaging>jar</packaging>
+	<version>0.9.8</version>
+	<packaging>jar</packaging>
 
-  <name>ProtectionLib</name>
-  <groupId>de.Ste3et_C0st.furniture</groupId>
-  <artifactId>ProtectionLib</artifactId>
+	<name>ProtectionLib</name>
+	<groupId>de.Ste3et_C0st.furniture</groupId>
+	<artifactId>ProtectionLib</artifactId>
 
-  <build>
-	<defaultGoal>clean package install</defaultGoal>
-    <sourceDirectory>src</sourceDirectory>
-    <finalName>ProtectionLib</finalName>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-	  
-	    <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>
-                  de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
-                </mainClass>
-              </manifest>
-            </archive>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <appendAssemblyId>false</appendAssemblyId>
-          </configuration>
-        </plugin>
-        
-        <plugin>
-		   <artifactId>maven-deploy-plugin</artifactId>
-		   <version>2.8.1</version>
-		   <executions>
-		      <execution>
-		         <id>default-deploy</id>
-		         <phase>deploy</phase>
-		         <goals>
-		            <goal>deploy</goal>
-		         </goals>
-		      </execution>
-		   </executions>
-		</plugin>
-		
-		<plugin>
-		   <groupId>org.apache.maven.plugins</groupId>
-		   <artifactId>maven-deploy-plugin</artifactId>
-		   <version>3.0.0-M1</version>
-		   <configuration>
-		      <skip>false</skip>
-		   </configuration>
-		</plugin>
-    </plugins>
-  </build>
+	<build>
+		<defaultGoal>clean package install</defaultGoal>
+		<sourceDirectory>src</sourceDirectory>
+		<finalName>ProtectionLib</finalName>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 
-  <repositories>
-	    <repository>
-	       <id>spigot-repo</id>
-	       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-	       <releases>
-	            <enabled>true</enabled>
-	            <updatePolicy>never</updatePolicy>
-	        </releases>
-	    </repository>
-	    
-	      <repository>
-		    <id>codemc-repo</id>
-		    <url>https://repo.codemc.org/repository/maven-public/</url>
-		  </repository>
-	  
-	  	<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-	 	</repository>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>
+								de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
+							</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+			</plugin>
 
-        <repository>
-	        <id>vault-repo</id>
-	        <url>http://nexus.hc.to/content/repositories/pub_releases</url>
-        </repository>
-        
-        <repository>
-	        <id>sk89q-repo</id>
-	        <url>http://maven.sk89q.com/repo/</url>
-   		</repository>
-   		
-   		<repository>  
-		    <id>redprotect-repo</id>  
-		    <url>https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/</url>  
-		</repository>  
-   		
-   		<repository>
-		    <id>uSkyBlock-mvn-repo</id>
-		    <url>https://raw.github.com/rlf/uSkyBlock/mvn-repo/</url>
-		    <snapshots>
-		      <enabled>true</enabled>
-		      <updatePolicy>always</updatePolicy>
-		    </snapshots>
-		</repository>
-		
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.1</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
 		<repository>
-		  <id>factions-repo</id>
-		  <url>http://ci.ender.zone/plugin/repository/everything/</url>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
 		</repository>
-  </repositories>  
-  <dependencies>
 
-  	<dependency>
-  		<groupId>org.spigotmc</groupId>
-  		<artifactId>spigot-api</artifactId>
-  		<version>1.13.2-R0.1-SNAPSHOT</version>
-  		<scope>provided</scope>
-  	</dependency>
-  
-  	<dependency>
-  		<groupId>org.bukkit</groupId>
-  		<artifactId>bukkit</artifactId>
-  		<version>1.13.2-R0.1-SNAPSHOT</version>
-  		<scope>provided</scope>
-  	</dependency>
-  	
-  	<dependency>
-      <groupId>com.sk89q</groupId>
-  	  <artifactId>WorldGuard</artifactId>
-  	  <version>7.0.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/worldguard.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.sk89q</groupId>
-  	  <artifactId>WorldEdit</artifactId>
-  	  <version>7.0.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/worldedit.jar</systemPath>
-    </dependency>
-  	
-  	<dependency>
-	    <groupId>com.github.TechFortress</groupId>
-	    <artifactId>GriefPrevention</artifactId>
-	    <version>16.7.1</version>
-  	</dependency>
-	
-	<dependency>
-       <groupId>net.milkbowl.vault</groupId>
-       <artifactId>VaultAPI</artifactId>
-       <version>1.6</version>
-       <scope>provided</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.plotsquared</groupId>
-      <artifactId>plotsquared-api-legacy</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/PlotSquared-Bukkit-Legacy.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.plotsquared</groupId>
-      <artifactId>plotsquared-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/PlotSquared-Bukkit.jar</systemPath>
-    </dependency>
-	
-	<dependency>
-      <groupId>biz.princeps</groupId>
-      <artifactId>Towny</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Towny.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.generallib</groupId>
-      <artifactId>GeneralLib</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/GLib.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.wasteofplastic</groupId>
-      <artifactId>askyblock</artifactId>
-      <version>3.0.9.4</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/askyblock.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>biz.princeps</groupId>
-      <artifactId>Landlord</artifactId>
-      <version>2.0-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Landlord-v2.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.sacredlabrinth</groupId>
-  	  <artifactId>PreciousStones</artifactId>
-  	  <version>10.7.2</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/PreciousStones-1.12.jar</systemPath>
-    </dependency>
-    
-   <dependency>
-      <groupId>pl.IslandWorld</groupId>
-  	  <artifactId>IslandWorld</artifactId>
-  	  <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.bekvon</groupId>
-  	  <artifactId>Residence</artifactId>
-  	  <version>4.8.4.4</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>me.wiefferink</groupId>
-      <artifactId>areashop</artifactId>
-      <version>2.6.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.kingdoms</groupId>
-  	  <artifactId>kingdoms</artifactId>
-  	  <version>4.8.0.2</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Kingdoms.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>de.Ste3et_C0st</groupId>
-  	  <artifactId>DiceChunk</artifactId>
-  	  <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/DiceChunkPublic.jar</systemPath>
-    </dependency>
-    
-     <dependency>
-      <groupId>com.massivecraft</groupId>
-  	  <artifactId>FactionsLegacy</artifactId>
-  	  <version>3.2.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/FactionsLegacy.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.massivecraft</groupId>
-  	  <artifactId>MassiveCore</artifactId>
-  	  <version>3.2.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/MassiveCore.jar</systemPath>
-    </dependency>
-        
-    <dependency>
-	    <groupId>com.github.rlf</groupId>
-		<artifactId>uSkyBlock-API</artifactId>
-		<version>2.6.4</version>
-	 </dependency>
-	 
-	 <dependency>  
-	    <groupId>br.net.fabiozumbi12.RedProtect</groupId>  
-	    <artifactId>RedProtect-Spigot</artifactId>  
-	    <version>7.5.5</version>  
-	    <scope>provided</scope>  
-	 </dependency>
-	
-	<dependency>
-		  <groupId>com.massivecraft</groupId>
-		  <artifactId>Factions</artifactId>
-		  <version>1.6.9.5-U0.4.0</version>
-		  <scope>provided</scope>
-	</dependency>
+		<repository>
+			<id>codemc-repo</id>
+			<url>https://repo.codemc.org/repository/maven-public/</url>
+		</repository>
 
-	<dependency>
-	    <groupId>world.bentobox</groupId>
-	    <artifactId>bentobox</artifactId>
-	    <version>LATEST</version>
-	    <scope>provided</scope>
-	</dependency>
-	
-	<dependency>
-      <groupId>me.angeschossen.Lands</groupId>
-      <artifactId>Lands</artifactId>
-      <version>3.7.3.1</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/LandsAPI.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>me.ellbristow.mychunk</groupId>
-      <artifactId>MyChunk</artifactId>
-      <version>1.14.3-3.1.2</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.github.OmerBenGera</groupId>
-      <artifactId>SuperiorSkyblockAPI</artifactId>
-      <version>b7</version>
-    </dependency>
-	
-	<!-- 1.6.9.5-U0.3.0b133 -->
-  </dependencies>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+
+		<repository>
+			<id>vault-repo</id>
+			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
+		</repository>
+
+		<repository>
+			<id>redprotect-repo</id>
+			<url>https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/</url>
+		</repository>
+
+		<repository>
+			<id>uSkyBlock-mvn-repo</id>
+			<url>https://raw.github.com/rlf/uSkyBlock/mvn-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>factions-repo</id>
+			<url>http://ci.ender.zone/plugin/repository/everything/</url>
+		</repository>
+
+		<repository>
+			<id>sk89q-repo</id>
+			<url>https://maven.enginehub.org/repo/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.13.2-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>1.13.2-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.TechFortress</groupId>
+			<artifactId>GriefPrevention</artifactId>
+			<version>16.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.milkbowl.vault</groupId>
+			<artifactId>VaultAPI</artifactId>
+			<version>1.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.plotsquared</groupId>
+			<artifactId>plotsquared-api-legacy</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit-Legacy.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.plotsquared</groupId>
+			<artifactId>plotsquared-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>biz.princeps</groupId>
+			<artifactId>Towny</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/Towny.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.generallib</groupId>
+			<artifactId>GeneralLib</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/GLib.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.wasteofplastic</groupId>
+			<artifactId>askyblock</artifactId>
+			<version>3.0.9.4</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/askyblock.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>biz.princeps</groupId>
+			<artifactId>Landlord</artifactId>
+			<version>2.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/Landlord-v2.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sacredlabrinth</groupId>
+			<artifactId>PreciousStones</artifactId>
+			<version>10.7.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/PreciousStones-1.12.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>pl.IslandWorld</groupId>
+			<artifactId>IslandWorld</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.bekvon</groupId>
+			<artifactId>Residence</artifactId>
+			<version>4.8.4.4</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>me.wiefferink</groupId>
+			<artifactId>areashop</artifactId>
+			<version>2.6.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kingdoms</groupId>
+			<artifactId>kingdoms</artifactId>
+			<version>4.8.0.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/Kingdoms.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>de.Ste3et_C0st</groupId>
+			<artifactId>DiceChunk</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/DiceChunkPublic.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.massivecraft</groupId>
+			<artifactId>FactionsLegacy</artifactId>
+			<version>3.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/FactionsLegacy.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.massivecraft</groupId>
+			<artifactId>MassiveCore</artifactId>
+			<version>3.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/MassiveCore.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.rlf</groupId>
+			<artifactId>uSkyBlock-API</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.net.fabiozumbi12.RedProtect</groupId>
+			<artifactId>RedProtect-Spigot</artifactId>
+			<version>7.5.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.massivecraft</groupId>
+			<artifactId>Factions</artifactId>
+			<version>1.6.9.5-U0.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>world.bentobox</groupId>
+			<artifactId>bentobox</artifactId>
+			<version>LATEST</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>me.angeschossen.Lands</groupId>
+			<artifactId>Lands</artifactId>
+			<version>3.7.3.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/LandsAPI.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>me.ellbristow.mychunk</groupId>
+			<artifactId>MyChunk</artifactId>
+			<version>1.14.3-3.1.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.OmerBenGera</groupId>
+			<artifactId>SuperiorSkyblockAPI</artifactId>
+			<version>b7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sk89q.worldedit</groupId>
+			<artifactId>worldedit-bukkit</artifactId>
+			<version>7.1.0-SNAPSHOT</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.bukkit</groupId>
+					<artifactId>bukkit</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sk89q</groupId>
+					<artifactId>commandbook</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+	        <groupId>com.sk89q.worldguard</groupId>
+	        <artifactId>worldguard-bukkit</artifactId>
+	        <version>7.0.1-SNAPSHOT</version>
+	        <scope>provided</scope>
+	    </dependency>
+
+		<!-- 1.6.9.5-U0.3.0b133 -->
+	</dependencies>
 </project>

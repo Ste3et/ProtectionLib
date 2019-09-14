@@ -149,11 +149,7 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public boolean hasPermissions(Player p){
 		if(p.isOp()) return true;
-		boolean b = p.hasPermission("ProtectionLib.admin");
-		if(isVaultEnable){
-			b = permissions.permission.has(p, "ProtectionLib.admin");
-		}
-		return b;
+		return isVaultEnable ? permissions.permission.has(p, "ProtectionLib.admin") : p.hasPermission("ProtectionLib.admin");
 	}
 	
 	public boolean toogleDebug(UUID uuid) {
@@ -193,16 +189,4 @@ public class ProtectionLib extends JavaPlugin{
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
 	}
-	
-//	public int getRegions(Location loc,Player player) {
-//		int i = 0;
-//		if(hasPermissions(player)) return i;
-//		if(playerList.contains(player.getUniqueId())) {
-//			if(getWatchers().isEmpty()) {
-//				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
-//			}else {
-//				protectionClass.stream().forEach(pro);
-//			}
-//		}
-//	}
 }
