@@ -124,6 +124,10 @@
 			<id>sk89q-repo</id>
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
+		<repository>
+			<id>princepsrepo</id>
+			<url>http://princeps.biz:8081/nexus/content/repositories/princepsrepo/</url>
+		</repository>
 	</repositories>
 	<dependencies>
 
@@ -196,10 +200,9 @@
 
 		<dependency>
 			<groupId>biz.princeps</groupId>
-			<artifactId>Landlord</artifactId>
-			<version>2.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Landlord-v2.jar</systemPath>
+			<artifactId>LandLord-api</artifactId>
+			<version>4.0.5</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
