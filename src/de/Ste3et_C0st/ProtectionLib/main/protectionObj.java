@@ -87,5 +87,4 @@ public abstract class protectionObj {
 	public void setRegions(int i) {
 		this.regions = i;
 	}
-	
 }

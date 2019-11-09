@@ -1,14 +1,16 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
-
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
@@ -30,6 +32,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv6;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
@@ -88,9 +91,16 @@ public class ProtectionLib extends JavaPlugin{
 			protectList.add(ppL);
 			Plugin pl = Bukkit.getPluginManager().getPlugin(a);
 			switch (a) {
-				case "WorldGuard": protectionClass.add(new fWorldGuardv7(pl));break;
+				case "WorldGuard": 
+					if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
+						protectionClass.add(new fWorldGuardv7(pl));
+					}else {
+						protectionClass.add(new fWorldGuardv6(pl));
+					}
+					
+					break;
 				case "PlotSquared":
-					if(pl.getDescription().getAPIVersion().equalsIgnoreCase("1.13")) {
+					if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
 						protectionClass.add(new fPlotSquared(pl));
 					}else {
 						protectionClass.add(new fPlotSquaredLegacy(pl));
@@ -122,6 +132,21 @@ public class ProtectionLib extends JavaPlugin{
 			default:break;
 			}
 		}
+	}
+	
+	private String isVersionAvaiable(Plugin pl) {
+		String str = "";
+		try {
+			Class<?> descriptionClass = PluginDescriptionFile.class;
+			Field field = descriptionClass.getDeclaredField("apiVersion");
+			if(Objects.nonNull(field)) {
+				field.setAccessible(true);
+				return (String) field.get(pl.getDescription());
+			}
+		}catch (Exception e) {
+			return "";
+		}
+		return str;
 	}
 	
 	public void addPrivateProtectionPlugin(String pluginName, protectionObj protectionClass) {

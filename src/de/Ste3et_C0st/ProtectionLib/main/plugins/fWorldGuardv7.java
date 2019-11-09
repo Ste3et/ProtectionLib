@@ -22,9 +22,7 @@ public class fWorldGuardv7 extends protectionObj {
 	}
 
 	public boolean canBuild(Player player, Location loc) {
-		this.setRegions(0);
 		if(getPlugin()==null) return true;
-		
 		RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 		RegionQuery query = container.createQuery();
 		return query.testState(BukkitAdapter.adapt(loc), WorldGuardPlugin.inst().wrapPlayer(player), Flags.BUILD);
@@ -40,7 +38,6 @@ public class fWorldGuardv7 extends protectionObj {
 	}
 	
 	public boolean isOwner(Player player, Location loc) {
-		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		ProtectedRegion region = getRegion(loc);
 		if(region==null){return true;}
