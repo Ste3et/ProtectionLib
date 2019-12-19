@@ -9,6 +9,7 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.Flags;
+import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
@@ -23,17 +24,16 @@ public class fWorldGuardv7 extends protectionObj {
 
 	public boolean canBuild(Player player, Location loc) {
 		if(getPlugin()==null) return true;
-		RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
-		RegionQuery query = container.createQuery();
-		return query.testState(BukkitAdapter.adapt(loc), WorldGuardPlugin.inst().wrapPlayer(player), Flags.BUILD);
+		return WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().testBuild(BukkitAdapter.adapt(loc),  WorldGuardPlugin.inst().wrapPlayer(player), new StateFlag[] { Flags.BUILD });
 	}
 	
 	private ProtectedRegion getRegion(Location loc) {
 		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(loc.getWorld());
-		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getApplicableRegions(loc);
+		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().getApplicableRegions(BukkitAdapter.adapt(loc));
 		if(set==null){return null;}
 		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
 		if(region==null){return null;}
+		
 		return region;
 	}
 	
