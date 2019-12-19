@@ -87,4 +87,14 @@ public abstract class protectionObj {
 	public void setRegions(int i) {
 		this.regions = i;
 	}
+	
+	public boolean canSpawn(Player player, Location location) {
+		return true;
+	}
+	
+	public boolean registerFlag(Plugin plugin, String string, boolean bool) {
+		return false;
+	}
+	
+	public boolean queryFlag(String string, Player player, Location location) {return true;}
 }
