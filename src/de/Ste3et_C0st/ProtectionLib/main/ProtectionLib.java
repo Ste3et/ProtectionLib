@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -213,5 +214,26 @@ public class ProtectionLib extends JavaPlugin{
 			}
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
+	}
+	
+	public boolean registerFlag(Plugin plugin, String str, boolean defaultValue) {
+		if(getWatchers().isEmpty()) {
+			System.out.println("ProtectionLib is not hooked to any Plugin !");
+		    return false;
+		}else {
+			AtomicBoolean feedback = new AtomicBoolean(false);
+			protectionClass.stream().forEach(protection -> {
+				boolean b = protection.registerFlag(plugin, str, defaultValue);
+				if(b) {
+					feedback.set(true);
+					System.out.print("ProtectionLib: " + protection.getPlugin().getName() + " register Customflag " + str + " by " + plugin.getName());
+				}
+			});
+			return feedback.get();
+		}
+	}
+	
+	public boolean queryFlag(String string, Player player, Location location) {
+		return !this.protectionClass.stream().filter(protection -> protection.queryFlag(string, player, location) == false).findFirst().isPresent();
 	}
 }

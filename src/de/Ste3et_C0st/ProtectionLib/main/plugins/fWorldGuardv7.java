@@ -75,6 +75,7 @@ public class fWorldGuardv7 extends protectionObj {
 	@Override
 	public boolean queryFlag(String str, Player player, Location loc) {
 		if(getPlugin()==null) return true;
+		if(flagList.isEmpty()) return true;
 		StateFlag flag = flagList.stream().filter(sFlag -> sFlag.getName().equalsIgnoreCase(str)).findFirst().orElse(null);
 		if(Objects.isNull(flag)) {
 			return true;
