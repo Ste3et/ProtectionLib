@@ -290,12 +290,11 @@
 		</dependency>
 
 		<dependency>
-			<groupId>me.angeschossen.Lands</groupId>
-			<artifactId>Lands</artifactId>
-			<version>3.7.3.1</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/LandsAPI.jar</systemPath>
-		</dependency>
+	        <groupId>com.github.Angeschossen</groupId>
+	        <artifactId>LandsAPI</artifactId>
+	        <version>4.3.4.9</version>
+	        <scope>provided</scope>
+	    </dependency>
 
 		<dependency>
 			<groupId>me.ellbristow.mychunk</groupId>
