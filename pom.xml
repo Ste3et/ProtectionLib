@@ -119,6 +119,11 @@
 			<id>factions-repo</id>
 			<url>http://ci.ender.zone/plugin/repository/everything/</url>
 		</repository>
+		
+		<repository>
+		    <id>nlthijs48</id>
+		    <url>http://maven.wiefferink.me</url>
+		  </repository>
 
 		<repository>
 			<id>sk89q-repo</id>
@@ -213,6 +218,12 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
 		</dependency>
+		
+		<dependency>
+		    <groupId>me.wiefferink</groupId>
+		    <artifactId>areashop</artifactId>
+		    <version>2.5.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.bekvon</groupId>
@@ -221,15 +232,7 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
 		</dependency>
-
-		<dependency>
-			<groupId>me.wiefferink</groupId>
-			<artifactId>areashop</artifactId>
-			<version>2.6.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.kingdoms</groupId>
 			<artifactId>kingdoms</artifactId>
@@ -292,7 +295,7 @@
 		<dependency>
 	        <groupId>com.github.Angeschossen</groupId>
 	        <artifactId>LandsAPI</artifactId>
-	        <version>4.3.4.9</version>
+	        <version>4.5.2.0</version>
 	        <scope>provided</scope>
 	    </dependency>
 
