@@ -25,14 +25,14 @@ public class fLands extends protectionObj{
 		if(Objects.isNull(landsAddon)) return true;
 		
 		Land chunk = landsAddon.getLand(loc);
-		return Objects.isNull(this.landsAddon) ? true : chunk.canSetting(player, RoleSetting.BLOCK_PLACE, false);
+		return Objects.isNull(chunk) ? true : chunk.canSetting(player, RoleSetting.BLOCK_PLACE, false);
 	}
 	
 	@Override
 	public boolean isOwner(Player player, Location loc) {
 		if(Objects.isNull(landsAddon)) return true;
 		Land chunk = landsAddon.getLand(loc);
-		return Objects.isNull(this.landsAddon) ? true : chunk.getOwnerUID().equals(player.getUniqueId());
+		return Objects.isNull(chunk) ? true : chunk.getOwnerUID().equals(player.getUniqueId());
 	}
 	
 }
