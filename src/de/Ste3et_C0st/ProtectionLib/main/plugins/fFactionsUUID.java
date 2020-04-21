@@ -9,8 +9,7 @@ import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
-import com.massivecraft.factions.zcore.fperms.Access;
-import com.massivecraft.factions.zcore.fperms.PermissableAction;
+import com.massivecraft.factions.perms.PermissibleAction;
 
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
@@ -27,7 +26,7 @@ public class fFactionsUUID extends protectionObj{
 		if(fplayer == null) return true;
 		Faction faction = Board.getInstance().getFactionAt(flocation);
 		if(faction == null) return true;
-		return faction.playerHasOwnershipRights(fplayer, flocation) || faction.getAccess(fplayer, PermissableAction.BUILD).equals(Access.ALLOW);
+		return faction.playerHasOwnershipRights(fplayer, flocation) || faction.hasAccess(fplayer, PermissibleAction.BUILD);
 	}
 
 	@Override

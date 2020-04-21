@@ -23,7 +23,7 @@ public class fFactions extends protectionObj{
 		if(mPlayer == null) return true;
 		Faction faction = BoardColl.get().getFactionAt(PS.valueOf(loc));
 		if(faction == null) return true;
-		return faction.isPlayerPermitted(mPlayer, MPerm.ID_BUILD);
+		return MPerm.getPermBuild().has(mPlayer, faction, false);
 	}
 	
 	public boolean isOwner(Player player, Location loc) {
