@@ -28,6 +28,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fLands;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fMyChunk;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquared;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredLegacy;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotsquaredV5;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
@@ -101,7 +102,9 @@ public class ProtectionLib extends JavaPlugin{
 					
 					break;
 				case "PlotSquared":
-					if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
+					if(pl.getDescription().getVersion().startsWith("5")) {
+						protectionClass.add(new fPlotsquaredV5(pl));
+					}else if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
 						protectionClass.add(new fPlotSquared(pl));
 					}else {
 						protectionClass.add(new fPlotSquaredLegacy(pl));

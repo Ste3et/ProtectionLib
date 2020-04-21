@@ -34,5 +34,4 @@ public class fFactions extends protectionObj{
 		if(faction == null) return true;
 		return faction.getLeader().equals(mPlayer);
 	}
-	
 }

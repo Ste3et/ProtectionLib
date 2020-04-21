@@ -2,7 +2,6 @@ name: ${project.name}
 version: ${project.version}
 description: ${project.description}
 author: Ste3et_C0st
-website: ${project.url}
 softdepend: [WorldGuard, Plotz, PlotMe, IslandWorld,PlotSquared, Towny, PreciousStones, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault, Kingdoms, AreaShop, MyChunk, Lands, SuperiorSkyblock2]
 main: de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
 
