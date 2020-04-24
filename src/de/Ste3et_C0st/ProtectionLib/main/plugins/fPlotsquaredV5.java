@@ -27,7 +27,7 @@ public class fPlotsquaredV5 extends protectionObj implements Listener{
 	}
 	
 	@EventHandler
-	public void onDelete(PlotClearEvent clearEvent) {
+	private void onDelete(PlotClearEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -41,7 +41,7 @@ public class fPlotsquaredV5 extends protectionObj implements Listener{
 	}
 	
 	@EventHandler
-	public void onDelete(PlotDeleteEvent clearEvent) {
+	private void onDelete(PlotDeleteEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
