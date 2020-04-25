@@ -7,26 +7,28 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import com.plotsquared.core.events.PlotClearEvent;
 import com.plotsquared.core.events.PlotDeleteEvent;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.plot.Plot;
+import com.plotsquared.core.api.PlotAPI;
+import com.sk89q.worldedit.util.eventbus.Subscribe;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPlotsquaredV5 extends protectionObj implements Listener{
+public class fPlotsquaredV5 extends protectionObj {
 
 	public fPlotsquaredV5(Plugin pl) {
 		super(pl);
-		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+		PlotAPI api = new PlotAPI();
+		
+		api.registerListener(this);
 	}
 	
-	@EventHandler
+	@Subscribe
 	private void onDelete(PlotClearEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
@@ -40,7 +42,7 @@ public class fPlotsquaredV5 extends protectionObj implements Listener{
 		}
 	}
 	
-	@EventHandler
+	@Subscribe
 	private void onDelete(PlotDeleteEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
