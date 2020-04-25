@@ -16,7 +16,6 @@ import com.plotsquared.core.plot.Plot;
 import com.plotsquared.core.api.PlotAPI;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fPlotsquaredV5 extends protectionObj {
