@@ -35,7 +35,7 @@ public class fWorldGuardv6 extends protectionObj {
 		if(Objects.nonNull(regionManager)){
 			LocalPlayer localPlayer = wgp.wrapPlayer(player);
 			Set<ProtectedRegion> regionSet = regionManager.getApplicableRegions(loc).getRegions();
-			if(regionSet.isEmpty()) {
+			if(!regionSet.isEmpty()) {
 				return regionSet.stream().filter(region -> region.isOwner(localPlayer)).findFirst().isPresent();
 			}
 		}
