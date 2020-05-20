@@ -69,12 +69,9 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 					if(plot.isAdded(plotPlayer.getUUID())) return true;
 				}
 				return false;
-			}else{
-				return true;
 			}
-		}else{
-			return true;
 		}
+		return true;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -97,11 +94,8 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 					return plot.isOwner(plotPlayer.getUUID());
 				}
 				return false;
-			}else{
-				return true;
 			}
-		}else{
-			return true;
 		}
+		return true;
 	}
 }

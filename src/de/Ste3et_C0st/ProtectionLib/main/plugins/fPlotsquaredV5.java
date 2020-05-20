@@ -18,17 +18,18 @@ import com.sk89q.worldedit.util.eventbus.Subscribe;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPlotsquaredV5 extends protectionObj {
+public class fPlotsquaredV5 extends protectionObj{
 
+	private PlotAPI plotAPI;
+	
 	public fPlotsquaredV5(Plugin pl) {
 		super(pl);
-		PlotAPI api = new PlotAPI();
-		
-		api.registerListener(this);
+		this.plotAPI = new PlotAPI();
+		this.plotAPI.registerListener(this);
 	}
 	
 	@Subscribe
-	private void onDelete(PlotClearEvent clearEvent) {
+	public void onPlotClear(PlotClearEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -42,7 +43,7 @@ public class fPlotsquaredV5 extends protectionObj {
 	}
 	
 	@Subscribe
-	private void onDelete(PlotDeleteEvent clearEvent) {
+	public void onPlotDelete(PlotDeleteEvent clearEvent) {
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -72,11 +73,15 @@ public class fPlotsquaredV5 extends protectionObj {
 	@Override
 	public boolean isOwner(Player player, org.bukkit.Location loc) {
 		Location location = new Location(loc.getWorld().getName(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-		Plot plot = location.getPlot();
-		if(Objects.nonNull(plot)) {
-			return plot.isOwner(player.getUniqueId());
+		if(location.isPlotArea()) {
+			Plot plot = location.getPlot();
+			if(Objects.nonNull(plot)) {
+				return plot.isOwner(player.getUniqueId());
+			}
+			return false;
 		}
-		return location.isPlotRoad();
+		
+		return true;
 	}
 
 }
