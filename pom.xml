@@ -131,6 +131,11 @@
 		  </repository>
 
 		<repository>
+	        <id>public</id>
+	        <url>http://repo.songoda.com/artifactory/public/</url>
+	    </repository>  
+
+		<repository>
 			<id>sk89q-repo</id>
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
@@ -169,19 +174,27 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.plotsquared</groupId>
+			<groupId>com.plotsquared.bukkit</groupId>
 			<artifactId>plotsquared-api-legacy</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit-Legacy.jar</systemPath>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>com.plotsquared</groupId>
-			<artifactId>plotsquared-api</artifactId>
+			<groupId>com.github.intellectualsites</groupId>
+			<artifactId>plotsquared-bukkit</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.iridium</groupId>
+			<artifactId>IridiumSkyblock</artifactId>
+			<version>2.4.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/IridiumSkyblock.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -389,6 +402,12 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.songoda</groupId>
+            <artifactId>skyblock</artifactId>
+            <version>2.2.13</version>
+        </dependency>
 
 		<!-- 1.6.9.5-U0.3.0b133 -->
 	</dependencies>

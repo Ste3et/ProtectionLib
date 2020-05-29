@@ -18,9 +18,11 @@ import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fDiceChunk;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fFabledSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactionsUUID;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fIridiumSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
@@ -85,6 +87,8 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("MyChunk");
 		addProtectionPlugin("Lands");
 		addProtectionPlugin("SuperiorSkyblock2");
+		addProtectionPlugin("IridiumSkyblock");
+		addProtectionPlugin("FabledSkyblock");
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -126,6 +130,8 @@ public class ProtectionLib extends JavaPlugin{
 				case "MyChunk" : protectionClass.add(new fMyChunk(pl));break;
 				case "Lands" : protectionClass.add(new fLands(pl));break;
 				case "SuperiorSkyblock2" : protectionClass.add(new fSuperiorSkyblock(pl));break;
+				case "IridiumSkyblock" : protectionClass.add(new fIridiumSkyblock(pl));break;
+				case "FabledSkyblock": protectionClass.add(new fFabledSkyblock(pl));
 				case "Factions" : 
 					if(pl.getDescription().getAuthors().stream().filter(b -> b.equalsIgnoreCase("drtshock")).findFirst().isPresent()) {
 						protectionClass.add(new fFactionsUUID(pl));break;
