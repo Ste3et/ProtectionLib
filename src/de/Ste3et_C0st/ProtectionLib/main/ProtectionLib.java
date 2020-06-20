@@ -64,7 +64,7 @@ public class ProtectionLib extends JavaPlugin{
 	}
 	
 	public void onDisable(){
-		
+		instance = null;
 	}
 	
 	public void addWatchers() {
@@ -223,6 +223,10 @@ public class ProtectionLib extends JavaPlugin{
 			}
 		}
 		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		return this.protectionClass.stream().filter(protection -> protection.isProtectedRegion(location)).findFirst().isPresent();
 	}
 	
 	public boolean registerFlag(Plugin plugin, String str, boolean defaultValue) {

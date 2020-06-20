@@ -30,16 +30,23 @@ public class faSkyBlock extends protectionObj {
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		setRegions(0);
 		if(getPlugin()==null){return true;}
 		ASkyBlockAPI api = ASkyBlockAPI.getInstance();
 		if(api.getIslandWorld()==null) return true;
 		if(!api.getIslandWorld().equals(loc.getWorld())) return true;
 		if(!api.islandAtLocation(loc)) return false;
-		setRegions(1);
 		UUID uuid = api.getOwner(loc);
 		if(uuid==null) return true;
 		if(uuid.equals(player.getUniqueId())) return true;
 		return false;
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		ASkyBlockAPI api = ASkyBlockAPI.getInstance();
+		if(api.getIslandWorld()==null) return false;
+		if(!api.getIslandWorld().equals(location.getWorld())) return false;
+		if(!api.islandAtLocation(location)) return false;
+		return true;
 	}
 }

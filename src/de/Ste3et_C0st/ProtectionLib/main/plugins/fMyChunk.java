@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -29,4 +31,9 @@ public class fMyChunk extends protectionObj {
 		return true;
 	}
 
+	public boolean isProtectedRegion(Location location) {
+		if(!MyChunk.isWorldEnabled(location.getWorld().getName())) return false;
+		MyChunkChunk chunk = new MyChunkChunk(location.getChunk());
+		return Objects.nonNull(chunk);
+	}
 }

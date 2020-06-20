@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -73,7 +75,6 @@ public class fPlotSquared extends protectionObj implements Listener{
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		if(PlotSquared.get().hasPlotArea(loc.getWorld().getName())){
 			PlotPlayer plotPlayer = PlotPlayer.wrap(player);
@@ -95,5 +96,21 @@ public class fPlotSquared extends protectionObj implements Listener{
 		}else {
 			return true;
 		}
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		if(PlotSquared.get().hasPlotArea(location.getWorld().getName())) return false;
+		com.github.intellectualsites.plotsquared.plot.object.Location pLoc = new com.github.intellectualsites.plotsquared.plot.object.Location(location.getWorld().getName(), 
+				(int) location.getX(), 
+				(int) location.getY(), 
+				(int) location.getZ(), 
+				location.getYaw(), 
+				location.getPitch());
+		if(pLoc.isPlotArea()) {
+			Plot plot = pLoc.getPlot();
+			return Objects.nonNull(plot);
+		}
+		return false;
 	}
 }

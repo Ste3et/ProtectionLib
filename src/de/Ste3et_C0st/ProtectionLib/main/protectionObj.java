@@ -43,6 +43,11 @@ public abstract class protectionObj {
 	public abstract boolean isOwner(Player player, Location loc);
 	
 	/**
+	 * Check if is a protected region is present
+	 */
+	public abstract boolean isProtectedRegion(Location loc);
+	
+	/**
 	 * Get the Player of the object
 	 * @return the Player of the object
 	 */
@@ -76,16 +81,6 @@ public abstract class protectionObj {
 	@Deprecated
 	public void setLocation(Location loc) {
 		this.loc = loc;
-	}
-	
-	private int regions = 0;
-	
-	public int getRegions() {
-		return regions;
-	}
-	
-	public void setRegions(int i) {
-		this.regions = i;
 	}
 	
 	public boolean canSpawn(Player player, Location location) {

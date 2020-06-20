@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -27,11 +29,15 @@ public class fFactions extends protectionObj{
 	}
 	
 	public boolean isOwner(Player player, Location loc) {
-		setRegions(0);
 		MPlayer mPlayer = MPlayer.get(player);
 		if(mPlayer == null) return true;
 		Faction faction = BoardColl.get().getFactionAt(PS.valueOf(loc));
 		if(faction == null) return true;
 		return faction.getLeader().equals(mPlayer);
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		Faction faction = BoardColl.get().getFactionAt(PS.valueOf(location));
+		return Objects.nonNull(faction);
 	}
 }

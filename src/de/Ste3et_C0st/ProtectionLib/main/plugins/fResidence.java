@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -32,5 +34,11 @@ public class fResidence extends protectionObj {
 		if(residence.getOwner().equalsIgnoreCase(player.getName())) return true;
 		if(residence.getOwner().equalsIgnoreCase(player.getUniqueId().toString())) return true;
 		return false;
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		ClaimedResidence residence = ResidenceApi.getResidenceManager().getByLoc(location);
+		return Objects.nonNull(residence);
 	}
 }

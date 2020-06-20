@@ -34,6 +34,9 @@ public class fFabledSkyblock extends protectionObj{
 		return true;
 	}
 
-	
+	public boolean isProtectedRegion(Location location) {
+		Island island = SkyBlockAPI.getIslandManager().getIslandAtLocation(location);
+		return Objects.nonNull(island);
+	}
 	
 }

@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -40,5 +42,11 @@ public class fRedProtect extends protectionObj {
 		Region reg = RedProtect.get().getAPI().getRegion(loc);
 		if(reg==null) return true;
 		return reg.isLeader(player);
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		Region region = RedProtect.get().getAPI().getRegion(location);
+		return Objects.nonNull(region);
 	}
 }

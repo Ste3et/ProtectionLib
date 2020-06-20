@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -62,7 +64,6 @@ public class fKingdoms extends protectionObj {
 	}
 	
 	public boolean isOwner(Player player, Location loc){
-		setRegions(0);
 		if(getPlugin()==null){return true;}
 		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(loc.getChunk());
 		Land l = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
@@ -71,8 +72,13 @@ public class fKingdoms extends protectionObj {
 		if(owner == null){return true;}
 		Kingdom k = GameManagement.getKingdomManager().getOrLoadKingdom(owner);
 		if(k == null){return true;}
-		setRegions(1);
 		return k.getKing().equals(player.getUniqueId());
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(location.getChunk());
+		Land land = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
+		return Objects.nonNull(land);
 	}
 	
 }

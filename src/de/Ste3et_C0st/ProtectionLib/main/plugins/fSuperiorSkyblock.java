@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -24,5 +26,10 @@ public class fSuperiorSkyblock extends protectionObj{
 		Island i = SuperiorSkyblockAPI.getSuperiorSkyblock().getGrid().getIslandAt(loc);
 		if(i == null) return true;
 		return i.getOwner().equals(SuperiorSkyblockAPI.getPlayer(player));
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		Island island = SuperiorSkyblockAPI.getSuperiorSkyblock().getGrid().getIslandAt(location);
+		return Objects.nonNull(island);
 	}
 }

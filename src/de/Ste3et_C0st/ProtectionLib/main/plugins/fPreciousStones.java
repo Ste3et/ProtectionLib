@@ -26,6 +26,10 @@ public class fPreciousStones extends protectionObj  {
 		}catch(Exception ex) {
 			return true;
 		}
-		
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		return PreciousStones.API().isPStone(location);
 	}
 }

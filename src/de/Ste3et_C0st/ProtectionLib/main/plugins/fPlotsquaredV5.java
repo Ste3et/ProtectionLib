@@ -83,5 +83,13 @@ public class fPlotsquaredV5 extends protectionObj{
 		
 		return true;
 	}
-
+	
+	public boolean isProtectedRegion(org.bukkit.Location location) {
+		Location plotLocation = new Location(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+		if(plotLocation.isPlotArea()) {
+			Plot plot = plotLocation.getPlot();
+			return Objects.nonNull(plot);
+		}
+		return false;
+	}
 }

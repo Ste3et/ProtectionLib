@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -22,14 +24,18 @@ public class fIslandWorld extends protectionObj{
 	}
 
 	public boolean isOwner(Player player, Location loc) {
-		setRegions(0);
 		if(getPlugin() == null) return true;
 		if(!IslandWorldApi.getIslandWorld().equals(loc.getWorld())) return true;
 		IslandWorld world = IslandWorld.getInstance();
 		SimpleIsland simpleIsland = world.xgetIslandOnLoc(loc);
 		if(simpleIsland == null) return true;
-		setRegions(1);
 		return simpleIsland.getOwnerUUID().equals(player.getUniqueId());
 	}
 
+	public boolean isProtectedRegion(Location location) {
+		if(!IslandWorldApi.getIslandWorld().equals(location.getWorld())) return false;
+		IslandWorld world = IslandWorld.getInstance();
+		SimpleIsland simpleIsland = world.xgetIslandOnLoc(location);
+		return Objects.nonNull(simpleIsland);
+	}
 }

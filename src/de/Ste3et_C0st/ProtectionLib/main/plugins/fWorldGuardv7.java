@@ -40,7 +40,6 @@ public class fWorldGuardv7 extends protectionObj {
 		if(set==null){return null;}
 		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
 		if(region==null){return null;}
-		
 		return region;
 	}
 	
@@ -48,7 +47,6 @@ public class fWorldGuardv7 extends protectionObj {
 		if(getPlugin()==null){return true;}
 		ProtectedRegion region = getRegion(loc);
 		if(region==null){return true;}
-		this.setRegions(1);
 		return region.isOwner(WorldGuardPlugin.inst().wrapPlayer(player));
 	}
 	
@@ -82,5 +80,9 @@ public class fWorldGuardv7 extends protectionObj {
 		}else {
 			return WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().testBuild(BukkitAdapter.adapt(loc),  WorldGuardPlugin.inst().wrapPlayer(player), new StateFlag[] { flag });
 		}
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		return Objects.nonNull(getRegion(location));
 	}
 }

@@ -34,4 +34,9 @@ public class fIridiumSkyblock extends protectionObj{
 		return true;
 	}
 	
+	public boolean isProtectedRegion(Location location) {
+		Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(location);
+		return Objects.nonNull(island);
+	}
+	
 }

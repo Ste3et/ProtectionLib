@@ -4,6 +4,8 @@ import me.ryanhamshire.GriefPrevention.Claim;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
 import me.ryanhamshire.GriefPrevention.events.ClaimDeletedEvent;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -45,7 +47,11 @@ public class fGriefPrevention extends protectionObj implements Listener {
 		if(getPlugin()==null){return true;}
 		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(loc, true, null);
 		if(claim==null) return true;
-		setRegions(1);
 		return claim.getOwnerName().equalsIgnoreCase(player.getName());
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(location, true, null);
+		return Objects.nonNull(claim);
 	}
 }

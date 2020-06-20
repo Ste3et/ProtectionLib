@@ -2,6 +2,9 @@ package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import biz.princeps.landlord.api.ILandLord;
 import biz.princeps.landlord.api.IOwnedLand;
+
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -35,5 +38,11 @@ public class fLandLord extends protectionObj {
         IOwnedLand land = plugin.getWGManager().getRegion(loc);
         if (land == null) return true;
         return land.isOwner(player.getUniqueId());
+    }
+    
+    public boolean isProtectedRegion(Location location) {
+    	ILandLord plugin = (ILandLord) getPlugin();
+        IOwnedLand land = plugin.getWGManager().getRegion(location);
+        return Objects.nonNull(land);
     }
 }

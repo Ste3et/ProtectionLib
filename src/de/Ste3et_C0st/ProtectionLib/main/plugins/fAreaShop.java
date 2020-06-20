@@ -39,4 +39,8 @@ public class fAreaShop extends protectionObj implements Listener{
 		return true;
 	}
 	
+	public boolean isProtectedRegion(Location location) {
+		return false;
+	}
+	
 }

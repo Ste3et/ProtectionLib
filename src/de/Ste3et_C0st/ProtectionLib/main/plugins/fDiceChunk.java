@@ -20,4 +20,8 @@ public class fDiceChunk extends protectionObj{
 	public boolean isOwner(Player player, Location loc) {
 		return DiceChunk.getInstance().getOwner(loc).equals(player.getUniqueId());
 	}
+	
+	public boolean isProtectedRegion(Location location) {
+		return false;
+	}
 }

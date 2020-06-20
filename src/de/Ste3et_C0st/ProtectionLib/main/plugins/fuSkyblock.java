@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -31,5 +33,12 @@ public class fuSkyblock extends protectionObj {
 		if(info == null) return true;
 		if(info.isLeader(player)) return true;
 		return false;
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		uSkyBlockAPI api = (uSkyBlockAPI) getPlugin();
+		IslandInfo info = api.getIslandInfo(location);
+		return Objects.nonNull(info);
 	}
 }

@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -39,6 +41,16 @@ public class fTowny extends protectionObj {
 		} catch (NotRegisteredException e) {
 			e.printStackTrace();
 			return true;
+		}
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		try {
+			return Objects.nonNull(WorldCoord.parseWorldCoord(location).getTownBlock().getTown());
+		} catch (NotRegisteredException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

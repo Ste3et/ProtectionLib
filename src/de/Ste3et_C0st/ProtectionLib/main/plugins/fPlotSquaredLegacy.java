@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -76,7 +78,6 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 	
 	@SuppressWarnings("deprecation")
 	public boolean isOwner(Player player, Location loc){
-		this.setRegions(0);
 		if(getPlugin()==null){return true;}
 		PlotAPI pAPI = new PlotAPI();
 		if(pAPI.isPlotWorld(loc.getWorld())){
@@ -97,5 +98,24 @@ public class fPlotSquaredLegacy extends protectionObj implements Listener{
 			}
 		}
 		return true;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		PlotAPI pAPI = new PlotAPI();
+		if(pAPI.isPlotWorld(location.getWorld())){
+			com.intellectualcrafters.plot.object.Location plotLoc = new com.intellectualcrafters.plot.object.Location(location.getWorld().getName(), 
+					(int) location.getX(), 
+					(int) location.getY(), 
+					(int) location.getZ(), 
+					location.getYaw(), 
+					location.getPitch());
+			if(plotLoc.isPlotArea()){
+				Plot plot = plotLoc.getPlot();
+				return Objects.nonNull(plot);
+			}
+		}
+		return false;
 	}
 }
