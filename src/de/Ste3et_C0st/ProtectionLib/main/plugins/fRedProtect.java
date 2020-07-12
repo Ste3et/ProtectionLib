@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
-import br.net.fabiozumbi12.RedProtect.Bukkit.events.DeleteRegionEvent;
+import br.net.fabiozumbi12.RedProtect.Bukkit.API.events.DeleteRegionEvent;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 

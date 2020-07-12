@@ -298,8 +298,9 @@
 		<dependency>
 			<groupId>br.net.fabiozumbi12.RedProtect</groupId>
 			<artifactId>RedProtect-Spigot</artifactId>
-			<version>7.5.5</version>
-			<scope>provided</scope>
+			<version>7.7.2</version>
+			<systemPath>${project.basedir}/lib/RedProtect-7.7.2-b357-Universal.jar</systemPath>
+			<scope>system</scope>
 		</dependency>
 
 		<dependency>
