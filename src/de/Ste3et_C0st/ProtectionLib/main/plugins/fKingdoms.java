@@ -15,9 +15,9 @@ import org.kingdoms.events.KingdomPlayerWonEvent;
 import org.kingdoms.manager.game.GameManagement;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
-public class fKingdoms extends protectionObj {
+public class fKingdoms extends ProtectionConfig {
 	
 	public fKingdoms(Plugin plugin) {
 		super(plugin);
@@ -25,6 +25,7 @@ public class fKingdoms extends protectionObj {
 	
 	@EventHandler
 	private void onWin(KingdomPlayerWonEvent event){
+		if(isClearingOnDeleteRegion() == false) return;
 		Land l = GameManagement.getLandManager().getOrLoadLand(event.getChunk());
 		if(l!=null){
 			SimpleChunkLocation c = l.getLoc();

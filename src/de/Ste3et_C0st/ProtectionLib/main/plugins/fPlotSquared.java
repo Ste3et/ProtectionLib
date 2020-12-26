@@ -17,10 +17,10 @@ import com.github.intellectualsites.plotsquared.plot.object.Plot;
 import com.github.intellectualsites.plotsquared.plot.object.PlotPlayer;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fPlotSquared extends protectionObj implements Listener{
+public class fPlotSquared extends ProtectionConfig implements Listener{
 
 	public fPlotSquared(Plugin pl){
 		super(pl);
@@ -29,6 +29,7 @@ public class fPlotSquared extends protectionObj implements Listener{
 	
 	@EventHandler
 	private void onClear(PlotClearEvent e){
+		if(isClearingOnDeleteRegion() == false) return;
 		World world = Bukkit.getWorld(e.getWorld());
 		com.github.intellectualsites.plotsquared.plot.object.Location sqloc1 = e.getPlot().getAllCorners().get(0);
 		com.github.intellectualsites.plotsquared.plot.object.Location  sqloc2 = e.getPlot().getAllCorners().get(2);
@@ -40,6 +41,7 @@ public class fPlotSquared extends protectionObj implements Listener{
 	
 	@EventHandler
 	private void onClear(PlotDeleteEvent e){
+		if(isClearingOnDeleteRegion() == false) return;
 		World world = Bukkit.getWorld(e.getWorld());
 		com.github.intellectualsites.plotsquared.plot.object.Location sqloc1 = e.getPlot().getAllCorners().get(0);
 		com.github.intellectualsites.plotsquared.plot.object.Location  sqloc2 = e.getPlot().getAllCorners().get(2);

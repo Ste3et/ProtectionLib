@@ -9,13 +9,14 @@ public abstract class protectionObj {
 	private Player p;
 	private Location loc;
 	private Plugin pl;
-	
+	private boolean isEnabled = true;
 	/**
 	 * Hooks into a new ProtectionPlugin
 	 * @param plugin
 	 */
 	public protectionObj(Plugin plugin){
 		this.pl = plugin;
+		ProtectionLib.getInstance().getConfig().addDefault("config." + getPlugin().getName() + ".enabled", true);
 	}
 	
 	/**
@@ -92,4 +93,12 @@ public abstract class protectionObj {
 	}
 	
 	public boolean queryFlag(String string, Player player, Location location) {return true;}
+	
+	public boolean isEnabled() {
+		return this.isEnabled;
+	}
+	
+	public void update() {
+		isEnabled = ProtectionLib.getInstance().getConfig().getBoolean("config." + getPlugin().getName() + ".enabled", true);
+	}
 }

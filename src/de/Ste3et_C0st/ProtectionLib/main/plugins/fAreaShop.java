@@ -8,12 +8,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import me.wiefferink.areashop.events.ask.UnrentingRegionEvent;
 import me.wiefferink.areashop.regions.RentRegion;
 
-public class fAreaShop extends protectionObj implements Listener{
+public class fAreaShop extends ProtectionConfig implements Listener{
 
 	public fAreaShop(Plugin pl) {
 		super(pl);
@@ -22,6 +22,7 @@ public class fAreaShop extends protectionObj implements Listener{
 	
 	@EventHandler
 	public void onClear(UnrentingRegionEvent e){
+		if(isClearingOnDeleteRegion() == false) return;
 		RentRegion r = e.getRegion();
 		if(r == null) return;
 		//test
@@ -42,5 +43,4 @@ public class fAreaShop extends protectionObj implements Listener{
 	public boolean isProtectedRegion(Location location) {
 		return false;
 	}
-	
 }

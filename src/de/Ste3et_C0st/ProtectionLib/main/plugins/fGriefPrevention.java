@@ -15,10 +15,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
-public class fGriefPrevention extends protectionObj implements Listener {
+public class fGriefPrevention extends ProtectionConfig implements Listener {
 
 	public fGriefPrevention(Plugin pl){
 		super(pl);
@@ -27,6 +27,8 @@ public class fGriefPrevention extends protectionObj implements Listener {
 	
 	@EventHandler
 	private void onClear(ClaimDeletedEvent e){
+		System.out.println(isClearingOnDeleteRegion());
+		if(isClearingOnDeleteRegion() == false) return;
 		Location loc1 = e.getClaim().getGreaterBoundaryCorner();
 		Location loc2 = e.getClaim().getLesserBoundaryCorner();
 		RegionClearEvent event = new RegionClearEvent(loc1, loc2);

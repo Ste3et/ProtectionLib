@@ -20,9 +20,13 @@ public class command implements CommandExecutor {
 			if(args.length == 1) {
 				if(args[0].equalsIgnoreCase("plugins")) {
 					if(!ProtectionLib.getInstance().getWatchers().isEmpty()) {
-						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> sender.sendMessage(
-								"§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion() + " §f-> §a" + plugin.getClass().getSimpleName() + ".class"
-							));
+						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> {
+							if(plugin.isEnabled()) {
+								sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion() + " §f-> §a" + plugin.getClass().getSimpleName() + ".class");
+							}else {
+								sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §c" + plugin.getPlugin().getDescription().getVersion() + " §f-> " + "§cdisabled!");
+							}
+						});
 					}else {
 						sender.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 					}
@@ -30,10 +34,17 @@ public class command implements CommandExecutor {
 				}else if(args[0].equalsIgnoreCase("reload")) {
 					sender.sendMessage("Remove all registered Protection Plugins");
 					ProtectionLib.getInstance().clearWatchers();
+					ProtectionLib.getInstance().reloadConfig();
 					sender.sendMessage("Hook into all avaiable Protection Plugins");
 					ProtectionLib.getInstance().addWatchers();
 					if(!ProtectionLib.getInstance().getWatchers().isEmpty()) {
-						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion()));
+						ProtectionLib.getInstance().getWatchers().stream().forEach(plugin -> {
+							if(plugin.isEnabled()) {
+								sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §b" + plugin.getPlugin().getDescription().getVersion());
+							}else {
+								sender.sendMessage("§f- " + plugin.getPlugin().getName() + " §cdisabled!");
+							}
+						});
 					}else {
 						sender.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 					}

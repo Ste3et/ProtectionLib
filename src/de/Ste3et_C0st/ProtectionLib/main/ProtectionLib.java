@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +42,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv6;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class ProtectionLib extends JavaPlugin{
 	
@@ -61,6 +64,9 @@ public class ProtectionLib extends JavaPlugin{
 		}
 		getCommand("protectionlib").setExecutor(new command());
 		addWatchers();
+		
+		this.getConfig().options().copyDefaults(true);
+		this.saveConfig();
 	}
 	
 	public void onDisable(){
@@ -89,6 +95,8 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("SuperiorSkyblock2");
 		addProtectionPlugin("IridiumSkyblock");
 		addProtectionPlugin("FabledSkyblock");
+		
+		protectionClass.stream().forEach(entry -> entry.update());
 	}
 	
 	private void addProtectionPlugin(String a){
@@ -131,7 +139,7 @@ public class ProtectionLib extends JavaPlugin{
 				case "Lands" : protectionClass.add(new fLands(pl));break;
 				case "SuperiorSkyblock2" : protectionClass.add(new fSuperiorSkyblock(pl));break;
 				case "IridiumSkyblock" : protectionClass.add(new fIridiumSkyblock(pl));break;
-				case "FabledSkyblock": protectionClass.add(new fFabledSkyblock(pl));
+				//case "FabledSkyblock": protectionClass.add(new fFabledSkyblock(pl));
 				case "Factions" : 
 					if(pl.getDescription().getAuthors().stream().filter(b -> b.equalsIgnoreCase("drtshock")).findFirst().isPresent()) {
 						protectionClass.add(new fFactionsUUID(pl));break;
@@ -178,6 +186,7 @@ public class ProtectionLib extends JavaPlugin{
 	}
 	
 	public void clearWatchers() {
+		HandlerList.unregisterAll(getInstance());
 		this.protectionClass.clear();
 		this.protectList.clear();
 	}
@@ -207,10 +216,16 @@ public class ProtectionLib extends JavaPlugin{
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
-				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6canBuild§f->§a"+protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": " + protection.canBuild(player, loc)));
+				protectionClass.stream().forEach(protection -> {
+					if(protection.isEnabled()) {
+						player.sendMessage("§f[§6canBuild§f->§a"+ protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": " + protection.canBuild(player, loc));
+					}else {
+						player.sendMessage("§f[§6canBuild§f->§c"+ protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": §cdisabled");
+					}
+				});
 			}
 		}
-		return !this.protectionClass.stream().filter(protection -> protection.canBuild(player, loc) == false).findFirst().isPresent();
+		return !this.protectionClass.stream().filter(protectionObj::isEnabled).filter(protection -> protection.canBuild(player, loc) == false).findFirst().isPresent();
 	}
 	
 	public boolean isOwner(Location loc, Player player){
@@ -219,14 +234,20 @@ public class ProtectionLib extends JavaPlugin{
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
-				protectionClass.stream().forEach(protection -> player.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc)));
+				protectionClass.stream().forEach(protection -> {
+					if(protection.isEnabled()) {
+						player.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc));
+					}else {
+						player.sendMessage("§f[§6isOwner§f->§c"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": §cdisabled");
+					}
+				});
 			}
 		}
-		return !this.protectionClass.stream().filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
+		return !this.protectionClass.stream().filter(protectionObj::isEnabled).filter(protection -> protection.isOwner(player, loc) == false).findFirst().isPresent();
 	}
 	
 	public boolean isProtectedRegion(Location location) {
-		return this.protectionClass.stream().filter(protection -> protection.isProtectedRegion(location)).findFirst().isPresent();
+		return this.protectionClass.stream().filter(protectionObj::isEnabled).filter(protection -> protection.isProtectedRegion(location)).findFirst().isPresent();
 	}
 	
 	public boolean registerFlag(Plugin plugin, String str, boolean defaultValue) {

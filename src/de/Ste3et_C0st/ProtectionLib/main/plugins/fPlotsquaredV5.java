@@ -16,9 +16,9 @@ import com.plotsquared.core.plot.Plot;
 import com.plotsquared.core.api.PlotAPI;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
-public class fPlotsquaredV5 extends protectionObj{
+public class fPlotsquaredV5 extends ProtectionConfig{
 
 	private PlotAPI plotAPI;
 	
@@ -30,6 +30,7 @@ public class fPlotsquaredV5 extends protectionObj{
 	
 	@Subscribe
 	public void onPlotClear(PlotClearEvent clearEvent) {
+		if(isClearingOnDeleteRegion() == false) return;
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -44,6 +45,7 @@ public class fPlotsquaredV5 extends protectionObj{
 	
 	@Subscribe
 	public void onPlotDelete(PlotDeleteEvent clearEvent) {
+		if(isClearingOnDeleteRegion() == false) return;
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);

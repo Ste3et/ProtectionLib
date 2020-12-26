@@ -12,9 +12,9 @@ import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.API.events.DeleteRegionEvent;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
-import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
-public class fRedProtect extends protectionObj {
+public class fRedProtect extends ProtectionConfig {
 
 	public fRedProtect(Plugin pl){
 		super(pl);
@@ -24,6 +24,7 @@ public class fRedProtect extends protectionObj {
 	
 	@EventHandler
 	private void onClear(DeleteRegionEvent e){
+		if(isClearingOnDeleteRegion() == false) return;
 		Location loc1 = e.getRegion().getMaxLocation();
 		Location loc2 = e.getRegion().getMinLocation();
 		RegionClearEvent event = new RegionClearEvent(loc1, loc2);
