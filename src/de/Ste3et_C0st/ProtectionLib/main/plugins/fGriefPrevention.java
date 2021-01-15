@@ -27,8 +27,7 @@ public class fGriefPrevention extends ProtectionConfig implements Listener {
 	
 	@EventHandler
 	private void onClear(ClaimDeletedEvent e){
-		System.out.println(isClearingOnDeleteRegion());
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		Location loc1 = e.getClaim().getGreaterBoundaryCorner();
 		Location loc2 = e.getClaim().getLesserBoundaryCorner();
 		RegionClearEvent event = new RegionClearEvent(loc1, loc2);
@@ -55,5 +54,10 @@ public class fGriefPrevention extends ProtectionConfig implements Listener {
 	public boolean isProtectedRegion(Location location) {
 		Claim claim = GriefPrevention.instance.dataStore.getClaimAt(location, true, null);
 		return Objects.nonNull(claim);
+	}
+
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 }

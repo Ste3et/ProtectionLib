@@ -29,7 +29,7 @@ public class fPlotSquared extends ProtectionConfig implements Listener{
 	
 	@EventHandler
 	private void onClear(PlotClearEvent e){
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		World world = Bukkit.getWorld(e.getWorld());
 		com.github.intellectualsites.plotsquared.plot.object.Location sqloc1 = e.getPlot().getAllCorners().get(0);
 		com.github.intellectualsites.plotsquared.plot.object.Location  sqloc2 = e.getPlot().getAllCorners().get(2);
@@ -41,7 +41,7 @@ public class fPlotSquared extends ProtectionConfig implements Listener{
 	
 	@EventHandler
 	private void onClear(PlotDeleteEvent e){
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		World world = Bukkit.getWorld(e.getWorld());
 		com.github.intellectualsites.plotsquared.plot.object.Location sqloc1 = e.getPlot().getAllCorners().get(0);
 		com.github.intellectualsites.plotsquared.plot.object.Location  sqloc2 = e.getPlot().getAllCorners().get(2);
@@ -114,5 +114,11 @@ public class fPlotSquared extends ProtectionConfig implements Listener{
 			return Objects.nonNull(plot);
 		}
 		return false;
+	}
+	
+	
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 }

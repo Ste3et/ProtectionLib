@@ -25,7 +25,7 @@ public class fKingdoms extends ProtectionConfig {
 	
 	@EventHandler
 	private void onWin(KingdomPlayerWonEvent event){
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		Land l = GameManagement.getLandManager().getOrLoadLand(event.getChunk());
 		if(l!=null){
 			SimpleChunkLocation c = l.getLoc();
@@ -80,6 +80,11 @@ public class fKingdoms extends ProtectionConfig {
 		SimpleChunkLocation chunckLoc = new SimpleChunkLocation(location.getChunk());
 		Land land = GameManagement.getLandManager().getOrLoadLand(chunckLoc);
 		return Objects.nonNull(land);
+	}
+	
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 	
 }

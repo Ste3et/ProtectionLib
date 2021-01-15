@@ -20,11 +20,9 @@ public class fRedProtect extends ProtectionConfig {
 		super(pl);
 	}
 	
-	
-	
 	@EventHandler
 	private void onClear(DeleteRegionEvent e){
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		Location loc1 = e.getRegion().getMaxLocation();
 		Location loc2 = e.getRegion().getMinLocation();
 		RegionClearEvent event = new RegionClearEvent(loc1, loc2);
@@ -49,5 +47,10 @@ public class fRedProtect extends ProtectionConfig {
 		if(getPlugin()==null){return false;}
 		Region region = RedProtect.get().getAPI().getRegion(location);
 		return Objects.nonNull(region);
+	}
+	
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 }

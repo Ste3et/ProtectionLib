@@ -22,7 +22,7 @@ public class fAreaShop extends ProtectionConfig implements Listener{
 	
 	@EventHandler
 	public void onClear(UnrentingRegionEvent e){
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		RentRegion r = e.getRegion();
 		if(r == null) return;
 		//test
@@ -42,5 +42,10 @@ public class fAreaShop extends ProtectionConfig implements Listener{
 	
 	public boolean isProtectedRegion(Location location) {
 		return false;
+	}
+
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 }

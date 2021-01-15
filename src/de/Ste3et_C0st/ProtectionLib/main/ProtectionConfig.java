@@ -1,26 +1,51 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
+import java.util.HashMap;
+import java.util.Objects;
+
 import org.bukkit.plugin.Plugin;
 
 public abstract class ProtectionConfig extends protectionObj {
 	
-	private boolean clearingOnDeleteRegion = false;
+	private HashMap<String, ConfigType<Boolean>> configSet = new HashMap<String, ConfigType<Boolean>>();
 	
 	public ProtectionConfig(Plugin plugin) {
 		super(plugin);
-		ProtectionLib.getInstance().getConfig().addDefault("config." + getPlugin().getName() + ".RegionClearEvent", true);
+		this.initConfig();
+		this.addDefault();
 	}
-
-	public boolean isClearingOnDeleteRegion() {
-		return isEnabled() ? clearingOnDeleteRegion : false;
+	
+	public void addDefault() {
+		this.configSet.entrySet().forEach(entry -> {
+			this.addDefault(entry.getKey(), entry.getValue().getObject());
+		});
 	}
-
-	public void setClearingOnDeleteRegion(boolean clearingOnDeleteRegion) {
-		this.clearingOnDeleteRegion = clearingOnDeleteRegion;
+	
+	public void loadConfig() {
+		this.configSet.entrySet().forEach(entry -> {
+			String path = "config." + getPlugin().getName() + "." + entry.getKey();
+			entry.getValue().setObject(ProtectionLib.getInstance().getConfig().getBoolean(path));
+		});
 	}
+	
+	public abstract void initConfig();
 	
 	public void update() {
 		super.update();
-		this.setClearingOnDeleteRegion(ProtectionLib.getInstance().getConfig().getBoolean("config." + getPlugin().getName() + ".RegionClearEvent", true));
+		this.loadConfig();
 	}
+	
+	public void addDefault(String path, Boolean object) {
+		this.configSet.put(path, new ConfigType<Boolean>(path, object));
+		ProtectionLib.getInstance().getConfig().addDefault("config." + getPlugin().getName() + "." + path, object);
+	}
+	
+	public ConfigType<Boolean> getObjectRaw(String string){
+		return configSet.getOrDefault(string, null);
+	}
+	
+	public Boolean getObject(String string){
+		return Objects.nonNull(getObjectRaw(string)) ? getObjectRaw(string).getObject() : false;
+	}
+	
 }

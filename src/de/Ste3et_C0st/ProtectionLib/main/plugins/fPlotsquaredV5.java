@@ -30,7 +30,7 @@ public class fPlotsquaredV5 extends ProtectionConfig{
 	
 	@Subscribe
 	public void onPlotClear(PlotClearEvent clearEvent) {
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -45,7 +45,7 @@ public class fPlotsquaredV5 extends ProtectionConfig{
 	
 	@Subscribe
 	public void onPlotDelete(PlotDeleteEvent clearEvent) {
-		if(isClearingOnDeleteRegion() == false) return;
+		if(getObject("RegionClearEvent") == false) return;
 		List<Location> locationList = clearEvent.getPlot().getAllCorners();
 		Location plotLocMin = locationList.get(0);
 		Location plotLocMax = locationList.get(2);
@@ -93,5 +93,10 @@ public class fPlotsquaredV5 extends ProtectionConfig{
 			return Objects.nonNull(plot);
 		}
 		return false;
+	}
+	
+	@Override
+	public void initConfig() {
+		this.addDefault("RegionClearEvent", true);
 	}
 }
