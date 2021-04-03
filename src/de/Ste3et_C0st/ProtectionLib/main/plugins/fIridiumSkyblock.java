@@ -6,8 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.managers.IslandManager;
+
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fIridiumSkyblock extends protectionObj{
@@ -18,24 +19,26 @@ public class fIridiumSkyblock extends protectionObj{
 	
 	@Override
 	public boolean canBuild(Player player, Location loc) {
-		Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(loc);
+		
+		Island island = IslandManager.getIslandViaLocation(loc);
+		String uuid = player.getUniqueId().toString();
 		if(Objects.nonNull(island)) {
-			return island.getMembers().stream().filter(str -> str.equalsIgnoreCase(player.getName())).findFirst().isPresent();
+			return island.members.stream().filter(str -> str.equalsIgnoreCase(uuid)).findFirst().isPresent();
 		}
 		return true;
 	}
 	
 	@Override
 	public boolean isOwner(Player player, Location loc) {
-		Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(loc);
+		Island island = IslandManager.getIslandViaLocation(loc);
 		if(Objects.nonNull(island)) {
-			return island.getOwner().equalsIgnoreCase(player.getName());
+			return island.owner.equalsIgnoreCase(player.getUniqueId().toString());
 		}
 		return true;
 	}
 	
 	public boolean isProtectedRegion(Location location) {
-		Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(location);
+		Island island = IslandManager.getIslandViaLocation(location);
 		return Objects.nonNull(island);
 	}
 	
