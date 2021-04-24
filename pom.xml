@@ -111,6 +111,11 @@
 		</repository>
 
 		<repository>
+		    <id>IntellectualSites</id>
+		    <url>https://mvn.intellectualsites.com/content/groups/public/</url>
+		</repository>
+
+		<repository>
 		    <id>plotsquared</id>
 		    <url>https://plotsquared.com/mvn/</url>
 		</repository>
@@ -201,10 +206,24 @@
 			<systemPath>${project.basedir}/lib/IridiumSkyblock.jar</systemPath>
 		</dependency>
 
+		<!-- PlotSquared Core API -->
 		<dependency>
-		  <groupId>com.plotsquared</groupId>
-		  <artifactId>PlotSquared</artifactId>
-		  <version>5.1</version>
+		    <groupId>com.plotsquared</groupId>
+		    <artifactId>PlotSquared-Core</artifactId>
+		    <version>5.13.11</version>
+		</dependency>
+		
+		<!-- PlotSquared Bukkit API -->
+		<dependency>
+		    <groupId>com.plotsquared</groupId>
+		    <artifactId>PlotSquared-Bukkit</artifactId>
+		    <version>5.13.11</version>
+		    <exclusions>
+		      <exclusion>
+		        <artifactId>PlotSquared-Core</artifactId>
+		         <groupId>*</groupId>
+		      </exclusion>
+		    </exclusions>
 		</dependency>
 
 		<dependency>

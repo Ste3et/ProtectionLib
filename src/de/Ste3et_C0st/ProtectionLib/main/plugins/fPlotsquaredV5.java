@@ -9,11 +9,11 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import com.plotsquared.core.api.PlotAPI;
 import com.plotsquared.core.events.PlotClearEvent;
 import com.plotsquared.core.events.PlotDeleteEvent;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.plot.Plot;
-import com.plotsquared.core.api.PlotAPI;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
@@ -60,6 +60,7 @@ public class fPlotsquaredV5 extends ProtectionConfig{
 
 	@Override
 	public boolean canBuild(Player player, org.bukkit.Location loc) {
+		
 		Location location = new Location(loc.getWorld().getName(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 		if(location.isPlotArea()) {
 			Plot plot = location.getPlot();
