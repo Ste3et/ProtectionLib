@@ -135,9 +135,9 @@
 		</repository>
 		
 		<repository>
-		    <id>nlthijs48</id>
-		    <url>http://maven.wiefferink.me</url>
-		  </repository>
+		   <id>nlthijs48</id>
+		   <url>http://maven.wiefferink.me</url>
+		</repository>
 
 <!--		<repository>
 	        <id>public</id>
