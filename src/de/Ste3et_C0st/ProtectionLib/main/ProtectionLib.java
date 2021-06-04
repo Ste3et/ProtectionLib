@@ -38,7 +38,6 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
-import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv6;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
@@ -108,8 +107,6 @@ public class ProtectionLib extends JavaPlugin{
 				case "WorldGuard": 
 					if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
 						protectionClass.add(new fWorldGuardv7(pl));
-					}else {
-						protectionClass.add(new fWorldGuardv6(pl));
 					}
 					
 					break;
