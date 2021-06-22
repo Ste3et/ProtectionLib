@@ -111,7 +111,7 @@ public class ProtectionLib extends JavaPlugin{
 					
 					break;
 				case "PlotSquared":
-					if(pl.getDescription().getVersion().startsWith("5")) {
+					if(pl.getDescription().getVersion().startsWith("5") || pl.getDescription().getVersion().startsWith("6")) {
 						protectionClass.add(new fPlotsquaredV5(pl));
 					}else if(!isVersionAvaiable(pl).equalsIgnoreCase("")) {
 						protectionClass.add(new fPlotSquared(pl));
