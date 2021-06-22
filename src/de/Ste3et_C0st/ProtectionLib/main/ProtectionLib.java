@@ -24,6 +24,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fFabledSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactionsUUID;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefdefenderAPI;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIridiumSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
@@ -94,7 +95,7 @@ public class ProtectionLib extends JavaPlugin{
 		addProtectionPlugin("SuperiorSkyblock2");
 		addProtectionPlugin("IridiumSkyblock");
 		addProtectionPlugin("FabledSkyblock");
-		
+		addProtectionPlugin("GriefDefender");
 		protectionClass.stream().forEach(entry -> entry.update());
 	}
 	
@@ -136,6 +137,7 @@ public class ProtectionLib extends JavaPlugin{
 				case "Lands" : protectionClass.add(new fLands(pl));break;
 				case "SuperiorSkyblock2" : protectionClass.add(new fSuperiorSkyblock(pl));break;
 				case "IridiumSkyblock" : protectionClass.add(new fIridiumSkyblock(pl));break;
+				case "GriefDefender" : protectionClass.add(new fGriefdefenderAPI(pl));break;
 				//case "FabledSkyblock": protectionClass.add(new fFabledSkyblock(pl));
 				case "Factions" : 
 					if(pl.getDescription().getAuthors().stream().filter(b -> b.equalsIgnoreCase("drtshock")).findFirst().isPresent()) {
