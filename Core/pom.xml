@@ -25,11 +25,6 @@
 		</repository>
 
 		<repository>
-			<id>vault-repo</id>
-			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
-		</repository>
-
-		<repository>
 			<id>redprotect-repo</id>
 			<url>https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/</url>
 		</repository>
@@ -50,12 +45,12 @@
 
 		<repository>
 			<id>factions-repo</id>
-			<url>http://ci.ender.zone/plugin/repository/everything/</url>
+			<url>https://ci.ender.zone/plugin/repository/everything/</url>
 		</repository>
 
 		<repository>
 			<id>nlthijs48</id>
-			<url>http://maven.wiefferink.me</url>
+			<url>https://maven.wiefferink.me</url>
 		</repository>
 
 		<repository>
