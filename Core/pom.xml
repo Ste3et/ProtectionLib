@@ -69,11 +69,6 @@
 		</repository>
 		
 		<repository>
-		  <id>elMakers-repo</id>
-		  <url>http://maven.elmakers.com/repository/</url>
-		</repository>
-		
-		<repository>
 		    <id>EldoNexus</id>
 		    <url>https://eldonexus.de/repository/maven-releases/</url>
 		</repository>
@@ -119,13 +114,6 @@
 		  <groupId>com.wasteofplastic</groupId>
 		  <artifactId>askyblock</artifactId>
 		  <version>LATEST</version>
-		  <scope>provided</scope>
-		</dependency>
-
-		<dependency>
-		  <groupId>net.sacredlabyrinth.Phaed</groupId>
-		  <artifactId>PreciousStones</artifactId>
-		  <version>10.7.2</version>
 		  <scope>provided</scope>
 		</dependency>
 

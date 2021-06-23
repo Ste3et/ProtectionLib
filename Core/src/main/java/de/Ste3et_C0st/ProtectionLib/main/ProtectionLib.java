@@ -28,7 +28,6 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefdefenderAPI;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
-import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
@@ -111,7 +110,6 @@ public class ProtectionLib extends JavaPlugin{
 		protectetionMap.add(fGriefPrevention.class);
 		protectetionMap.add(fKingdoms.class);
 		protectetionMap.add(fLandLord.class);
-		protectetionMap.add(fPreciousStones.class);
 		protectetionMap.add(fSuperiorSkyblock.class);
 		protectetionMap.add(fSuperiorSkyblock.class);
 		protectetionMap.add(fTowny.class);

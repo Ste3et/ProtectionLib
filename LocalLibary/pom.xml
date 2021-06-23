@@ -79,6 +79,14 @@
 			<systemPath>${project.basedir}/lib/RedProtect-7.7.2-b357-Universal.jar</systemPath>
 			<scope>system</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.sacredlabyrinth.Phaed</groupId>
+			<artifactId>PreciousStones</artifactId>
+			<version>10.7.2</version>
+			<systemPath>${project.basedir}/lib/PreciousStones-10.7.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
 
 	</dependencies>
 

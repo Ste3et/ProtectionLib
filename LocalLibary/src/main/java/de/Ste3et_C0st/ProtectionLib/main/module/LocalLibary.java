@@ -8,6 +8,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIridiumSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fMyChunk;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 
@@ -22,6 +23,7 @@ public class LocalLibary extends ProtectionModule{
 		protectetionMap.add(fMyChunk.class);
 		protectetionMap.add(fRedProtect.class);
 		protectetionMap.add(fResidence.class);
+		protectetionMap.add(fPreciousStones.class);
 		return protectetionMap;
 	}
 
