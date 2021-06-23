@@ -15,7 +15,7 @@
 
    <build>
        <directory>../target</directory>
-       <finalName>ProtectionLib-${project.version}</finalName>
+       <finalName>ProtectionLib</finalName>
        <plugins>
            <plugin>
                <groupId>org.apache.maven.plugins</groupId>
