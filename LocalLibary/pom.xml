@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ProtectionLib</artifactId>
+		<groupId>de.Ste3et_C0st.furniture</groupId>
+		<version>1.2${furniture.tag}</version>
+	</parent>
+
+	<artifactId>LocalLibary</artifactId>
+	<name>LocalLibary</name>
+	<packaging>jar</packaging>
+	<version>${project.parent.version}</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.Ste3et_C0st.furniture</groupId>
+			<artifactId>Core</artifactId>
+			<version>1.2${furniture.tag}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.massivecraft</groupId>
+			<artifactId>FactionsLegacy</artifactId>
+			<version>3.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/FactionsLegacy.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.massivecraft</groupId>
+			<artifactId>MassiveCore</artifactId>
+			<version>3.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/MassiveCore.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>me.ellbristow.mychunk</groupId>
+			<artifactId>MyChunk</artifactId>
+			<version>1.14.3-3.1.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.bekvon</groupId>
+			<artifactId>Residence</artifactId>
+			<version>4.8.4.4</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.iridium</groupId>
+			<artifactId>IridiumSkyblock</artifactId>
+			<version>2.6.7</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/IridiumSkyblock.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>pl.IslandWorld</groupId>
+			<artifactId>IslandWorld</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>br.net.fabiozumbi12.RedProtect</groupId>
+			<artifactId>RedProtect-Spigot</artifactId>
+			<version>7.7.2</version>
+			<systemPath>${project.basedir}/lib/RedProtect-7.7.2-b357-Universal.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>clean install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

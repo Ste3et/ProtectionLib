@@ -1,0 +1,19 @@
+name: ${project.parent.name}
+version: ${project.version}
+description: ${project.description}
+author: Ste3et_C0st
+softdepend: [WorldGuard, Plotz, PlotMe, IslandWorld,PlotSquared, Towny, PreciousStones, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault, Kingdoms, AreaShop, MyChunk, Lands, SuperiorSkyblock2]
+main: de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
+api-version: 1.13
+commands:
+  protectionlib:
+    description: Protectionlib Commands
+    usage:  /<command>
+    aliases: [protl, ptl]
+    permission: protectionlib.command
+    permission-message: §cYou dont have permission
+
+permissions:
+  protectionlib.admin:
+    description: "Permission to place furnitures without acces."
+    default: op

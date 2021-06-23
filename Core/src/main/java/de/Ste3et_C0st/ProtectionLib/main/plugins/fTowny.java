@@ -1,0 +1,63 @@
+package de.Ste3et_C0st.ProtectionLib.main.plugins;
+
+import java.util.Objects;
+
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
+
+import com.google.common.base.Predicate;
+import com.palmergames.bukkit.towny.object.Resident;
+import com.palmergames.bukkit.towny.object.Town;
+import com.palmergames.bukkit.towny.object.TownyPermission.ActionType;
+import com.palmergames.bukkit.towny.object.TownyUniverse;
+import com.palmergames.bukkit.towny.object.WorldCoord;
+import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
+
+import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
+
+public class fTowny extends protectionObj {
+	
+	public static final String pluginName = "Towny";
+	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
+		return file.getName().equalsIgnoreCase(pluginName);
+	};
+	
+	public fTowny(Plugin pl){
+		super(pl);
+	}
+	
+	public boolean canBuild(Player player, Location loc){
+		if(getPlugin()==null){return true;}
+		return PlayerCacheUtil.getCachePermission(player, loc, Material.STONE, ActionType.BUILD);
+	}
+	
+	public boolean isOwner(Player player, Location loc){
+		if(getPlugin()==null){return true;}
+		 try {
+			 if(TownyUniverse.getDataSource() == null) return true;
+			 if(TownyUniverse.getDataSource().getWorld(loc.getWorld().getName()) == null) return true;
+			 if (!TownyUniverse.getDataSource().getWorld(loc.getWorld().getName()).isUsingTowny()) return true;
+			 Town town = WorldCoord.parseWorldCoord(player).getTownBlock().getTown();
+			 if(town==null) return true;
+			 Resident resi = TownyUniverse.getDataSource().getResident(player.getName());
+			 if(resi==null) return false;
+			 return town.isMayor(resi);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return true;
+		}
+	}
+	
+	public boolean isProtectedRegion(Location location) {
+		if(getPlugin()==null){return false;}
+		try {
+			return Objects.nonNull(WorldCoord.parseWorldCoord(location).getTownBlock().getTown());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+}

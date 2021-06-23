@@ -7,78 +7,15 @@
 	<properties>
 		<furniture.tag></furniture.tag>
 	</properties>
-	
-	<version>1.2${furniture.tag}</version>
-	<packaging>jar</packaging>
 
+	<version>1.2${furniture.tag}</version>
 	<name>ProtectionLib</name>
 	<groupId>de.Ste3et_C0st.furniture</groupId>
 	<artifactId>ProtectionLib</artifactId>
 
-	<build>
-		<defaultGoal>clean package install</defaultGoal>
-		<sourceDirectory>src</sourceDirectory>
-		<finalName>ProtectionLib</finalName>
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
+	<packaging>pom</packaging>
 
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>
-								de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
-							</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<appendAssemblyId>false</appendAssemblyId>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.1</version>
-				<executions>
-					<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.0.0-M1</version>
-				<configuration>
-					<skip>false</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<description>The ProtectionLib hooks into the api of Protection Plugins Plotsqaured/Worldguard/... to handel it with the FurnitureLib</description>
 
 	<repositories>
 		<repository>
@@ -89,349 +26,57 @@
 				<updatePolicy>never</updatePolicy>
 			</releases>
 		</repository>
-
-		<repository>
-			<id>codemc-repo</id>
-			<url>https://repo.codemc.org/repository/maven-public/</url>
-		</repository>
-
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-
-		<repository>
-			<id>vault-repo</id>
-			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
-		</repository>
-
-		<repository>
-			<id>redprotect-repo</id>
-			<url>https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/</url>
-		</repository>
-
-		<repository>
-		    <id>IntellectualSites</id>
-		    <url>https://mvn.intellectualsites.com/content/groups/public/</url>
-		</repository>
-
-		<repository>
-		    <id>plotsquared</id>
-		    <url>https://plotsquared.com/mvn/</url>
-		</repository>
-
-		<repository>
-			<id>uSkyBlock-mvn-repo</id>
-			<url>https://raw.github.com/rlf/uSkyBlock/mvn-repo/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>factions-repo</id>
-			<url>http://ci.ender.zone/plugin/repository/everything/</url>
-		</repository>
-		
-		<repository>
-		   <id>nlthijs48</id>
-		   <url>http://maven.wiefferink.me</url>
-		</repository>
-
-<!--		<repository>
-	        <id>public</id>
-	        <url>http://repo.songoda.com/artifactory/public/</url>
-	    </repository>  -->
-
-		<repository>
-			<id>sk89q-repo</id>
-			<url>https://maven.enginehub.org/repo/</url>
-		</repository>
-<!--		<repository>
-		    <id>princepsrepo</id>
-		    <url>http://ci.princeps.biz:8081/nexus/content/repositories/princepsrepo/</url>
-		</repository>  -->
 	</repositories>
-	<dependencies>
 
+	<dependencies>
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.16.1-R0.1-SNAPSHOT</version>
+			<version>1.17-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>bukkit</artifactId>
-			<version>1.15.2-R0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.TechFortress</groupId>
-			<artifactId>GriefPrevention</artifactId>
-			<version>16.17.1</version>
-		</dependency>
-
-		<dependency>
-		        <groupId>com.github.MilkBowl</groupId>
-		        <artifactId>VaultAPI</artifactId>
-		        <version>1.7</version>
-		        <scope>provided</scope>
-	    </dependency>
-
-		<dependency>
-		    <groupId>com.github.bloodmc</groupId>
-		    <artifactId>GriefdefenderAPI</artifactId>
-		    <version>dd5aa2224c</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.plotsquared.bukkit</groupId>
-			<artifactId>plotsquared-api-legacy</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit-Legacy.jar</systemPath>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.github.intellectualsites</groupId>
-			<artifactId>plotsquared-bukkit</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/PlotSquared-Bukkit.jar</systemPath>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.iridium</groupId>
-			<artifactId>IridiumSkyblock</artifactId>
-			<version>2.6.7</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/IridiumSkyblock.jar</systemPath>
-		</dependency>
-
-		<!-- PlotSquared Core API -->
-		<dependency>
-		    <groupId>com.plotsquared</groupId>
-		    <artifactId>PlotSquared-Core</artifactId>
-		    <version>5.13.11</version>
-		</dependency>
-		
-		<!-- PlotSquared Bukkit API -->
-		<dependency>
-		    <groupId>com.plotsquared</groupId>
-		    <artifactId>PlotSquared-Bukkit</artifactId>
-		    <version>5.13.11</version>
-		    <exclusions>
-		      <exclusion>
-		        <artifactId>PlotSquared-Core</artifactId>
-		         <groupId>*</groupId>
-		      </exclusion>
-		    </exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>biz.princeps</groupId>
-			<artifactId>Towny</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Towny.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>org.generallib</groupId>
-			<artifactId>GeneralLib</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/GLib.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.wasteofplastic</groupId>
-			<artifactId>askyblock</artifactId>
-			<version>3.0.9.4</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/askyblock.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>org.sacredlabrinth</groupId>
-			<artifactId>PreciousStones</artifactId>
-			<version>10.7.2</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/PreciousStones-1.12.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>pl.IslandWorld</groupId>
-			<artifactId>IslandWorld</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/IslandWorld.jar</systemPath>
-		</dependency>
-		
-		<dependency>
-		    <groupId>me.wiefferink</groupId>
-		    <artifactId>areashop</artifactId>
-		    <version>2.6.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.bekvon</groupId>
-			<artifactId>Residence</artifactId>
-			<version>4.8.4.4</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Residence4.8.4.4.jar</systemPath>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.kingdoms</groupId>
-			<artifactId>kingdoms</artifactId>
-			<version>4.8.0.2</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/Kingdoms.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>de.Ste3et_C0st</groupId>
-			<artifactId>DiceChunk</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/DiceChunkPublic.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.massivecraft</groupId>
-			<artifactId>FactionsLegacy</artifactId>
-			<version>3.2.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/FactionsLegacy.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.massivecraft</groupId>
-			<artifactId>MassiveCore</artifactId>
-			<version>3.2.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/MassiveCore.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.rlf</groupId>
-			<artifactId>uSkyBlock-API</artifactId>
-			<version>2.6.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>br.net.fabiozumbi12.RedProtect</groupId>
-			<artifactId>RedProtect-Spigot</artifactId>
-			<version>7.7.2</version>
-			<systemPath>${project.basedir}/lib/RedProtect-7.7.2-b357-Universal.jar</systemPath>
-			<scope>system</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.massivecraft</groupId>
-			<artifactId>Factions</artifactId>
-			<version>1.6.9.5-U0.5.10</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>world.bentobox</groupId>
-			<artifactId>bentobox</artifactId>
-			<version>1.15.5</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-	        <groupId>com.github.Angeschossen</groupId>
-	        <artifactId>LandsAPI</artifactId>
-	        <version>4.6.19</version>
-	        <scope>provided</scope>
-	    </dependency>
-
-		<dependency>
-			<groupId>me.ellbristow.mychunk</groupId>
-			<artifactId>MyChunk</artifactId>
-			<version>1.14.3-3.1.2</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/MyChunk.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.OmerBenGera</groupId>
-			<artifactId>SuperiorSkyblockAPI</artifactId>
-			<version>b7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sk89q.worldedit</groupId>
-			<artifactId>worldedit-bukkit</artifactId>
-			<version>6.0.0-SNAPSHOT</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.bukkit</groupId>
-					<artifactId>bukkit</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sk89q</groupId>
-					<artifactId>commandbook</artifactId>
-				</exclusion>
-			</exclusions>
-			<optional>true</optional>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.sk89q.worldedit</groupId>
-			<artifactId>worldedit-bukkit</artifactId>
-			<version>7.3.0-SNAPSHOT</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.bukkit</groupId>
-					<artifactId>bukkit</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sk89q</groupId>
-					<artifactId>commandbook</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
-		<dependency>
-	      <groupId>com.sk89q.worldedit</groupId>
-	      <artifactId>worldedit-core</artifactId>
-	      <version>7.0.0</version>
-	      <scope>provided</scope>
-      	</dependency>
-
-		<dependency>
-		    <groupId>biz.princeps</groupId>
-		    <artifactId>LandLord-api</artifactId>
-		    <version>4.0.5</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/lib/LandLord.jar</systemPath>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.sk89q.worldguard</groupId>
-			<artifactId>worldguard-bukkit</artifactId>
-			<version>7.0.4-SNAPSHOT</version>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-		
-<!--		<dependency>
-            <groupId>com.songoda</groupId>
-            <artifactId>skyblock</artifactId>
-            <version>2.2.13</version>
-        </dependency>  -->
-
-		<!-- 1.6.9.5-U0.3.0b133 -->
 	</dependencies>
-	<description>The ProtectionLib hooks into the api of Protection Plugins Plotsqaured/Worldguard/... to handel it with the FurnitureLib</description>
+
+	<modules>
+		<module>Core</module>
+		<!-- <module>PlotSquaredLegacy</module> -->
+		<module>PlotSquaredV5</module>
+		<module>PlotSquaredV6</module>
+		<module>LocalLibary</module>
+		<module>Dist</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+	           <plugin>
+	               <groupId>org.apache.maven.plugins</groupId>
+				   <artifactId>maven-compiler-plugin</artifactId>
+	               <version>3.8.1</version>
+	               <configuration>
+                        <source>16</source>
+                        <target>16</target>
+	               </configuration>
+	           </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.2.4</version>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>shade</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
