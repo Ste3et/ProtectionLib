@@ -55,9 +55,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.fastasyncworldedit</groupId>
+			<groupId>com.intellectualsites.fawe</groupId>
 			<artifactId>FAWE-Bukkit</artifactId>
-			<version>1.17-5</version>
+			<version>p2v6-9</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
