@@ -114,11 +114,6 @@ public class ProtectionLib extends JavaPlugin{
 		protectetionMap.add(fuSkyblock.class);
 		protectetionMap.add(fWorldGuardv7.class);
 		
-		//LocalLibary
-		//PlotSquaredLegacyModule
-		//PlotSquaredV5Module
-		//PlotSquaredV6Module
-		
 		try {
 			this.registerModules("LocalLibary", protectetionMap);
 			this.registerModules("PlotSquaredV3Module", protectetionMap);

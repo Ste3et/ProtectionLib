@@ -26,6 +26,8 @@
               <artifactSet>
                 <includes>
                   <include>de.Ste3et_C0st.furniture:Core</include>
+                  <include>de.Ste3et_C0st.furniture:PlotSquaredV3</include>
+                  <include>de.Ste3et_C0st.furniture:PlotSquaredV4</include>
                   <include>de.Ste3et_C0st.furniture:PlotSquaredV5</include>
                   <include>de.Ste3et_C0st.furniture:PlotSquaredV6</include>
                   <include>de.Ste3et_C0st.furniture:LocalLibary</include>
