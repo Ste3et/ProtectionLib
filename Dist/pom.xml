@@ -7,11 +7,9 @@
     <version>1.2${furniture.tag}</version>
   </parent>
 
-  <groupId>de.Ste3et_C0st.furniture</groupId>
-  <artifactId>Dist</artifactId>
-  <version>1.2${furniture.tag}</version>
-
-  <name>Dist</name>
+   <artifactId>Dist</artifactId>
+   <version>${project.parent.version}</version>
+   <name>Dist</name>
 
    <build>
        <directory>../target</directory>
