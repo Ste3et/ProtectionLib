@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ProtectionLib</artifactId>
+    <groupId>de.Ste3et_C0st.furniture</groupId>
+    <version>1.2${furniture.tag}</version>
+  </parent>
+
+	<artifactId>PlotSquaredV3</artifactId>
+	<name>PlotSquaredV3</name>
+	<version>${project.parent.version}</version>
+	<packaging>jar</packaging>
+
+  <dependencies>
+		<dependency>
+			<groupId>de.Ste3et_C0st.furniture</groupId>
+			<artifactId>Core</artifactId>
+			<version>1.2${furniture.tag}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>ccom.intellectualcrafters</groupId>
+			<artifactId>PlotSquared</artifactId>
+			<version>3.4.6-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/PlotSquared.jar</systemPath>
+			<optional>true</optional>
+		</dependency>
+  </dependencies>
+
+	<build>
+		<defaultGoal>clean install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

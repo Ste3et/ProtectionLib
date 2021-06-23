@@ -121,7 +121,8 @@ public class ProtectionLib extends JavaPlugin{
 		
 		try {
 			this.registerModules("LocalLibary", protectetionMap);
-			//this.registerModules("PlotSquaredLegacyModule", protectetionMap);
+			this.registerModules("PlotSquaredV3Module", protectetionMap);
+			this.registerModules("PlotSquaredV4Module", protectetionMap);
 			this.registerModules("PlotSquaredV5Module", protectetionMap);
 			this.registerModules("PlotSquaredV6Module", protectetionMap);
 		} catch (Exception exception) {

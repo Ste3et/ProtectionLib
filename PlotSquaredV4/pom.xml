@@ -9,8 +9,8 @@
 		<version>1.2${furniture.tag}</version>
 	</parent>
 
-	<artifactId>PlotSquaredLegacy</artifactId>
-	<name>PlotSquaredLegacy</name>
+	<artifactId>PlotSquaredV4</artifactId>
+	<name>PlotSquaredV4</name>
 	<packaging>jar</packaging>
 
 	<repositories>
@@ -19,8 +19,8 @@
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
 		<repository>
-			<id>plotsquared</id>
-			<url>https://plotsquared.com/mvn/</url>
+		  <id>IntellectualSites</id>
+		  <url>https://mvn.intellectualsites.com/content/groups/public/</url>
 		</repository>
 	</repositories>
 
@@ -35,16 +35,16 @@
 		<dependency>
 		  <groupId>com.github.intellectualsites.plotsquared</groupId>
 		  <artifactId>PlotSquared-API</artifactId>
-		  <version>4.390</version>
+		  <version>4.514</version>
 		  <scope>provided</scope>
 		</dependency>
 		
 		<dependency>
-            <groupId>com.github.intellectualsites.plotsquared</groupId>
-            <artifactId>PlotSquared-BukkitAPI</artifactId>
-            <version>4.453</version>
-            <scope>provided</scope>
-        </dependency>
+		  <groupId>com.github.intellectualsites.plotsquared</groupId>
+		  <artifactId>PlotSquared-BukkitAPI</artifactId>
+		  <version>4.514</version>
+		  <scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
