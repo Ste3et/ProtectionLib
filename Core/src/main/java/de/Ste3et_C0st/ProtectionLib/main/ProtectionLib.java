@@ -81,7 +81,7 @@ public class ProtectionLib extends JavaPlugin{
 				if(Objects.nonNull(plugin)) {
 					if(plugin.isEnabled()) {
 						Predicate<PluginDescriptionFile> predicate = (Predicate<PluginDescriptionFile>) predicateFild.get(entry);
-						if(predicate.test(plugin.getDescription())) {
+						if(predicate.apply(plugin.getDescription())) {
 							ProtectionClass ppL = new ProtectionClass(pluginName);
 							protectionObj object = entry.getDeclaredConstructor(Plugin.class).newInstance(plugin);
 							this.protectionClass.add(object);
