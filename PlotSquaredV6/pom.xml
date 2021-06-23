@@ -27,7 +27,6 @@
 	</repositories>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>

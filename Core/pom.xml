@@ -30,11 +30,6 @@
 		</repository>
 
 		<repository>
-			<id>plotsquared</id>
-			<url>https://plotsquared.com/mvn/</url>
-		</repository>
-
-		<repository>
 			<id>uSkyBlock-mvn-repo</id>
 			<url>https://raw.github.com/rlf/uSkyBlock/mvn-repo/</url>
 			<snapshots>
