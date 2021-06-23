@@ -52,6 +52,12 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<dependency>
+		  <groupId>com.intellectualsites.fawe</groupId>
+		  <artifactId>FAWE-Bukkit</artifactId>
+		  <version>p2v6-9</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
