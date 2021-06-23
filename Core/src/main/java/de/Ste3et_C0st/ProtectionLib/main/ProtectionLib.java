@@ -79,13 +79,13 @@ public class ProtectionLib extends JavaPlugin{
 				Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
 				
 				if(Objects.nonNull(plugin)) {
-					ProtectionClass ppL = new ProtectionClass(pluginName);
-					this.protectList.add(ppL);
 					if(plugin.isEnabled()) {
 						Predicate<PluginDescriptionFile> predicate = (Predicate<PluginDescriptionFile>) predicateFild.get(entry);
 						if(predicate.test(plugin.getDescription())) {
+							ProtectionClass ppL = new ProtectionClass(pluginName);
 							protectionObj object = entry.getDeclaredConstructor(Plugin.class).newInstance(plugin);
 							this.protectionClass.add(object);
+							this.protectList.add(ppL);
 						}
 					}
 				}
