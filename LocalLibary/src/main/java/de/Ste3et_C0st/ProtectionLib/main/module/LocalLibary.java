@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionModule;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIridiumSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fIslandWorld;
@@ -24,6 +25,7 @@ public class LocalLibary extends ProtectionModule{
 		protectetionMap.add(fRedProtect.class);
 		protectetionMap.add(fResidence.class);
 		protectetionMap.add(fPreciousStones.class);
+		protectetionMap.add(fAreaShop.class);
 		return protectetionMap;
 	}
 

@@ -49,11 +49,6 @@
 		</repository>
 
 		<repository>
-			<id>nlthijs48</id>
-			<url>https://maven.wiefferink.me</url>
-		</repository>
-
-		<repository>
 			<id>sk89q-repo</id>
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
@@ -110,13 +105,6 @@
 		  <artifactId>askyblock</artifactId>
 		  <version>LATEST</version>
 		  <scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>me.wiefferink</groupId>
-			<artifactId>areashop</artifactId>
-			<version>2.6.0</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

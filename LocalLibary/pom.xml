@@ -87,6 +87,14 @@
 			<systemPath>${project.basedir}/lib/PreciousStones-10.7.2.jar</systemPath>
 			<scope>system</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>me.wiefferink</groupId>
+			<artifactId>areashop</artifactId>
+			<version>2.6.0</version>
+			<systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
 
 	</dependencies>
 

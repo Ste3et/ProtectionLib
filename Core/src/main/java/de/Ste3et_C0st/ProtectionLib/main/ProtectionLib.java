@@ -19,7 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.google.common.base.Predicate;
 
 import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
-import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fDiceChunk;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFabledSkyblock;
@@ -100,7 +99,6 @@ public class ProtectionLib extends JavaPlugin{
 	
 	private HashSet<Class<? extends protectionObj>> generatePluginMap() {
 		HashSet<Class<? extends protectionObj>> protectetionMap = new HashSet<>();
-		protectetionMap.add(fAreaShop.class);
 		protectetionMap.add(faSkyBlock.class);
 		protectetionMap.add(fBentobox.class);
 		protectetionMap.add(fDiceChunk.class);
