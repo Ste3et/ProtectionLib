@@ -17,7 +17,6 @@ import com.google.common.base.Predicate;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
-import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fKingdoms extends ProtectionConfig {
 	
