@@ -5,6 +5,7 @@ import java.util.HashSet;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionModule;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredV4;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardV6;
 
 public class PlotSquaredV4Module extends ProtectionModule{
 
@@ -12,6 +13,7 @@ public class PlotSquaredV4Module extends ProtectionModule{
 	public HashSet<Class<? extends protectionObj>> generatePluginMap() {
 		HashSet<Class<? extends protectionObj>> protectetionMap = new HashSet<>();
 		protectetionMap.add(fPlotSquaredV4.class);
+		protectetionMap.add(fWorldGuardV6.class);
 		return protectetionMap;
 	}
 	

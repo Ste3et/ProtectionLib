@@ -22,7 +22,7 @@ public class fWorldGuardv7 extends protectionObj {
 	
 	public static final String pluginName = "WorldGuard";
 	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getAPIVersion().isEmpty() == false;
+		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("7");
 	};
 	
 	public fWorldGuardv7(Plugin pl){
