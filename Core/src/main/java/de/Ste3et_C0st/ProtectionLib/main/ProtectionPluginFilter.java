@@ -20,7 +20,11 @@ public class ProtectionPluginFilter {
 	}
 	
 	public ProtectionPluginFilter containsAuthor(String author) {
-		Predicate<PluginDescriptionFile> fileFilter = file -> file.getAuthors().contains(author);
+		return containsAuthor(author, true);
+	}
+	
+	public ProtectionPluginFilter containsAuthor(String author, boolean bool) {
+		Predicate<PluginDescriptionFile> fileFilter = file -> file.getAuthors().contains(author) == bool;
 		this.fileFilter = this.fileFilter.and(fileFilter);
 		return this;
 	}

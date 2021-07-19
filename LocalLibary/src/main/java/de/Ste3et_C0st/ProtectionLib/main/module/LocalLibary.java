@@ -1,8 +1,8 @@
 package de.Ste3et_C0st.ProtectionLib.main.module;
 
-import java.util.HashSet;
-
+import java.util.HashMap;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionModule;
+import de.Ste3et_C0st.ProtectionLib.main.ProtectionPluginFilter;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fAreaShop;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fFactions;
@@ -16,16 +16,16 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
 public class LocalLibary extends ProtectionModule{
 
 	@Override
-	public HashSet<Class<? extends protectionObj>> generatePluginMap() {
-		HashSet<Class<? extends protectionObj>> protectetionMap = new HashSet<>();
-		protectetionMap.add(fFactions.class);
-		protectetionMap.add(fIridiumSkyblock.class);
-		protectetionMap.add(fIslandWorld.class);
-		protectetionMap.add(fMyChunk.class);
-		protectetionMap.add(fRedProtect.class);
-		protectetionMap.add(fResidence.class);
-		protectetionMap.add(fPreciousStones.class);
-		protectetionMap.add(fAreaShop.class);
+	public HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> generatePluginMap() {
+		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectetionMap = new HashMap<>();
+		protectetionMap.put(fFactions.class, new ProtectionPluginFilter("Factions").containsAuthor("drtshock", false));
+		protectetionMap.put(fIridiumSkyblock.class, new ProtectionPluginFilter("IridiumSkyblock"));
+		protectetionMap.put(fIslandWorld.class, new ProtectionPluginFilter("IslandWorld"));
+		protectetionMap.put(fMyChunk.class, new ProtectionPluginFilter("MyChunk"));
+		protectetionMap.put(fRedProtect.class, new ProtectionPluginFilter("RedProtect"));
+		protectetionMap.put(fResidence.class, new ProtectionPluginFilter("Residence"));
+		protectetionMap.put(fPreciousStones.class, new ProtectionPluginFilter("PreciousStone"));
+		protectetionMap.put(fAreaShop.class, new ProtectionPluginFilter("AreaShop"));
 		return protectetionMap;
 	}
 
