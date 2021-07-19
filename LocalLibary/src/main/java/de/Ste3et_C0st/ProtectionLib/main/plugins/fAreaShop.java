@@ -6,10 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
@@ -17,11 +13,6 @@ import me.wiefferink.areashop.events.ask.UnrentingRegionEvent;
 import me.wiefferink.areashop.regions.RentRegion;
 
 public class fAreaShop extends ProtectionConfig implements Listener{
-
-	public static final String pluginName = "AreaShop";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fAreaShop(Plugin pl) {
 		super(pl);

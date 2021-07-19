@@ -5,21 +5,12 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import pl.islandworld.IslandWorld;
 import pl.islandworld.api.IslandWorldApi;
 import pl.islandworld.entity.SimpleIsland;
 
 public class fIslandWorld extends protectionObj{
-
-	public static final String pluginName = "IslandWorld";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fIslandWorld(Plugin plugin) {
 		super(plugin);

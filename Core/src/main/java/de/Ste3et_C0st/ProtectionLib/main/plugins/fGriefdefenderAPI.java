@@ -9,10 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
 import com.flowpowered.math.vector.Vector3i;
-import com.google.common.base.Predicate;
 import com.griefdefender.api.GriefDefender;
 import com.griefdefender.api.claim.Claim;
 import com.griefdefender.api.claim.ClaimManager;
@@ -23,11 +20,6 @@ import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 
-	public static final String pluginName = "GriefDefender";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
-	
 	public fGriefdefenderAPI(Plugin plugin) {
 		super(plugin);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());

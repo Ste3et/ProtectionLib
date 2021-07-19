@@ -13,21 +13,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fGriefPrevention extends ProtectionConfig implements Listener {
 
-	public static final String pluginName = "GriefPrevention";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
-	
 	public fGriefPrevention(Plugin pl){
 		super(pl);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());

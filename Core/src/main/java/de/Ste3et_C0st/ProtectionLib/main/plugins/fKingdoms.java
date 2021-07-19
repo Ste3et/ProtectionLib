@@ -7,24 +7,17 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.kingdoms.constants.land.Land;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
-
-import com.google.common.base.Predicate;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
 public class fKingdoms extends ProtectionConfig {
 	
-	public static final String pluginName = "Kingdoms";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
-	
+
 	public fKingdoms(Plugin plugin) {
 		super(plugin);
 	}

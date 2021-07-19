@@ -5,19 +5,11 @@ import java.util.UUID;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.wasteofplastic.askyblock.ASkyBlockAPI;
 
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class faSkyBlock extends protectionObj {
-
-	public static final String pluginName = "ASkyBlock";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public faSkyBlock(Plugin pl){
 		super(pl);

@@ -8,25 +8,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
 import com.github.intellectualsites.plotsquared.bukkit.events.PlotClearEvent;
 import com.github.intellectualsites.plotsquared.bukkit.events.PlotDeleteEvent;
 import com.github.intellectualsites.plotsquared.plot.object.Location;
 import com.github.intellectualsites.plotsquared.plot.object.Plot;
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fPlotSquaredV4 extends ProtectionConfig implements Listener{
 
-	public static final String pluginName = "PlotSquared";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("4");
-	};
-	
 	public fPlotSquaredV4(Plugin pl){
 		super(pl);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());

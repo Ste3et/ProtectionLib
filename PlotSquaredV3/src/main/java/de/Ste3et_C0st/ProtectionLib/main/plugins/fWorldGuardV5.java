@@ -5,9 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -16,11 +13,6 @@ import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fWorldGuardV5 extends protectionObj{
 
-	public static final String pluginName = "WorldGuard";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("5");
-	};
-	
 	public fWorldGuardV5(Plugin plugin) {
 		super(plugin);
 	}

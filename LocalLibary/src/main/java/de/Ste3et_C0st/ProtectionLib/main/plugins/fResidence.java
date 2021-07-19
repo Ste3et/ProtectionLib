@@ -5,24 +5,15 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
 import com.bekvon.bukkit.residence.Residence;
 import com.bekvon.bukkit.residence.api.ResidenceApi;
 import com.bekvon.bukkit.residence.containers.Flags;
 import com.bekvon.bukkit.residence.protection.ClaimedResidence;
 import com.bekvon.bukkit.residence.protection.FlagPermissions;
 import com.bekvon.bukkit.residence.protection.ResidencePermissions;
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fResidence extends protectionObj {
-
-	public static final String pluginName = "Residence";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fResidence(Plugin pl){
 		super(pl);

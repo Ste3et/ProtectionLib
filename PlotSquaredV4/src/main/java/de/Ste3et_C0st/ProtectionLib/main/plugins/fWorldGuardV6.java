@@ -7,9 +7,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.bukkit.BukkitUtil;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
@@ -24,15 +21,11 @@ import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fWorldGuardV6 extends protectionObj{
 
-	public static final String pluginName = "WorldGuard";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("6");
-	};
-	
 	public fWorldGuardV6(Plugin plugin) {
 		super(plugin);
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean canBuild(Player player, Location loc) {
 		if(getPlugin()==null){return true;}
 		WorldGuardPlugin wgp = (WorldGuardPlugin) getPlugin();

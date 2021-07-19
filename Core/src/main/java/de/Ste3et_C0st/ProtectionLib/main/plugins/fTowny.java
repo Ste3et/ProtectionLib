@@ -6,9 +6,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyPermission.ActionType;
@@ -18,13 +15,9 @@ import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
+@SuppressWarnings("deprecation")
 public class fTowny extends protectionObj {
-	
-	public static final String pluginName = "Towny";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
-	
+
 	public fTowny(Plugin pl){
 		super(pl);
 	}

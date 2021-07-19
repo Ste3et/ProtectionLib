@@ -8,9 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.intellectualcrafters.plot.object.Location;
 import com.intellectualcrafters.plot.object.Plot;
 import com.plotsquared.bukkit.events.PlotClearEvent;
@@ -22,11 +19,6 @@ import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fPlotSquaredV3 extends ProtectionConfig implements Listener{
 
-	public static final String pluginName = "PlotSquared";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("3");
-	};
-	
 	public fPlotSquaredV3(Plugin pl){
 		super(pl);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());

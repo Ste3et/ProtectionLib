@@ -5,20 +5,11 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import me.ellbristow.mychunk.MyChunk;
 import me.ellbristow.mychunk.MyChunkChunk;
 
 public class fMyChunk extends protectionObj {
-	
-	public static final String pluginName = "MyChunk";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fMyChunk(Plugin pl){
 		super(pl);

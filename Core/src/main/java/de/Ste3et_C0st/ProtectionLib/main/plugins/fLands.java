@@ -5,10 +5,7 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.jetbrains.annotations.Nullable;
-
-import com.google.common.base.Predicate;
 
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
@@ -19,11 +16,6 @@ import me.angeschossen.lands.api.role.enums.RoleSetting;
 
 public class fLands extends protectionObj{
 
-	public static final String pluginName = "Lands";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
-	
 	private final LandsIntegration landsAddon;
 	
 	public fLands(Plugin plugin) {

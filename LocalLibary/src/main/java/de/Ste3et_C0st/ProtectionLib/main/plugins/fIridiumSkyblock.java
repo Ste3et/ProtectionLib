@@ -5,20 +5,12 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.managers.IslandManager;
 
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fIridiumSkyblock extends protectionObj{
-
-	public static final String pluginName = "IridiumSkyblock";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fIridiumSkyblock(Plugin plugin) {
 		super(plugin);

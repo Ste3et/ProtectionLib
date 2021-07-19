@@ -7,10 +7,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.API.events.DeleteRegionEvent;
@@ -18,11 +14,6 @@ import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
 public class fRedProtect extends ProtectionConfig {
-
-	public static final String pluginName = "RedProtect";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fRedProtect(Plugin pl){
 		super(pl);

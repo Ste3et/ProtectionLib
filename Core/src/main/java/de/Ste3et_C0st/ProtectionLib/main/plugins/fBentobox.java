@@ -5,10 +5,6 @@ import java.util.Optional;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.database.objects.Island;
@@ -17,10 +13,6 @@ import world.bentobox.bentobox.lists.Flags;
 //BentoBox
 public class fBentobox extends protectionObj{
 
-	public static final String pluginName = "BentoBox";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	public fBentobox(Plugin plugin) {
 		super(plugin);
 	}

@@ -4,18 +4,9 @@ import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
-
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fPreciousStones extends protectionObj  {
-	
-	public static final String pluginName = "PreciousStone";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName);
-	};
 	
 	public fPreciousStones(Plugin pl) {
 		super(pl);

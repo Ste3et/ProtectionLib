@@ -5,9 +5,6 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.massivecraft.factions.Board;
 import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.FPlayer;
@@ -20,11 +17,6 @@ import com.massivecraft.factions.perms.PermissibleAction;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
 public class fFactionsUUID extends ProtectionConfig{
-	
-	public static final String pluginName = "Factions";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getAuthors().contains("drtshock");
-	};
 	
 	public fFactionsUUID(Plugin plugin) {
 		super(plugin);

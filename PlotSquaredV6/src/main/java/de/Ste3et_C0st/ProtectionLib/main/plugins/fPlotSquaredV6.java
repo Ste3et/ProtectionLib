@@ -7,9 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.google.common.base.Predicate;
 import com.google.common.eventbus.Subscribe;
 import com.plotsquared.core.PlotAPI;
 import com.plotsquared.core.events.PlotClearEvent;
@@ -24,11 +21,6 @@ import com.sk89q.worldedit.math.BlockVector3;
 
 public class fPlotSquaredV6 extends ProtectionConfig{
 
-	public static final String pluginName = "PlotSquared";
-	public static final Predicate<PluginDescriptionFile> PREDICATE = file -> {
-		return file.getName().equalsIgnoreCase(pluginName) && file.getVersion().startsWith("6");
-	};
-	
 	public fPlotSquaredV6(Plugin pl) {
 		super(pl);
 		PlotAPI plotAPI = new PlotAPI();
