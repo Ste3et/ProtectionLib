@@ -1,14 +1,13 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Predicate;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -17,8 +16,6 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.google.common.base.Predicate;
 
 import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fBentobox;
@@ -29,6 +26,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefPrevention;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fGriefdefenderAPI;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fKingdoms;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fLands;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
@@ -88,22 +86,22 @@ public class ProtectionLib extends JavaPlugin{
 	}
 	
 	private void hookIntoPlugins() {
-		HashSet<Class<? extends protectionObj>> protectionClasses = generatePluginMap();
+		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectionClasses = generatePluginMap();
 		
-		protectionClasses.stream().forEach(entry -> {
+		protectionClasses.entrySet().stream().forEach(entry -> {
 			try {
-				Field staticPluginNameField = entry.getDeclaredField("pluginName");
-				Field predicateFild = entry.getDeclaredField("PREDICATE");
 				
-				String pluginName = (String) staticPluginNameField.get(entry);
+				ProtectionPluginFilter protectionPluginFilter = entry.getValue();
+				String pluginName = protectionPluginFilter.getPluginName();
+				
 				Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
 				
 				if(Objects.nonNull(plugin)) {
 					if(plugin.isEnabled()) {
-						Predicate<PluginDescriptionFile> predicate = (Predicate<PluginDescriptionFile>) predicateFild.get(entry);
-						if(predicate.apply(plugin.getDescription())) {
+						Predicate<PluginDescriptionFile> predicate = protectionPluginFilter.getFileFilter();
+						if(predicate.test(plugin.getDescription())) {
 							ProtectionClass ppL = new ProtectionClass(pluginName);
-							protectionObj object = entry.getDeclaredConstructor(Plugin.class).newInstance(plugin);
+							protectionObj object = entry.getKey().getDeclaredConstructor(Plugin.class).newInstance(plugin);
 							this.protectionClass.add(object);
 							this.protectList.add(ppL);
 							
@@ -119,22 +117,22 @@ public class ProtectionLib extends JavaPlugin{
 		
 	}
 	
-	private HashSet<Class<? extends protectionObj>> generatePluginMap() {
-		HashSet<Class<? extends protectionObj>> protectetionMap = new HashSet<>();
-		protectetionMap.add(faSkyBlock.class);
-		protectetionMap.add(fBentobox.class);
-		protectetionMap.add(fDiceChunk.class);
-		protectetionMap.add(fFabledSkyblock.class);
-		protectetionMap.add(fFactionsUUID.class);
-		protectetionMap.add(fGriefdefenderAPI.class);
-		protectetionMap.add(fGriefPrevention.class);
-		protectetionMap.add(fKingdoms.class);
-		protectetionMap.add(fLandLord.class);
-		protectetionMap.add(fSuperiorSkyblock.class);
-		protectetionMap.add(fSuperiorSkyblock.class);
-		protectetionMap.add(fTowny.class);
-		protectetionMap.add(fuSkyblock.class);
-		protectetionMap.add(fWorldGuardv7.class);
+	private HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> generatePluginMap() {
+		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectetionMap = new HashMap<>();
+		protectetionMap.put(faSkyBlock.class, new ProtectionPluginFilter("ASkyBlock"));
+		protectetionMap.put(fBentobox.class, new ProtectionPluginFilter("BentoBox"));
+		protectetionMap.put(fDiceChunk.class, new ProtectionPluginFilter("DiceChunk"));
+		protectetionMap.put(fFabledSkyblock.class, new ProtectionPluginFilter("FabledSkyblock"));
+		protectetionMap.put(fFactionsUUID.class, new ProtectionPluginFilter("Factions").containsAuthor("drtshock"));
+		protectetionMap.put(fGriefdefenderAPI.class, new ProtectionPluginFilter("GriefDefender"));
+		protectetionMap.put(fGriefPrevention.class, new ProtectionPluginFilter("GriefPrevention"));
+		protectetionMap.put(fKingdoms.class, new ProtectionPluginFilter("Kingdoms"));
+		protectetionMap.put(fLandLord.class, new ProtectionPluginFilter("LandLord"));
+		protectetionMap.put(fSuperiorSkyblock.class, new ProtectionPluginFilter("SuperiorSkyblock"));
+		protectetionMap.put(fLands.class, new ProtectionPluginFilter("Lands"));
+		protectetionMap.put(fTowny.class, new ProtectionPluginFilter("Towny"));
+		protectetionMap.put(fuSkyblock.class, new ProtectionPluginFilter("uSkyblock"));
+		protectetionMap.put(fWorldGuardv7.class, new ProtectionPluginFilter("WorldGuard").isVersion(7));
 		
 		try {
 			this.registerModules("LocalLibary", protectetionMap);
@@ -149,7 +147,7 @@ public class ProtectionLib extends JavaPlugin{
 		return protectetionMap;
 	}
 	
-	private void registerModules(String modul, HashSet<Class<? extends protectionObj>> hashSet) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	private void registerModules(String modul, HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> hashMap) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		String name = "de.Ste3et_C0st.ProtectionLib.main.module." + modul;
 		Class<?> clazz = Class.forName(name);
 		if(Objects.isNull(clazz)) {
@@ -158,7 +156,7 @@ public class ProtectionLib extends JavaPlugin{
 		}
 		
 		ProtectionModule protectionModule = (ProtectionModule) clazz.newInstance();
-		hashSet.addAll(protectionModule.generatePluginMap());
+		hashMap.putAll(protectionModule.generatePluginMap());
 		System.out.println("ProtectionLib-Module: " + modul + " hooked!");
 	}
 	
