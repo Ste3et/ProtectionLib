@@ -2,8 +2,10 @@ package de.Ste3et_C0st.ProtectionLib.main;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -32,6 +34,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
+import de.Ste3et_C0st.ProtectionLib.main.utils.Metrics;
 
 public class ProtectionLib extends JavaPlugin{
 	
@@ -43,7 +46,8 @@ public class ProtectionLib extends JavaPlugin{
 	private List<protectionObj> protectionClass = new ArrayList<protectionObj>();
 	private ProtectionVaultPermission permissions = null;
 	private List<UUID> playerList = new ArrayList<UUID>();
-	
+	private boolean metrics = true;
+	private final static int plugin_metricsID = 11939;
 	@Override
 	public void onEnable(){
 		instance = this;
@@ -56,6 +60,22 @@ public class ProtectionLib extends JavaPlugin{
 		
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
+		
+		this.metrics = this.getConfig().getBoolean("config.metrics", true);
+		
+		if(this.metrics) {
+			Metrics metrics = new Metrics(this, plugin_metricsID);
+			metrics.addCustomChart(new Metrics.AdvancedPie("protectionlib_hooked_plugins", () -> {
+				Map<String, Integer> map = new HashMap<>();
+				
+				this.protectionClass.stream().filter(protectionObj::isEnabled).forEach(entry -> {
+					String name = entry.getClass().getSimpleName().replace(".java", "").replace(".class", "");
+					map.put(name.substring(1), 1);
+				});
+				
+				return map;
+			}));
+		}
 	}
 	
 	public void onDisable(){
@@ -86,6 +106,8 @@ public class ProtectionLib extends JavaPlugin{
 							protectionObj object = entry.getDeclaredConstructor(Plugin.class).newInstance(plugin);
 							this.protectionClass.add(object);
 							this.protectList.add(ppL);
+							
+							//here
 						}
 					}
 				}

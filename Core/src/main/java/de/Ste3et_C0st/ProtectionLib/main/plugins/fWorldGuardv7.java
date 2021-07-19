@@ -12,7 +12,6 @@ import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
@@ -31,7 +30,10 @@ public class fWorldGuardv7 extends protectionObj {
 	
 	public boolean canBuild(Player player, Location loc) {
 		if(getPlugin()==null) return true;
-		return WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().testBuild(BukkitAdapter.adapt(loc),  WorldGuardPlugin.inst().wrapPlayer(player), new StateFlag[] { Flags.BUILD });
+		return WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery()
+			.testBuild(BukkitAdapter.adapt(loc),  WorldGuardPlugin.inst().wrapPlayer(player), new StateFlag[] { 
+				com.sk89q.worldguard.protection.flags.Flags.BUILD 
+			});
 	}
 	
 	private ProtectedRegion getRegion(Location loc) {
