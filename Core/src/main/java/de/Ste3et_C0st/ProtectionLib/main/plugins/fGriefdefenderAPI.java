@@ -2,6 +2,9 @@ package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
 import java.util.Objects;
 
+import com.griefdefender.api.Subject;
+import com.griefdefender.api.Tristate;
+import com.griefdefender.api.permission.flag.Flag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -19,10 +22,18 @@ import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 
 public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
+	private final Flag PROTECTIONLIB_BUILD_PROTECT;
 
 	public fGriefdefenderAPI(Plugin plugin) {
 		super(plugin);
 		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+
+        PROTECTIONLIB_BUILD_PROTECT = Flag.builder()
+				.id("protectionlib:build_protect")
+				.name("protectionlib-build-protect")
+				.permission("griefdefender.flag.protectionlib.build-protect")
+				.build();
+        GriefDefender.getRegistry().getRegistryModuleFor(Flag.class).get().registerCustomType(PROTECTIONLIB_BUILD_PROTECT);
 	}
 
 	@Override
@@ -52,8 +63,11 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 		ClaimManager claimManager = GriefDefender.getCore().getClaimManager(loc.getWorld().getUID());
 		if(Objects.isNull(claimManager)) return true; 
 		Claim claim = claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-		if(Objects.nonNull(claim) == true) {
-			 return claim.isTrusted(player.getUniqueId());
+		final Subject subject = GriefDefender.getCore().getSubject(player.getUniqueId().toString());
+		final Tristate useProtect = claim.getActiveFlagPermissionValue(PROTECTIONLIB_BUILD_PROTECT, subject, null, true);
+		final Tristate canBuild = claim.getActiveFlagPermissionValue(com.griefdefender.api.permission.flag.Flags.BLOCK_PLACE, subject, null, true);
+		if(!claim.isWilderness()) {
+			 return useProtect == Tristate.FALSE || canBuild == Tristate.TRUE;
 		}
 		return true;
 	}
@@ -61,9 +75,9 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 	@Override
 	public boolean isOwner(Player player, Location loc) {
 		ClaimManager claimManager = GriefDefender.getCore().getClaimManager(loc.getWorld().getUID());
-		if(Objects.isNull(claimManager)) return true; 
+		if(Objects.isNull(claimManager)) return true;
 		Claim claim = claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-		if(Objects.nonNull(claim) == true) {
+		if(!claim.isWilderness()) {
 			 return claim.getOwnerUniqueId().equals(player.getUniqueId());
 		}
 		return true;
@@ -72,8 +86,8 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 	@Override
 	public boolean isProtectedRegion(Location loc) {
 		ClaimManager claimManager = GriefDefender.getCore().getClaimManager(loc.getWorld().getUID());
-		if(Objects.isNull(claimManager)) return true;
-		return Objects.nonNull(claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
+		if(Objects.isNull(claimManager)) return false;
+		return !claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()).isWilderness();
 	}
 
 }
