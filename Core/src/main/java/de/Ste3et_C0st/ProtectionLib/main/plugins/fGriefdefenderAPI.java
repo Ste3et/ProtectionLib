@@ -87,7 +87,7 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 	@Override
 	public boolean isProtectedRegion(Location loc) {
 		ClaimManager claimManager = GriefDefender.getCore().getClaimManager(loc.getWorld().getUID());
-		if(Objects.isNull(claimManager)) return false;
+		if(Objects.isNull(claimManager)) return true;
 		return !claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()).isWilderness();
 	}
 
