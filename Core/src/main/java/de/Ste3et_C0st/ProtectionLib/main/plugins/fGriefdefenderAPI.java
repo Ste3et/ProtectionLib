@@ -16,6 +16,7 @@ import com.griefdefender.api.claim.Claim;
 import com.griefdefender.api.claim.ClaimManager;
 import com.griefdefender.api.Subject;
 import com.griefdefender.api.Tristate;
+import com.griefdefender.api.claim.TrustTypes;
 import com.griefdefender.api.permission.flag.Flag;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
@@ -31,7 +32,7 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 
         PROTECTIONLIB_BUILD_PROTECT = Flag.builder()
 				.id("protectionlib:build_protect")
-				.name("protectionlib-build-protect")
+				.name("build-protect")
 				.permission("griefdefender.flag.protectionlib.build-protect")
 				.build();
         GriefDefender.getRegistry().getRegistryModuleFor(Flag.class).get().registerCustomType(PROTECTIONLIB_BUILD_PROTECT);
@@ -66,7 +67,8 @@ public class fGriefdefenderAPI extends ProtectionConfig implements Listener {
 		Claim claim = claimManager.getClaimAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 		final Subject subject = GriefDefender.getCore().getSubject(player.getUniqueId().toString());
 		final Tristate useProtect = claim.getActiveFlagPermissionValue(PROTECTIONLIB_BUILD_PROTECT, subject, null, true);
-		final Tristate canBuild = claim.getActiveFlagPermissionValue(com.griefdefender.api.permission.flag.Flags.BLOCK_PLACE, subject, null, true);
+		final Tristate canBuild = GriefDefender.getPermissionManager().getActiveFlagPermissionValue(claim, subject,
+				com.griefdefender.api.permission.flag.Flags.BLOCK_PLACE, player, player.getLocation().getBlock(), null, TrustTypes.BUILDER, true);
 		if(!claim.isWilderness()) {
 			 return useProtect == Tristate.FALSE || canBuild == Tristate.TRUE;
 		}
