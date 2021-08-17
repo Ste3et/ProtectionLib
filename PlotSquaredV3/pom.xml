@@ -19,6 +19,11 @@
 			<id>sk89q-repo</id>
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
+		
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -50,6 +55,13 @@
 			<version>5.9</version>
 			<scope>provided</scope>
 			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.TownyAdvanced</groupId>
+		    <artifactId>Towny</artifactId>
+		    <version>0.97.0.0</version>
+		    <scope>provided</scope>
 		</dependency>
 	</dependencies>
 

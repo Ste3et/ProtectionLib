@@ -151,13 +151,13 @@ public class ProtectionLib extends JavaPlugin{
 		String name = "de.Ste3et_C0st.ProtectionLib.main.module." + modul;
 		Class<?> clazz = Class.forName(name);
 		if(Objects.isNull(clazz)) {
-			System.out.println("ProtectionLib-Module: " + modul + " not found!");
+			this.getLogger().info("ProtectionLib-Module: " + modul + " not found!");
 			return;
 		}
 		
 		ProtectionModule protectionModule = (ProtectionModule) clazz.newInstance();
 		hashMap.putAll(protectionModule.generatePluginMap());
-		System.out.println("ProtectionLib-Module: " + modul + " hooked!");
+		this.getLogger().info("ProtectionLib-Module: " + modul + " hooked!");
 	}
 	
 	public void addPrivateProtectionPlugin(String pluginName, protectionObj protectionClass) {
@@ -245,7 +245,7 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public boolean registerFlag(Plugin plugin, String str, boolean defaultValue) {
 		if(getWatchers().isEmpty()) {
-			System.out.println("ProtectionLib is not hooked to any Plugin !");
+			this.getLogger().warning("ProtectionLib is not hooked to any Plugin !");
 		    return false;
 		}else {
 			AtomicBoolean feedback = new AtomicBoolean(false);
@@ -253,7 +253,7 @@ public class ProtectionLib extends JavaPlugin{
 				boolean b = protection.registerFlag(plugin, str, defaultValue);
 				if(b) {
 					feedback.set(true);
-					System.out.print("ProtectionLib: " + protection.getPlugin().getName() + " register Customflag " + str + " by " + plugin.getName());
+					this.getLogger().info("ProtectionLib: " + protection.getPlugin().getName() + " register Customflag " + str + " by " + plugin.getName());
 				}
 			});
 			return feedback.get();
