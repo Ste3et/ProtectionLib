@@ -30,7 +30,6 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fLands;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
-import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.utils.Metrics;
 
@@ -119,7 +118,6 @@ public class ProtectionLib extends JavaPlugin{
 	
 	private HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> generatePluginMap() {
 		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectetionMap = new HashMap<>();
-		protectetionMap.put(faSkyBlock.class, new ProtectionPluginFilter("ASkyBlock"));
 		protectetionMap.put(fBentobox.class, new ProtectionPluginFilter("BentoBox"));
 		protectetionMap.put(fDiceChunk.class, new ProtectionPluginFilter("DiceChunk"));
 		protectetionMap.put(fFabledSkyblock.class, new ProtectionPluginFilter("FabledSkyblock"));
