@@ -33,8 +33,8 @@ public class ConfigType<K> {
 			return true;
 		if (object == null || getClass() != object.getClass())
 			return false;
-		ConfigType<K> key = (ConfigType<K>) object;
-
+		
+		ConfigType<?> key = (ConfigType<?>) object;
 		if (object != null ? !object.equals(key.getObject()) : key.getObject() != null) return false;
 		return true;
 	}
