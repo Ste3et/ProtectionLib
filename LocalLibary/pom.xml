@@ -95,6 +95,14 @@
 			<systemPath>${project.basedir}/lib/AreaShop.jar</systemPath>
 			<scope>system</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.wasteofplastic</groupId>
+			<artifactId>askyblock</artifactId>
+			<version>2.6.0</version>
+			<systemPath>${project.basedir}/lib/askyblock.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
 
 	</dependencies>
 

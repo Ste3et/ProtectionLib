@@ -12,6 +12,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fMyChunk;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fPreciousStones;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fRedProtect;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fResidence;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.faSkyBlock;
 
 public class LocalLibary extends ProtectionModule{
 
@@ -26,6 +27,7 @@ public class LocalLibary extends ProtectionModule{
 		protectetionMap.put(fResidence.class, new ProtectionPluginFilter("Residence"));
 		protectetionMap.put(fPreciousStones.class, new ProtectionPluginFilter("PreciousStone"));
 		protectetionMap.put(fAreaShop.class, new ProtectionPluginFilter("AreaShop"));
+		protectetionMap.put(faSkyBlock.class, new ProtectionPluginFilter("aSkyBlock"));
 		return protectetionMap;
 	}
 

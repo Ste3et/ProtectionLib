@@ -96,13 +96,6 @@
 		</dependency>
 
 		<dependency>
-		  <groupId>com.wasteofplastic</groupId>
-		  <artifactId>askyblock</artifactId>
-		  <version>LATEST</version>
-		  <scope>provided</scope>
-		</dependency>
-
-		<dependency>
 		    <groupId>com.github.cryptomorin</groupId>
 		    <artifactId>kingdoms</artifactId>
 		    <version>1.10.19.2</version>
