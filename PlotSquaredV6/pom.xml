@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>1.2${furniture.tag}</version>
+		<version>1.2</version>
 	</parent>
 
 	<artifactId>PlotSquaredV6</artifactId>
@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>
-			<version>1.2${furniture.tag}</version>
+			<version>1.2</version>
 		</dependency>
 
 		<!-- PlotSquared Core API v6 -->
