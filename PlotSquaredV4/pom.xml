@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>1.2</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>PlotSquaredV4</artifactId>
@@ -25,12 +25,12 @@
 	</repositories>
 
 	<dependencies>
-		<dependency>
+	    <dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>
-			<version>1.2</version>
+			<version>${revision}</version>
 		</dependency>
-
+		
 		<!-- PlotSquared Core API legacy -->
 		<dependency>
 		  <groupId>com.github.intellectualsites.plotsquared</groupId>

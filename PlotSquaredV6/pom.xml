@@ -6,15 +6,16 @@
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>1.2</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>PlotSquaredV6</artifactId>
 	<name>PlotSquaredV6</name>
-	<version>${project.parent.version}</version>
+	<version>${revision}</version>
 	<packaging>jar</packaging>
 
 	<repositories>
+		
 		<repository>
 		  <id>IntellectualSites</id>
 		  <url>https://mvn.intellectualsites.com/content/groups/public/</url>
@@ -32,12 +33,12 @@
 	</repositories>
 
 	<dependencies>
-		<dependency>
+	    <dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>
-			<version>1.2</version>
+			<version>${revision}</version>
 		</dependency>
-
+		
 		<!-- PlotSquared Core API v6 -->
 		<dependency>
 		    <groupId>com.plotsquared</groupId>

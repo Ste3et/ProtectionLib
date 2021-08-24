@@ -4,11 +4,10 @@
   <parent>
     <artifactId>ProtectionLib</artifactId>
     <groupId>de.Ste3et_C0st.furniture</groupId>
-    <version>1.2</version>
+    <version>${revision}</version>
   </parent>
 
    <artifactId>Dist</artifactId>
-   <version>${project.parent.version}</version>
    <name>Dist</name>
 
    <build>
@@ -46,32 +45,32 @@
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>Core</artifactId>
-           <version>${project.parent.version}</version>
+          <version>${revision}</version>
        </dependency>
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>PlotSquaredV3</artifactId>
-           <version>${project.parent.version}</version>
+           <version>${revision}</version>
        </dependency>
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>PlotSquaredV4</artifactId>
-           <version>${project.parent.version}</version>
+           <version>${revision}</version>
        </dependency>
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>PlotSquaredV5</artifactId>
-           <version>${project.parent.version}</version>
+           <version>${revision}</version>
        </dependency>
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>PlotSquaredV6</artifactId>
-           <version>${project.parent.version}</version>
+           <version>${revision}</version>
        </dependency>
        <dependency>
            <groupId>de.Ste3et_C0st.furniture</groupId>
            <artifactId>LocalLibary</artifactId>
-           <version>${project.parent.version}</version>
+           <version>${revision}</version>
        </dependency>
    </dependencies>
 </project>

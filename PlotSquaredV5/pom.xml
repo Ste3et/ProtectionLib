@@ -6,12 +6,12 @@
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>1.2</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>PlotSquaredV5</artifactId>
 	<name>PlotSquaredV5</name>
-	<version>${project.parent.version}</version>
+	<version>${revision}</version>
 	<packaging>jar</packaging>
 
 	<repositories>
@@ -27,13 +27,12 @@
 	</repositories>
 
 	<dependencies>
-
-		<dependency>
+	    <dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>
-			<version>1.2</version>
+			<version>${revision}</version>
 		</dependency>
-
+		
 		<dependency>
 	      <groupId>com.sk89q.worldedit</groupId>
 	      <artifactId>worldedit-core</artifactId>

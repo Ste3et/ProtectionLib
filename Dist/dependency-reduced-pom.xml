@@ -3,12 +3,11 @@
   <parent>
     <artifactId>ProtectionLib</artifactId>
     <groupId>de.Ste3et_C0st.furniture</groupId>
-    <version>1.2${furniture.tag}</version>
+    <version>${revision}</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>Dist</artifactId>
   <name>Dist</name>
-  <version>${project.parent.version}</version>
   <build>
     <directory>../target</directory>
     <finalName>ProtectionLib</finalName>
