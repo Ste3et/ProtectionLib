@@ -13,17 +13,18 @@
 	<name>PlotSquaredV6</name>
 	<version>${revision}</version>
 	<packaging>jar</packaging>
+	
+	<properties>
+		<maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    	<plotsquared.version>6.1.2</plotsquared.version>
+	</properties>
 
 	<repositories>
-		
-		<repository>
-		    <id>intellectualsites releases</id>
-		    <url>https://mvn.intellectualsites.com/content/repositories/releases/</url>
-		</repository>
-		<repository>
-		    <id>intellectualsites snapshots</id>
-		    <url>https://mvn.intellectualsites.com/content/repositories/snapshots/</url>
-		</repository>
+        <repository>
+            <id>IntellectualSites</id>
+            <url>https://mvn.intellectualsites.com/content/groups/public/</url>
+        </repository>
 		<repository>
 		    <id>enginehub</id>
 		    <url>https://maven.enginehub.org/repo/</url>
@@ -42,6 +43,8 @@
 		</dependency>
 		
 		<!-- PlotSquared Core API v6 -->
+		
+		<!-- PlotSquared Bukkit API -->
 		<dependency>
 		    <groupId>com.plotsquared</groupId>
 		    <artifactId>PlotSquared-Core</artifactId>
@@ -50,28 +53,7 @@
 		    <type>pom</type>
 		</dependency>
 		
-		<!-- PlotSquared Bukkit API -->
-		<dependency>
-		    <groupId>com.plotsquared</groupId>
-		    <artifactId>PlotSquared-Bukkit</artifactId>
-		    <version>6.1.2</version>
-		    <scope>provided</scope>
-		    <type>pom</type>
-		    <exclusions>
-		        <exclusion>
-		            <artifactId>PlotSquared-Core</artifactId>
-		            <groupId>*</groupId>
-		        </exclusion>
-		    </exclusions>
-		</dependency>
-		
 	</dependencies>
-
-	
-    <properties>
-       <maven.compiler.source>16</maven.compiler.source>
-       <maven.compiler.target>16</maven.compiler.target>
-    </properties>
 	
 
 	<build>
