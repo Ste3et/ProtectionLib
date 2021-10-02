@@ -17,22 +17,38 @@
 	<properties>
 		<maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-    	<plotsquared.version>6.1.2</plotsquared.version>
 	</properties>
 
 	<repositories>
-        <repository>
-            <id>IntellectualSites</id>
-            <url>https://mvn.intellectualsites.com/content/groups/public/</url>
-        </repository>
+		<repository>
+		    <id>intellectualsites releases</id>
+		    <url>https://mvn.intellectualsites.com/content/repositories/releases/</url>
+		</repository>
+		
+		<repository>
+		    <id>intellectualsites snapshots</id>
+		    <url>https://mvn.intellectualsites.com/content/repositories/snapshots/</url>
+		</repository>
+		
 		<repository>
 		    <id>enginehub</id>
 		    <url>https://maven.enginehub.org/repo/</url>
 		</repository>
+		
+		<repository>
+		    <id>mikeprimm</id>
+		    <url>https://repo.mikeprimm.com/</url>
+		</repository>
+		
 		<repository>
 		    <id>OSS Sonatype</id>
 		    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</repository>
+        
+        <repository>
+            <id>plotsquared</id>
+            <url>http://ci.athion.net/job/PlotSquared/ws/mvn/</url>
+        </repository>
 	</repositories>
 
 	<dependencies>
@@ -42,9 +58,6 @@
 			<version>${revision}</version>
 		</dependency>
 		
-		<!-- PlotSquared Core API v6 -->
-		
-		<!-- PlotSquared Bukkit API -->
 		<dependency>
 		    <groupId>com.plotsquared</groupId>
 		    <artifactId>PlotSquared-Core</artifactId>
@@ -53,9 +66,21 @@
 		    <type>pom</type>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.plotsquared</groupId>
+		    <artifactId>PlotSquared-Bukkit</artifactId>
+		    <version>6.1.2</version>
+		    <scope>provided</scope>
+		    <type>pom</type>
+		    <exclusions>
+		        <exclusion>
+		            <artifactId>PlotSquared-Core</artifactId>
+		            <groupId>*</groupId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
 	</dependencies>
 	
-
 	<build>
 		<defaultGoal>clean install</defaultGoal>
 		<plugins>
