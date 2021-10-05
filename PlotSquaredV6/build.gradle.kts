@@ -19,8 +19,8 @@ repositories {
 
 dependencies {
     implementation(project(":Core"))
-    compileOnly("com.plotsquared:PlotSquared-Core:6.1.3") // PlotSquared Core API
-    compileOnly("com.plotsquared:PlotSquared-Bukkit:6.1.3") { isTransitive = false } // PlotSquared Bukkit API
+    compileOnly("com.plotsquared:PlotSquared-Core:6.1.2") // PlotSquared Core API
+    compileOnly("com.plotsquared:PlotSquared-Bukkit:6.1.2") { isTransitive = false } // PlotSquared Bukkit API
 }
 
 description = "PlotSquaredV6"
