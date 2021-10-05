@@ -1,0 +1,8 @@
+de/Ste3et_C0st/ProtectionLib/main/plugins/fTownyAdvanced.java
+ de.Ste3et_C0st.ProtectionLib.main.plugins.fTownyAdvanced
+de/Ste3et_C0st/ProtectionLib/main/plugins/fPlotSquaredV3.java
+ de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredV3
+de/Ste3et_C0st/ProtectionLib/main/module/PlotSquaredV3Module.java
+ de.Ste3et_C0st.ProtectionLib.main.module.PlotSquaredV3Module
+de/Ste3et_C0st/ProtectionLib/main/plugins/fWorldGuardV5.java
+ de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardV5
