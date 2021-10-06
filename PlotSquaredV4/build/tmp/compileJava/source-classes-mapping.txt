@@ -1,6 +1,0 @@
-de/Ste3et_C0st/ProtectionLib/main/plugins/fWorldGuardV6.java
- de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardV6
-de/Ste3et_C0st/ProtectionLib/main/module/PlotSquaredV4Module.java
- de.Ste3et_C0st.ProtectionLib.main.module.PlotSquaredV4Module
-de/Ste3et_C0st/ProtectionLib/main/plugins/fPlotSquaredV4.java
- de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotSquaredV4

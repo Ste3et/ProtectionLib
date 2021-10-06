@@ -3,6 +3,7 @@
  */
 
 rootProject.name = "ProtectionLib"
+
 include(":Core")
 include(":PlotSquaredV6")
 include(":PlotSquaredV5")

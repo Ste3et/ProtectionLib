@@ -84,7 +84,6 @@ dependencies {
 
 group = "de.Ste3et_C0st.furniture"
 version = "1.3"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications.create<MavenPublication>("maven") {

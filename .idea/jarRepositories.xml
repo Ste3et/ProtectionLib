@@ -2,11 +2,6 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="https://repo.maven.apache.org/maven2" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="OSS Sonatype" />
       <option name="name" value="OSS Sonatype" />
       <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots/" />
@@ -17,34 +12,9 @@
       <option name="url" value="https://jitpack.io" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="redprotect-repo" />
-      <option name="name" value="redprotect-repo" />
-      <option name="url" value="https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="iridiumdevelopment" />
-      <option name="name" value="iridiumdevelopment" />
-      <option name="url" value="https://nexus.iridiumdevelopment.net/repository/maven-releases/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="savagelabs" />
-      <option name="name" value="savagelabs" />
-      <option name="url" value="https://nexus.savagelabs.net/repository/maven-releases/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="EldoNexus" />
-      <option name="name" value="EldoNexus" />
-      <option name="url" value="https://eldonexus.de/repository/maven-releases/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="IntellectualSites" />
-      <option name="name" value="IntellectualSites" />
-      <option name="url" value="https://mvn.intellectualsites.com/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="intellectualsites releases" />
-      <option name="name" value="intellectualsites releases" />
-      <option name="url" value="https://mvn.intellectualsites.com/content/repositories/releases/" />
+      <option name="id" value="maven19" />
+      <option name="name" value="maven19" />
+      <option name="url" value="https://maven.elmakers.com/repository/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="intellectualsites snapshots" />
@@ -52,14 +22,9 @@
       <option name="url" value="https://mvn.intellectualsites.com/content/repositories/snapshots/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Maven Central repository" />
-      <option name="url" value="https://repo1.maven.org/maven2" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="mikeprimm" />
-      <option name="name" value="mikeprimm" />
-      <option name="url" value="https://repo.mikeprimm.com/" />
+      <option name="id" value="maven20" />
+      <option name="name" value="maven20" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/central" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="factions-repo" />
@@ -82,6 +47,81 @@
       <option name="url" value="http://ci.athion.net/job/PlotSquared/ws/mvn/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="MavenLocal" />
+      <option name="name" value="MavenLocal" />
+      <option name="url" value="file:/$MAVEN_REPOSITORY$/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven18" />
+      <option name="name" value="maven18" />
+      <option name="url" value="https://jitpack.io/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="redprotect-repo" />
+      <option name="name" value="redprotect-repo" />
+      <option name="url" value="https://raw.github.com/FabioZumbi12/RedProtect/mvn-repo/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://repo.maven.apache.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="iridiumdevelopment" />
+      <option name="name" value="iridiumdevelopment" />
+      <option name="url" value="https://nexus.iridiumdevelopment.net/repository/maven-releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="savagelabs" />
+      <option name="name" value="savagelabs" />
+      <option name="url" value="https://nexus.savagelabs.net/repository/maven-releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="EldoNexus" />
+      <option name="name" value="EldoNexus" />
+      <option name="url" value="https://eldonexus.de/repository/maven-releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven22" />
+      <option name="name" value="maven22" />
+      <option name="url" value="https://papermc.io/repo/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="IntellectualSites" />
+      <option name="name" value="IntellectualSites" />
+      <option name="url" value="https://mvn.intellectualsites.com/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="intellectualsites releases" />
+      <option name="name" value="intellectualsites releases" />
+      <option name="url" value="https://mvn.intellectualsites.com/content/repositories/releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven19" />
+      <option name="name" value="maven19" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="mikeprimm" />
+      <option name="name" value="mikeprimm" />
+      <option name="url" value="https://repo.mikeprimm.com/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="codemc-repo" />
       <option name="name" value="codemc-repo" />
       <option name="url" value="https://repo.codemc.org/repository/maven-public/" />
@@ -92,49 +132,9 @@
       <option name="url" value="https://hub.spigotmc.org/nexus/content/repositories/snapshots/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="jboss.community" />
-      <option name="name" value="JBoss Community repository" />
-      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="uSkyBlock-mvn-repo" />
       <option name="name" value="uSkyBlock-mvn-repo" />
       <option name="url" value="https://raw.github.com/rlf/uSkyBlock/mvn-repo/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven2" />
-      <option name="name" value="maven2" />
-      <option name="url" value="https://repo.maven.apache.org/maven2/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="MavenLocal" />
-      <option name="name" value="MavenLocal" />
-      <option name="url" value="file:/$MAVEN_REPOSITORY$/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven22" />
-      <option name="name" value="maven22" />
-      <option name="url" value="https://papermc.io/repo/repository/maven-public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven19" />
-      <option name="name" value="maven19" />
-      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven20" />
-      <option name="name" value="maven20" />
-      <option name="url" value="https://oss.sonatype.org/content/repositories/central" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven18" />
-      <option name="name" value="maven18" />
-      <option name="url" value="https://jitpack.io/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven19" />
-      <option name="name" value="maven19" />
-      <option name="url" value="https://maven.elmakers.com/repository/" />
     </remote-repository>
   </component>
 </project>

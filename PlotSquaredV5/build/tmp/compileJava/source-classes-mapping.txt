@@ -1,4 +1,0 @@
-de/Ste3et_C0st/ProtectionLib/main/plugins/fPlotsquaredV5.java
- de.Ste3et_C0st.ProtectionLib.main.plugins.fPlotsquaredV5
-de/Ste3et_C0st/ProtectionLib/main/module/PlotSquaredV5Module.java
- de.Ste3et_C0st.ProtectionLib.main.module.PlotSquaredV5Module

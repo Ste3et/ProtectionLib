@@ -23,4 +23,8 @@ dependencies {
     compileOnly("com.plotsquared:PlotSquared-Bukkit:6.1.2") { isTransitive = false } // PlotSquared Bukkit API
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(16))
+}
+
 description = "PlotSquaredV6"

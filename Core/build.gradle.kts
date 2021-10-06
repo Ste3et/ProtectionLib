@@ -33,4 +33,8 @@ dependencies {
     compileOnly("biz.princeps:landlord-core:4.351")
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+}
+
 description = "Core"

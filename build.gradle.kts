@@ -15,4 +15,8 @@ dependencies {
     implementation(project(":LocalLibary"))
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+}
+
 description = "Dist"

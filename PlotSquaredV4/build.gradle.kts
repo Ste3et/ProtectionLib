@@ -30,4 +30,7 @@ dependencies {
     compileOnly("com.sk89q:worldguard:6.1.1-SNAPSHOT")
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+}
 description = "PlotSquaredV4"

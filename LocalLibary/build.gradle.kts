@@ -20,4 +20,8 @@ dependencies {
     implementation(files("/lib/askyblock.jar"))
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+}
+
 description = "LocalLibary"

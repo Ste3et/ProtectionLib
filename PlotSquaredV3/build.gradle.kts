@@ -19,4 +19,8 @@ dependencies {
     implementation(files("/lib/PlotSquared.jar"))
 }
 
+the<JavaPluginExtension>().toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+}
+
 description = "PlotSquaredV3"

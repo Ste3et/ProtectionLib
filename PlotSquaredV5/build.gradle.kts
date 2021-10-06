@@ -30,4 +30,10 @@ dependencies {
     compileOnly("com.plotsquared:PlotSquared-Bukkit:5.13.11")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
 description = "PlotSquaredV5"
