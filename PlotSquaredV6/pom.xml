@@ -24,31 +24,22 @@
 		    <id>intellectualsites releases</id>
 		    <url>https://mvn.intellectualsites.com/content/repositories/releases/</url>
 		</repository>
-		
 		<repository>
 		    <id>intellectualsites snapshots</id>
 		    <url>https://mvn.intellectualsites.com/content/repositories/snapshots/</url>
 		</repository>
-		
 		<repository>
 		    <id>enginehub</id>
 		    <url>https://maven.enginehub.org/repo/</url>
 		</repository>
-		
-		<repository>
-		    <id>mikeprimm</id>
-		    <url>https://repo.mikeprimm.com/</url>
-		</repository>
-		
 		<repository>
 		    <id>OSS Sonatype</id>
 		    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</repository>
-        
-        <repository>
-            <id>plotsquared</id>
-            <url>http://ci.athion.net/job/PlotSquared/ws/mvn/</url>
-        </repository>
+		<repository>
+			<id>Maven2</id>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -63,15 +54,16 @@
 		    <artifactId>PlotSquared-Core</artifactId>
 		    <version>6.1.2</version>
 		    <scope>provided</scope>
-		    <type>pom</type>
+		    <classifier>jar</classifier>
 		</dependency>
 		
+		<!-- PlotSquared Bukkit API -->
 		<dependency>
 		    <groupId>com.plotsquared</groupId>
 		    <artifactId>PlotSquared-Bukkit</artifactId>
 		    <version>6.1.2</version>
 		    <scope>provided</scope>
-		    <type>pom</type>
+		    <classifier>jar</classifier>
 		    <exclusions>
 		        <exclusion>
 		            <artifactId>PlotSquared-Core</artifactId>
