@@ -33,13 +33,12 @@ public class fPlotSquaredV6 extends ProtectionConfig{
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
 		Location plotLocMax = locationList[1];
-		if(Objects.nonNull(plotLocMin) && Objects.nonNull(plotLocMax)) {
-			World world = Bukkit.getWorld(clearEvent.getWorld());
-			org.bukkit.Location locationMin = new org.bukkit.Location(world, plotLocMin.getX(), plotLocMin.getY(), plotLocMin.getZ());
-			org.bukkit.Location locationMax = new org.bukkit.Location(world, plotLocMax.getX(), plotLocMax.getY(), plotLocMax.getZ());
-			RegionClearEvent event = new RegionClearEvent(locationMin, locationMax);
-			Bukkit.getPluginManager().callEvent(event);
-		}
+
+		World world = Bukkit.getWorld(clearEvent.getWorld());
+		org.bukkit.Location locationMin = new org.bukkit.Location(world, plotLocMin.getX(), plotLocMin.getY(), plotLocMin.getZ());
+		org.bukkit.Location locationMax = new org.bukkit.Location(world, plotLocMax.getX(), plotLocMax.getY(), plotLocMax.getZ());
+		RegionClearEvent event = new RegionClearEvent(locationMin, locationMax);
+		Bukkit.getPluginManager().callEvent(event);
 	}
 	
 	@Subscribe
