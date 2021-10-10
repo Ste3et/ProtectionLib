@@ -29,6 +29,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fLandLord;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fLands;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fSuperiorSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
+import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.utils.Metrics;
 
@@ -129,8 +130,8 @@ public class ProtectionLib extends JavaPlugin{
 		protectetionMap.put(fLands.class, new ProtectionPluginFilter("Lands"));
 		protectetionMap.put(fTowny.class, new ProtectionPluginFilter("Towny"));
 		protectetionMap.put(fuSkyblock.class, new ProtectionPluginFilter("uSkyblock"));
+		protectetionMap.put(fWorldGuardv7.class, new ProtectionPluginFilter("WorldGuard").isVersion(7));
 
-		
 		try {
 			this.registerModules("LocalLibary", protectetionMap);
 			this.registerModules("PlotSquaredV3Module", protectetionMap);
