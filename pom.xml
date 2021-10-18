@@ -2,16 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>${revision}</version>
+	
 	<name>ProtectionLib</name>
 	<groupId>de.Ste3et_C0st.furniture</groupId>
 	<artifactId>ProtectionLib</artifactId>
 
     <properties>
     	<furniture.tag></furniture.tag>
-	    <revision>1.3${furniture.tag}</revision>
+	    <revision>1.4${furniture.tag}</revision>
 	</properties>
-
+	
+	<version>${revision}</version>
+	
 	<packaging>pom</packaging>
 
 	<description>The ProtectionLib hooks into the api of Protection Plugins Plotsqaured/Worldguard/... to handel it with the FurnitureLib</description>
