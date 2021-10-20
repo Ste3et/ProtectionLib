@@ -6,11 +6,11 @@
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>${revision}</version>
+		<version>1.4</version>
 	</parent>
-
+	
+	<version>1.4</version>
 	<artifactId>Core</artifactId>
-	<version>${revision}</version>
 	<name>Core</name>
 	
 	<repositories>

@@ -7,12 +7,12 @@
 	<groupId>de.Ste3et_C0st.furniture</groupId>
 	<artifactId>ProtectionLib</artifactId>
 
+	<version>1.4</version>
+
     <properties>
     	<furniture.tag></furniture.tag>
-	    <revision>1.4${furniture.tag}</revision>
+    	<master.version>${project.version}</master.version>
 	</properties>
-	
-	<version>${revision}</version>
 	
 	<packaging>pom</packaging>
 
@@ -40,13 +40,11 @@
 
 	<modules>
 		<module>Core</module>
-		
 		<module>PlotSquaredV3</module>
 		<module>PlotSquaredV4</module>
 		<module>PlotSquaredV5</module>
 		<module>PlotSquaredV6</module>
 		<module>LocalLibary</module>
-		
 		<module>Dist</module>
 	</modules>
 

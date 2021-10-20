@@ -3,16 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<parent>
 		<artifactId>ProtectionLib</artifactId>
 		<groupId>de.Ste3et_C0st.furniture</groupId>
-		<version>${revision}</version>
+		<version>1.4</version>
 	</parent>
 
 	<artifactId>PlotSquaredV6</artifactId>
 	<name>PlotSquaredV6</name>
-	<version>${revision}</version>
 	<packaging>jar</packaging>
+	<version>1.4</version>
 	
 	<properties>
 		<maven.compiler.source>16</maven.compiler.source>
@@ -52,7 +53,7 @@
 	    <dependency>
 			<groupId>de.Ste3et_C0st.furniture</groupId>
 			<artifactId>Core</artifactId>
-			<version>${revision}</version>
+			<version>1.4</version>
 		</dependency>
 		
 		<dependency>
