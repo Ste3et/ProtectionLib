@@ -1,5 +1,7 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
+import java.util.Objects;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,6 +17,7 @@ public class command implements CommandExecutor {
 					+ "\n§f/protectionlib §aplugins" 
 					+ "\n§f/protectionlib §adebug"
 					+ "\n§f/protectionlib §adebug <player>"
+					+ "\n$f/protectionlib §atest (player/me) (build/owner)"
 					+ "\n§f/protectionlib §areload";
 			
 			if(args.length == 1) {
@@ -57,6 +60,24 @@ public class command implements CommandExecutor {
 						p.sendMessage(a);
 						return true;
 					}
+				}else if(args[0].equalsIgnoreCase("test")) {
+					Player onlinePlayer = (Player) sender;
+					boolean checkbuild = true, checkOwner = true;
+					if(Objects.isNull(onlinePlayer)) {
+						sender.sendMessage("§cNo player is selected");
+					}else {
+						Player senderPlayer = Player.class.cast(sender);
+						boolean tempAdd = ProtectionLib.getInstance().getDebugList().contains(senderPlayer.getUniqueId());
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().add(senderPlayer.getUniqueId());
+						
+						if(checkbuild) ProtectionLib.getInstance().canBuild(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						if(checkOwner) ProtectionLib.getInstance().isOwner(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						
+						senderPlayer.sendMessage("test");
+						
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().remove(senderPlayer.getUniqueId());
+					}
+					return true;
 				}
 			}else if(args.length == 2) {
 				if(args[0].equalsIgnoreCase("debug")) {
@@ -68,6 +89,62 @@ public class command implements CommandExecutor {
 					boolean b = ProtectionLib.getInstance().toogleDebug(p.getUniqueId());
 					String a = b ? p.getName() + " is now in the debug mode" : p.getName() + " is no more in the debug mode";
 					sender.sendMessage(a);
+					return true;
+				}else if(args[0].equalsIgnoreCase("test")) {
+					Player onlinePlayer = null;
+					boolean checkbuild = true, checkOwner = true;
+					for(String stringarg : args) {
+						if(stringarg.equalsIgnoreCase("build")) {
+							checkOwner = false;
+						}else if(stringarg.equalsIgnoreCase("owner")){
+							checkbuild = false;
+						}else if(stringarg.equalsIgnoreCase("me")) {
+							onlinePlayer = (Player) sender;
+						}else {
+							onlinePlayer = Bukkit.getPlayerExact(stringarg);
+						}
+					}
+					if(Objects.isNull(onlinePlayer)) {
+						sender.sendMessage("§cNo player is selected");
+					}else {
+						Player senderPlayer = Player.class.cast(sender);
+						boolean tempAdd = ProtectionLib.getInstance().getDebugList().contains(senderPlayer.getUniqueId());
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().add(senderPlayer.getUniqueId());
+						
+						if(checkbuild) ProtectionLib.getInstance().canBuild(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						if(checkOwner) ProtectionLib.getInstance().isOwner(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().remove(senderPlayer.getUniqueId());
+					}
+					return true;
+				}
+			}else if(args.length == 3) {
+				if(args[0].equalsIgnoreCase("test")) {
+					Player onlinePlayer = null;
+					boolean checkbuild = true, checkOwner = true;
+					for(String stringarg : args) {
+						if(stringarg.equalsIgnoreCase("build")) {
+							checkOwner = false;
+						}else if(stringarg.equalsIgnoreCase("owner")){
+							checkbuild = false;
+						}else if(stringarg.equalsIgnoreCase("me")) {
+							onlinePlayer = (Player) sender;
+						}else {
+							onlinePlayer = Bukkit.getPlayerExact(stringarg);
+						}
+					}
+					if(Objects.isNull(onlinePlayer)) {
+						sender.sendMessage("§cNo player is selected");
+					}else {
+						Player senderPlayer = Player.class.cast(sender);
+						boolean tempAdd = ProtectionLib.getInstance().getDebugList().contains(senderPlayer.getUniqueId());
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().add(senderPlayer.getUniqueId());
+						
+						if(checkbuild) ProtectionLib.getInstance().canBuild(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						if(checkOwner) ProtectionLib.getInstance().isOwner(onlinePlayer.getLocation(), onlinePlayer, senderPlayer);
+						
+						if(tempAdd == false) ProtectionLib.getInstance().getDebugList().remove(senderPlayer.getUniqueId());
+					}
 					return true;
 				}
 			}

@@ -12,6 +12,7 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
@@ -204,7 +205,11 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public boolean canBuild(Location loc, Player player){
 		if(hasPermissions(player)) return true;
-		if(playerList.contains(player.getUniqueId())) {
+		return canBuild(loc, player, player);
+	}
+	
+	public boolean canBuild(Location loc, Player player, Player sender){
+		if(playerList.contains(sender.getUniqueId())) {
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
@@ -223,16 +228,20 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public boolean isOwner(Location loc, Player player){
 		if(hasPermissions(player)) return true;
-		if(playerList.contains(player.getUniqueId())) {
+		return isOwner(loc, player, player);
+	}
+	
+	public boolean isOwner(Location loc, Player player, Player sender){
+		if(playerList.contains(sender.getUniqueId())) {
 			if(getWatchers().isEmpty()) {
 				player.sendMessage("§c§lProtectionLib is not hooked to any Plugin !");
 			}else {
 				protectionClass.stream().forEach(protection -> {
 					if(protection.isEnabled()) {
-						player.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc));
+						sender.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc));
 						getLogger().log(Level.INFO, "ProtectionLib canBuild->" + protection.getClass().getSimpleName() + ": " + protection.isOwner(player, loc) + " for " + player.getName());
 					}else {
-						player.sendMessage("§f[§6isOwner§f->§c"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": §cdisabled");
+						sender.sendMessage("§f[§6isOwner§f->§c"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": §cdisabled");
 					}
 				});
 			}
@@ -259,6 +268,10 @@ public class ProtectionLib extends JavaPlugin{
 			});
 			return feedback.get();
 		}
+	}
+	
+	public List<UUID> getDebugList(){
+		return this.playerList;
 	}
 	
 	public boolean queryFlag(String string, Player player, Location location) {
