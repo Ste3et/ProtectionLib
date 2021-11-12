@@ -38,7 +38,7 @@ public class fWorldGuardv7 extends protectionObj {
 		com.sk89q.worldedit.world.World w = BukkitAdapter.adapt(loc.getWorld());
 		ApplicableRegionSet set = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().getApplicableRegions(BukkitAdapter.adapt(loc));
 		if(set==null){return null;}
-		ProtectedRegion region = set.getRegions().stream().findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
+		ProtectedRegion region = set.getRegions().stream().sorted((k1,k2) -> Integer.compare(k1.getPriority(), k2.getPriority())).findFirst().orElse(WorldGuard.getInstance().getPlatform().getRegionContainer().get(w).getRegion("__global__"));
 		if(region==null){return null;}
 		return region;
 	}

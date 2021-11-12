@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Predicate;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -210,6 +211,7 @@ public class ProtectionLib extends JavaPlugin{
 				protectionClass.stream().forEach(protection -> {
 					if(protection.isEnabled()) {
 						player.sendMessage("§f[§6canBuild§f->§a"+ protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": " + protection.canBuild(player, loc));
+						getLogger().log(Level.INFO, "ProtectionLib canBuild->" + protection.getClass().getSimpleName() + ": " + protection.canBuild(player, loc) + " for " + player.getName());
 					}else {
 						player.sendMessage("§f[§6canBuild§f->§c"+ protection.getClass().getSimpleName()+"§f] " + protection.getPlugin().getName() + ": §cdisabled");
 					}
@@ -228,6 +230,7 @@ public class ProtectionLib extends JavaPlugin{
 				protectionClass.stream().forEach(protection -> {
 					if(protection.isEnabled()) {
 						player.sendMessage("§f[§6isOwner§f->§a"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": " + protection.isOwner(player, loc));
+						getLogger().log(Level.INFO, "ProtectionLib canBuild->" + protection.getClass().getSimpleName() + ": " + protection.isOwner(player, loc) + " for " + player.getName());
 					}else {
 						player.sendMessage("§f[§6isOwner§f->§c"+protection.getClass().getSimpleName()+"§f] " +protection.getPlugin().getName() + ": §cdisabled");
 					}
