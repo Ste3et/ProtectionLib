@@ -5,8 +5,6 @@ import java.util.Objects;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.Nullable;
-
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionLib;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import me.angeschossen.lands.api.integration.LandsIntegration;
@@ -27,7 +25,7 @@ public class fLands extends protectionObj{
 	public boolean canBuild(Player player, Location loc) {
 		if(Objects.isNull(landsAddon)) return true;
 		
-		@Nullable Area chunk = landsAddon.getAreaByLoc(loc);
+	    Area chunk = landsAddon.getAreaByLoc(loc);
 		return Objects.isNull(chunk) ? true : chunk.canSetting(player, RoleSetting.BLOCK_PLACE, false);
 	}
 	
