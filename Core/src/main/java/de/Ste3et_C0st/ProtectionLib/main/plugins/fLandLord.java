@@ -1,13 +1,13 @@
 package de.Ste3et_C0st.ProtectionLib.main.plugins;
 
-import biz.princeps.landlord.api.ILandLord;
-import biz.princeps.landlord.api.IOwnedLand;
-
 import java.util.Objects;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import biz.princeps.landlord.api.ILandLord;
+import biz.princeps.landlord.api.IOwnedLand;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 
 public class fLandLord extends protectionObj {

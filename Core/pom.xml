@@ -14,15 +14,19 @@
 	<name>Core</name>
 	
 	<repositories>
-		<repository>
-			<id>codemc-repo</id>
-			<url>https://repo.codemc.org/repository/maven-public/</url>
-		</repository>
-		
-		<repository>
-		    <id>iridiumdevelopment</id>
-		    <url>https://nexus.iridiumdevelopment.net/repository/maven-releases/</url>
-		</repository>
+	  <repository>
+	    <id>codemc-snapshots</id>
+	    <url>https://repo.codemc.org/repository/maven-snapshots</url>
+	  </repository>
+	  <repository>
+	    <id>codemc-repo</id>
+	    <url>https://repo.codemc.org/repository/maven-public/</url>
+	  </repository>
+
+<repository>
+    <id>EldoNexus</id>
+    <url>https://eldonexus.de/repository/maven-public/</url>
+</repository>
 
 		<repository>
 			<id>jitpack.io</id>
@@ -62,6 +66,12 @@
 		    <id>EldoNexus</id>
 		    <url>https://eldonexus.de/repository/maven-releases/</url>
 		</repository>
+
+		<repository>
+		  <id>gitlab-maven</id>
+		  <url>https://gitlab.com/api/v4/projects/6801239/packages/maven</url>
+		</repository>
+
 	</repositories>
 	
 	<dependencies>
@@ -87,16 +97,9 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.iridium</groupId>
-		    <artifactId>IridiumSkyblock</artifactId>
-		    <version>3.1.1</version>
-		    <scope>provided</scope>
-		</dependency>
-
-		<dependency>
 		    <groupId>com.github.TownyAdvanced</groupId>
-		    <artifactId>Towny</artifactId>
-		    <version>0.96.7.0</version>
+		    <artifactId>towny</artifactId>
+			<version>0.97.5.0</version>
 		    <scope>provided</scope>
 		</dependency>
 
@@ -138,7 +141,7 @@
 		<dependency>
 			<groupId>world.bentobox</groupId>
 			<artifactId>bentobox</artifactId>
-			<version>1.15.5</version>
+			<version>1.19.0</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -190,12 +193,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+<dependency>
+    <groupId>de.eldoria</groupId>
+    <artifactId>eldo-util</artifactId>
+    <version>1.12.10</version>
+</dependency>
 		<dependency>
-		    <groupId>biz.princeps</groupId>
-		    <artifactId>landlord-core</artifactId>
-		    <version>LATEST</version>
-		    <scope>provided</scope>
+		  <groupId>biz.princeps</groupId>
+		  <artifactId>landlord-core</artifactId>
+		  <version>4.359</version>
+		  <scope>provided</scope>
 		</dependency>
 		
 		<dependency>
