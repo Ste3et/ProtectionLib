@@ -18,7 +18,7 @@ cache:
 build:
   stage: build
   script:
-    - ./gradlew assemble
+    - ./gradle build
   artifacts:
     paths:
       - build/libs/*.jar
