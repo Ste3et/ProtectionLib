@@ -12,7 +12,6 @@ import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.FactionsPlugin;
 import com.massivecraft.factions.config.file.MainConfig;
-import com.massivecraft.factions.perms.PermissibleAction;
 import com.massivecraft.factions.perms.PermissibleActions;
 
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;

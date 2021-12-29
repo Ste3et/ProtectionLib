@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'de.eldoria:eldo-util:1.12.10'
+    compileOnly 'de.eldoria:eldo-util:1.12.10'
     compileOnly 'com.github.TechFortress:GriefPrevention:16.17.1'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'com.github.bloodmc:GriefdefenderAPI:dd5aa2224c'
