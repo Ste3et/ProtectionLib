@@ -13,6 +13,7 @@ import com.massivecraft.factions.Faction;
 import com.massivecraft.factions.FactionsPlugin;
 import com.massivecraft.factions.config.file.MainConfig;
 import com.massivecraft.factions.perms.PermissibleAction;
+import com.massivecraft.factions.perms.PermissibleActions;
 
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
@@ -35,8 +36,7 @@ public class fFactionsUUID extends ProtectionConfig{
 			if (!facConf.protection().isWildernessDenyUsage()) return true;
 			return false;
 		}
-		
-		return faction.playerHasOwnershipRights(fplayer, flocation) || faction.hasAccess(fplayer, PermissibleAction.BUILD);
+		return faction.playerHasOwnershipRights(fplayer, flocation) || faction.hasAccess(fplayer, PermissibleActions.BUILD, flocation);
 	}
 
 	public boolean isOwner(Player player, Location loc) {
