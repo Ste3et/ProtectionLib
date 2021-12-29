@@ -1,14 +1,40 @@
-image: maven:3-openjdk-16
+image: openjdk-17
 
 stages:
-- build
+  - build
+  - test
+  - deploy
 
-ProtectionLib:
+before_script:
+#  - echo `pwd` # debug
+#  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+build:
   stage: build
   script:
-     - mvn clean package -Dfurniture.tag="-dev-$CI_COMMIT_SHORT_SHA" -e
+    - ./gradlew assemble
   artifacts:
-     paths:
-     - target/*.jar
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 week
   only:
     - master
+
+test:
+  stage: test
+  script:
+    - ./gradlew check
+
+deploy:
+  stage: deploy
+  script:
+    - ./deploy
+
+after_script:
+  - echo "End CI"
