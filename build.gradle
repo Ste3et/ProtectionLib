@@ -43,11 +43,11 @@ artifacts {
 task copyJarToBin {
 	copy {
 	    from "build/libs/${project.name}-${project.version}.jar"
-	    into "target"
+	    into "target/"
 	    rename { String fileName ->
         	fileName.replace("-$project.version", "")
     	}
 	}
 }
 
-build.finalizedBy copyJarToBin
+copyJarToBin.shouldRunAfter allJar
