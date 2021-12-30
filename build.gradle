@@ -40,14 +40,13 @@ artifacts {
     archives allJar
 }
 
-task copyJarToBin {
-	copy {
-	    from "build/libs/${project.name}-${project.version}.jar"
-	    into "target/"
-	    rename { String fileName ->
-        	fileName.replace("-$project.version", "")
-    	}
-	}
+task copyJar(type: Copy) {
+   from jar // here it automatically reads jar file produced from jar task
+   into '/target'
+   println 'Copy Jar to export folder /target'
+   rename { String fileName ->
+      fileName.replace("-$project.version", "")
+   }
 }
 
-copyJarToBin.shouldRunAfter allJar
+build.dependsOn copyJar
