@@ -11,7 +11,7 @@ repositories {
         url = uri('https://repo.codemc.org/repository/maven-public/')
   }
   maven {
-  	url = uri('https://repo.phoenix616.dev/net/kyori/adventure-platform-bukkit/4.0.0-SNAPSHOT/')
+  	url = uri('https://repo.phoenix616.dev/')
   }
 }
 
