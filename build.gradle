@@ -39,3 +39,15 @@ task allJar(type: Jar, dependsOn: subprojects.assemble) {
 artifacts {
     archives allJar
 }
+
+task copyJarToBin {
+	copy {
+	    from "build/libs/${project.name}-${project.version}.jar"
+	    into "target"
+	    rename { String fileName ->
+        	fileName.replace("-$project.version", "")
+    	}
+	}
+}
+
+build.finalizedBy copyJarToBin

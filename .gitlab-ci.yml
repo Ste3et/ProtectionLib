@@ -5,6 +5,7 @@ stages:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
+  - mkdir target
 
 build:
   stage: build
@@ -18,6 +19,7 @@ build:
   artifacts:
     paths:
       - build/libs/*.jar
+      - target/*.jar
     expire_in: 1 week
   only:
     - master
