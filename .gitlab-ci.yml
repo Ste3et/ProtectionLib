@@ -2,8 +2,6 @@ image: gradle:jdk17
 
 stages:
   - build
-  - test
-  - deploy
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -23,16 +21,6 @@ build:
     expire_in: 1 week
   only:
     - master
-
-test:
-  stage: test
-  script:
-    - ./gradlew check
-
-deploy:
-  stage: deploy
-  script:
-    - ./deploy
 
 after_script:
   - echo "End CI"
