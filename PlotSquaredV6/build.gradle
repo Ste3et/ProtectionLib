@@ -28,8 +28,8 @@ repositories {
 dependencies {
     implementation project(':Core')
     implementation 'com.github.SaberLLC:Saber-Factions:2.4.0-RC'
-    compileOnly 'com.plotsquared:PlotSquared-Core:6.2.1'
-    compileOnly 'com.plotsquared:PlotSquared-Bukkit:6.2.1'
+    compileOnly("com.plotsquared:PlotSquared-Core:6.6.0")
+    compileOnly("com.plotsquared:PlotSquared-Bukkit:6.6.0") { transitive = false }
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
 }
