@@ -8,8 +8,7 @@ plugins {
 
 dependencies {
     implementation project(':Core')
-    compileOnly 'com.github.intellectualsites.plotsquared:PlotSquared-API:4.514'
-    compileOnly 'com.github.intellectualsites.plotsquared:PlotSquared-BukkitAPI:4.514'
+    implementation files('lib/PlotSquared-Bukkit-4.4.495.jar')
     compileOnly 'com.sk89q:worldedit:6.0.0-SNAPSHOT'
     compileOnly 'com.sk89q:worldguard:6.1.1-SNAPSHOT'
 }
