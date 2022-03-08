@@ -28,22 +28,12 @@ subprojects.each { subproject -> evaluationDependsOn(subproject.path)}
 
 task allJar(type: Jar, dependsOn: subprojects.assemble) {
    baseName = 'ProtectionLib'
+   version = ""
    subprojects.each { subproject -> 
       from subproject.configurations.archives.allArtifacts.files.collect {
          zipTree(it)
        }
     }
-    finalizedBy "copyJar"
- }
-
-task copyJar(type: Copy) {
-   from jar // here it automatically reads jar file produced from jar task
-   into '/build/libs'
-   println 'Copy Jar to export folder /target'
-   rename { String fileName ->
-      fileName.replace("-$project.version", "")
-   }
-   
 }
 
 artifacts {
