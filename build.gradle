@@ -38,7 +38,7 @@ task allJar(type: Jar, dependsOn: subprojects.assemble) {
 task copyJar(type: Copy) {
    from jar // here it automatically reads jar file produced from jar task
    into '/target'
-   println 'Copy Jar to export folder /build/libs'
+   println 'Copy Jar to export folder /target'
    rename { String fileName ->
       fileName.replace("-$project.version", "")
    }
@@ -48,4 +48,4 @@ artifacts {
     archives allJar
 }
 
-build.dependsOn copyJar
+build.finalizedBy copyJar
