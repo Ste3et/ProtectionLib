@@ -1,4 +1,6 @@
 before_install:
- - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
- - source ./install-jdk.sh --feature 17 --license GPL
+ - source "$HOME/.sdkman/bin/sdkman-init.sh"
+ - sdk update
+ - sdk install java 17.0.2-open
+ - sdk use java 17.0.2-open
  - jshell --version
