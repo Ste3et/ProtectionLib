@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
+import org.kingdoms.constants.land.Invasion.Result;
 import org.kingdoms.constants.land.Land;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent;
@@ -25,9 +26,10 @@ public class fKingdoms extends ProtectionConfig {
 	@EventHandler
 	private void onWin(KingdomInvadeEndEvent event){
 		if(getObject("InvasionChangeOwner") == false) return;
-		Land land = event.getInvasion().getDefender();
+		
+		Land land = event.getInvasion().getOriginLand();
 		if(land == null) return;
-		if(event.hasSucceeded()) {
+		if(event.getInvasion().getResult() == Result.SUCCESS) {
 			SimpleChunkLocation chunckLoc = land.getLocation();
 			int xMin = chunckLoc.getX() * 16;
 			int xMax = xMin + 16;

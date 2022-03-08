@@ -21,7 +21,7 @@ dependencies {
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'com.github.bloodmc:GriefdefenderAPI:dd5aa2224c'
     compileOnly 'com.github.TownyAdvanced:towny:0.97.5.0'
-    compileOnly 'com.github.cryptomorin:kingdoms:1.10.19.2'
+    compileOnly 'com.github.cryptomorin:kingdoms:1.12.3'
     compileOnly 'com.github.Ste3et:DiceChunk:160a1fa984'
     compileOnly 'com.github.rlf:uSkyBlock-API:2.6.4'
     compileOnly 'com.massivecraft:Factions:1.6.9.5-U0.6.0'
