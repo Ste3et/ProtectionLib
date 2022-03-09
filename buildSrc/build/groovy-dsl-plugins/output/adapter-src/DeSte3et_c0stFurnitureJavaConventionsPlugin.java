@@ -18,7 +18,7 @@ public class DeSte3et_c0stFurnitureJavaConventionsPlugin implements org.gradle.a
             pluginsBlockScript.init(target, target.getServices());
             pluginsBlockScript.run();
             target.getPluginManager().apply("java-library");
-            target.getPluginManager().apply("maven");
+            target.getPluginManager().apply("maven-publish");
 
 
             Class<? extends BasicScript> precompiledScriptClass = Class.forName("precompiled_DeSte3et_c0stFurnitureJavaConventions").asSubclass(BasicScript.class);
