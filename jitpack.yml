@@ -3,4 +3,3 @@ before_install:
  - sdk update
  - sdk install java 17.0.2-open
  - sdk use java 17.0.2-open
- - jshell --version

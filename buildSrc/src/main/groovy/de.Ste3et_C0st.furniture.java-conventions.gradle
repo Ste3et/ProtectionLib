@@ -105,6 +105,9 @@ publishing {
     publications {
         maven(MavenPublication) {
             from(components.java)
+            groupId = 'de.Ste3et_C0st.furniture'
+            artifactId = 'ProtectionLib'
+            version = '1.4'
         }
     }
 }

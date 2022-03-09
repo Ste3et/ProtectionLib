@@ -28,6 +28,7 @@ subprojects.each { subproject -> evaluationDependsOn(subproject.path)}
 
 task allJar(type: Jar, dependsOn: subprojects.assemble) {
    baseName = 'ProtectionLib'
+   version = ""
    subprojects.each { subproject -> 
       from subproject.configurations.archives.allArtifacts.files.collect {
          zipTree(it)
