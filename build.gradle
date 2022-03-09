@@ -7,7 +7,7 @@ plugins {
 
 allprojects {
     group = 'de.Ste3et_C0st.furniture'
-    version = '1.4'
+    version = '1.5'
     
     compileJava.options.encoding = 'UTF-8'
 
