@@ -135,3 +135,17 @@ publishing {
 		}
 	}
 }
+
+tasks.withType(PublishToMavenRepository) {
+    onlyIf {
+        (repository == publishing.repositories.external &&
+            publication == publishing.publications.binary) ||
+        (repository == publishing.repositories.internal &&
+            publication == publishing.publications.binaryAndSources)
+    }
+}
+tasks.withType(PublishToMavenLocal) {
+    onlyIf {
+        publication == publishing.publications.binaryAndSources
+    }
+}
