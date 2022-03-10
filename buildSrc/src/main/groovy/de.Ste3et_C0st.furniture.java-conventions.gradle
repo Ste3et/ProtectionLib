@@ -131,21 +131,7 @@ publishing {
 			groupId project.group
 			artifactId project.name
 			version project.version
-			from components.java
+			artifact "build/libs/${project.name}-${project.version}.jar"
 		}
 	}
-}
-
-tasks.withType(PublishToMavenRepository) {
-    onlyIf {
-        (repository == publishing.repositories.external &&
-            publication == publishing.publications.binary) ||
-        (repository == publishing.repositories.internal &&
-            publication == publishing.publications.binaryAndSources)
-    }
-}
-tasks.withType(PublishToMavenLocal) {
-    onlyIf {
-        publication == publishing.publications.binaryAndSources
-    }
 }
