@@ -75,15 +75,23 @@ repositories {
     }
 }
 
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'maven-publish'
+	
+	sourceCompatibility = 17
+	targetCompatibility = 17
+
+	java {
+		withSourcesJar()
+		withJavadocJar()
+	}
+}
+
+
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
 }
-
-group = 'de.Ste3et_C0st.furniture'
-version = '1.5'
-
-sourceCompatibility = 17
-targetCompatibility = 17
 
 sourceSets {
     main {
@@ -108,19 +116,22 @@ tasks {
    }
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-            groupId = 'de.Ste3et_C0st.furniture'
-            artifactId = 'ProtectionLib'
-            version = '1.5'
-        }
-    }
+allprojects {
+    group = 'de.Ste3et_C0st.furniture'
+    version = '1.5'
+    compileJava.options.encoding = 'UTF-8'
+	tasks.withType(JavaCompile) {
+	    options.encoding = 'UTF-8'
+	}
 }
 
-compileJava.options.encoding = 'UTF-8'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId project.group
+			artifactId project.name
+			version project.version
+			from components.java
+		}
+	}
 }

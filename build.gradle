@@ -5,17 +5,6 @@ plugins {
     id 'de.Ste3et_C0st.furniture.java-conventions'
 }
 
-allprojects {
-    group = 'de.Ste3et_C0st.furniture'
-    version = '1.5'
-    
-    compileJava.options.encoding = 'UTF-8'
-
-	tasks.withType(JavaCompile) {
-	    options.encoding = 'UTF-8'
-	}
-}
-
 dependencies {
     implementation project(':Core')
     implementation project(':PlotSquaredV3')
@@ -26,32 +15,9 @@ dependencies {
 
 subprojects.each { subproject -> evaluationDependsOn(subproject.path)}
 
-subprojects {
-	apply plugin: 'java'
-	apply plugin: 'maven-publish'
-	
-	sourceCompatibility = 17
-	targetCompatibility = 17
-
-	java {
-		withSourcesJar()
-		withJavadocJar()
-	}
-
-	publishing {
-		publications {
-			maven(MavenPublication) {
-				groupId project.group
-				artifactId project.name
-				version project.version
-			}
-		}
-	}
-}
-
 task allJar(type: Jar, dependsOn: subprojects.assemble) {
-   baseName = 'ProtectionLib'
-   version = ""
+   baseName = project.name
+   version = project.version
    subprojects.each { subproject -> 
       from subproject.configurations.archives.allArtifacts.files.collect {
          zipTree(it)
