@@ -19,8 +19,7 @@ build:
       - .gradle
   artifacts:
     paths:
-      - build/libs/*.jar
-      - target/*.jar
+      - build/libs/ProtectionLib.jar
     expire_in: 1 week
   only:
     - master
