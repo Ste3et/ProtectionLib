@@ -10,7 +10,7 @@ build:
   stage: build
   script: 
     - gradle --build-cache assemble
-    - gradlew copyJarToBin
+    - gradle copyJarToBin
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
