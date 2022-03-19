@@ -8,8 +8,8 @@ before_script:
 
 build:
   stage: build
-  script: 
-    - gradle --build-cache assemble
+  script:
+    - gradle --build-cache -PsnapshotVersion=$CI_COMMIT_SHORT_SHA assemble
     - gradle copyJarToBin
   cache:
     key: "$CI_COMMIT_REF_NAME"

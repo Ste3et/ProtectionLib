@@ -106,7 +106,7 @@ sourceSets {
 
 processResources {
     filter ReplaceTokens, tokens: [
-            "version": project.property("version")
+            "version": project.property("version") + (project.hasProperty('snapshotVersion') ? "-" + project.getProperty('snapshotVersion') : "" )
     ]
 }
 
@@ -118,7 +118,7 @@ tasks {
 
 allprojects {
     group = 'de.Ste3et_C0st.furniture'
-    version = '1.5'
+    version = '1.6'
     compileJava.options.encoding = 'UTF-8'
 	tasks.withType(JavaCompile) {
 	    options.encoding = 'UTF-8'
