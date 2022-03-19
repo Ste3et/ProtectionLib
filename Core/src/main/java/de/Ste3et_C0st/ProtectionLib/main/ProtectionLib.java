@@ -126,7 +126,7 @@ public class ProtectionLib extends JavaPlugin{
 		protectetionMap.put(fGriefPrevention.class, new ProtectionPluginFilter("GriefPrevention"));
 		protectetionMap.put(fKingdoms.class, new ProtectionPluginFilter("Kingdoms"));
 		protectetionMap.put(fLandLord.class, new ProtectionPluginFilter("LandLord"));
-		protectetionMap.put(fSuperiorSkyblock.class, new ProtectionPluginFilter("SuperiorSkyblock"));
+		protectetionMap.put(fSuperiorSkyblock.class, new ProtectionPluginFilter("SuperiorSkyblock2"));
 		protectetionMap.put(fLands.class, new ProtectionPluginFilter("Lands"));
 		protectetionMap.put(fTowny.class, new ProtectionPluginFilter("Towny"));
 		protectetionMap.put(fuSkyblock.class, new ProtectionPluginFilter("uSkyblock"));

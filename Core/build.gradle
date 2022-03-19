@@ -13,6 +13,9 @@ repositories {
   maven {
   	url = uri('https://repo.phoenix616.dev/')
   }
+  maven {
+  	url = uri('https://repo.bg-software.com/repository/api/')
+  }
 }
 
 dependencies {
@@ -27,7 +30,7 @@ dependencies {
     compileOnly 'com.massivecraft:Factions:1.6.9.5-U0.6.0'
     compileOnly 'world.bentobox:bentobox:1.19.0-SNAPSHOT'
     compileOnly 'com.github.Angeschossen:LandsAPI:4.6.19'
-    compileOnly 'com.github.OmerBenGera:SuperiorSkyblockAPI:b7'
+    compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:1.9.0'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
     compileOnly 'biz.princeps:landlord-core:4.359'
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
