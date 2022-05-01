@@ -19,6 +19,10 @@ import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
 public class fGriefdefenderAPI extends ProtectionConfig {
 
+	/*
+	 * updated by bloodmc (url: https://github.com/bloodmc)
+	 */
+	
 	public fGriefdefenderAPI(Plugin plugin) {
 		super(plugin);
 		new RemoveClaimEventListener();
