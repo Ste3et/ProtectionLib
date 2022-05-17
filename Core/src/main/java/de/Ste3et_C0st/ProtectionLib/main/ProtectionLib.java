@@ -12,7 +12,6 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
@@ -47,6 +46,7 @@ public class ProtectionLib extends JavaPlugin{
 	private List<UUID> playerList = new ArrayList<UUID>();
 	private boolean metrics = true;
 	private final static int plugin_metricsID = 11939;
+	
 	@Override
 	public void onEnable(){
 		instance = this;
