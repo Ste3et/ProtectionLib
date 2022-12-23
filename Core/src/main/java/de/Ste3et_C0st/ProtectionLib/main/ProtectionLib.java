@@ -33,6 +33,7 @@ import de.Ste3et_C0st.ProtectionLib.main.plugins.fTowny;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fWorldGuardv7;
 import de.Ste3et_C0st.ProtectionLib.main.plugins.fuSkyblock;
 import de.Ste3et_C0st.ProtectionLib.main.utils.Metrics;
+import de.Ste3et_C0st.ProtectionLib.main.utils.Version;
 
 public class ProtectionLib extends JavaPlugin{
 	
@@ -136,7 +137,12 @@ public class ProtectionLib extends JavaPlugin{
 			this.registerModules("LocalLibary", protectetionMap);
 			this.registerModules("PlotSquaredV3Module", protectetionMap);
 			this.registerModules("PlotSquaredV4Module", protectetionMap);
-			this.registerModules("PlotSquaredV6Module", protectetionMap);
+			
+			if(new Version(System.getProperty("java.version").split("_")[0]).compareTo(new Version("17.0")) >= 0) {
+				this.registerModules("PlotSquaredV6Module", protectetionMap);
+			}else {
+				this.getLogger().info("ProtectionLib-Module: PlotSquaredV6Module can't initialized unsuported java version!");
+			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
