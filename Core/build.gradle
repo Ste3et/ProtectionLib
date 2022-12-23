@@ -36,7 +36,7 @@ dependencies {
     compileOnly 'com.github.cryptomorin:kingdoms:1.12.3'
     compileOnly 'com.github.Ste3et:DiceChunk:160a1fa984'
     compileOnly 'com.github.rlf:uSkyBlock-API:2.6.4'
-    compileOnly 'com.massivecraft:Factions:1.6.9.5-U0.6.0'
+    compileOnly 'com.massivecraft:Factions:1.6.9.5-U0.6.21'
     compileOnly 'world.bentobox:bentobox:1.19.0-SNAPSHOT'
     compileOnly 'com.github.Angeschossen:LandsAPI:4.6.19'
     compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:1.9.0'
