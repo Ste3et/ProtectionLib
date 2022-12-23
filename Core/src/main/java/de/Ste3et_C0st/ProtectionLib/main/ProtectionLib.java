@@ -1,5 +1,6 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
@@ -15,7 +15,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.Ste3et_C0st.ProtectionLib.exception.ProtectionCreateException;
@@ -90,28 +89,16 @@ public class ProtectionLib extends JavaPlugin{
 	private void hookIntoPlugins() {
 		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectionClasses = generatePluginMap();
 		
-		protectionClasses.entrySet().stream().forEach(entry -> {
+		protectionClasses.entrySet().stream().filter(entry -> entry.getValue().match()).forEach(entry -> {
 			try {
-				
-				ProtectionPluginFilter protectionPluginFilter = entry.getValue();
-				String pluginName = protectionPluginFilter.getPluginName();
-				
-				Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
-				
-				if(Objects.nonNull(plugin)) {
-					if(plugin.isEnabled()) {
-						Predicate<PluginDescriptionFile> predicate = protectionPluginFilter.getFileFilter();
-						if(predicate.test(plugin.getDescription())) {
-							ProtectionClass ppL = new ProtectionClass(pluginName);
-							protectionObj object = entry.getKey().getDeclaredConstructor(Plugin.class).newInstance(plugin);
-							this.protectionClass.add(object);
-							this.protectList.add(ppL);
-						}
-					}
-				}
-				
-			} catch (Exception exception) {
-				exception.printStackTrace();
+				final String pluginName = entry.getValue().getPluginName();
+				final ProtectionClass ppL = new ProtectionClass(pluginName);
+				final protectionObj object = entry.getKey().getDeclaredConstructor(Plugin.class).newInstance(Bukkit.getPluginManager().getPlugin(pluginName));
+				this.protectionClass.add(object);
+				this.protectList.add(ppL);
+			}catch (Exception e) {
+				getLogger().info("ProtectionClass: " + entry.getKey().getSimpleName() + " throw an Exception!");
+				e.printStackTrace();
 			}
 		});
 		
@@ -122,7 +109,7 @@ public class ProtectionLib extends JavaPlugin{
 		protectetionMap.put(fBentobox.class, new ProtectionPluginFilter("BentoBox"));
 		protectetionMap.put(fDiceChunk.class, new ProtectionPluginFilter("DiceChunk"));
 		protectetionMap.put(fFabledSkyblock.class, new ProtectionPluginFilter("FabledSkyblock"));
-		protectetionMap.put(fFactionsUUID.class, new ProtectionPluginFilter("Factions").containsAuthor("drtshock"));
+		protectetionMap.put(fFactionsUUID.class, new ProtectionPluginFilter("Factions").containsAuthor("mbaxter"));
 		protectetionMap.put(fGriefdefenderAPI.class, new ProtectionPluginFilter("GriefDefender"));
 		protectetionMap.put(fGriefPrevention.class, new ProtectionPluginFilter("GriefPrevention"));
 		protectetionMap.put(fKingdoms.class, new ProtectionPluginFilter("Kingdoms"));

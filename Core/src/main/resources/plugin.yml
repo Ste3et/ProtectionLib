@@ -2,7 +2,7 @@ name: ProtectionLib
 version: @version@
 description: An wrapper for protection plugins to combine basic checks 
 author: Ste3et_C0st
-softdepend: [WorldGuard, Plotz, PlotMe, IslandWorld,PlotSquared, Towny, PreciousStones, GriefPrevention, Landlord, uSkyBlock, ASkyBlock, aSkyBlock, Skyblock_Extra, React, EssentialsSpawn, RedProtect, Residence, Vault, Kingdoms, AreaShop, MyChunk, Lands, SuperiorSkyblock2]
+softdepend: [WorldGuard,Plotz,PlotMe,IslandWorld,PlotSquared,Towny,PreciousStones,GriefPrevention,Landlord,uSkyBlock,ASkyBlock,aSkyBlock,Skyblock_Extra,React,EssentialsSpawn,RedProtect,Residence,Vault,Kingdoms,AreaShop,MyChunk,Lands,SuperiorSkyblock2,Factions]
 main: de.Ste3et_C0st.ProtectionLib.main.ProtectionLib
 api-version: 1.13
 commands:

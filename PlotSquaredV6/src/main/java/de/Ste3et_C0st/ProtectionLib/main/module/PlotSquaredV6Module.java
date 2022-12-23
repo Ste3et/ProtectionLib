@@ -13,7 +13,7 @@ public class PlotSquaredV6Module  extends ProtectionModule{
 	public HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> generatePluginMap() {
 		HashMap<Class<? extends protectionObj>, ProtectionPluginFilter> protectetionMap = new HashMap<>();
 		protectetionMap.put(fPlotSquaredV6.class, new ProtectionPluginFilter("PlotSquared").isVersion(6));
-		protectetionMap.put(fSaberFactions.class, new ProtectionPluginFilter("SaberFactions"));
+		protectetionMap.put(fSaberFactions.class, new ProtectionPluginFilter("Factions").containsAuthor("SaberDev"));
 		return protectetionMap;
 	}
 	

@@ -11,8 +11,6 @@ import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Faction;
-import com.massivecraft.factions.zcore.fperms.Access;
-import com.massivecraft.factions.zcore.fperms.PermissableAction;
 
 import de.Ste3et_C0st.ProtectionLib.main.ProtectionConfig;
 
@@ -31,7 +29,7 @@ public class fSaberFactions extends ProtectionConfig{
 	public boolean canBuild(Player player, Location loc) {
 		Faction faction = Board.getInstance().getFactionAt(toFactionLocation(loc));
 		FPlayer fPlayer = FPlayers.getInstance().getByPlayer(player);
-		return Objects.nonNull(faction) ? faction.getAccess(fPlayer, PermissableAction.BUILD) == Access.ALLOW : false;
+		return Objects.nonNull(faction) ? faction.getAccess(fPlayer, com.massivecraft.factions.zcore.fperms.PermissableAction.BUILD) == com.massivecraft.factions.zcore.fperms.Access.ALLOW : false;
 	}
 
 	@Override
