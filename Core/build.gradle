@@ -18,10 +18,16 @@ repositories {
   }
   maven {
   	url = uri('https://repo.glaremasters.me/repository/bloodshot/')
-  }  
+  } 
+  
+  maven{
+  	url = uri('https://maven.enginehub.org/repo/')
+  }
 }
 
 dependencies {
+    compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
+    compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.5-SNAPSHOT'
     compileOnly 'de.eldoria:eldo-util:1.12.10'
     compileOnly 'com.github.TechFortress:GriefPrevention:16.17.1'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
@@ -34,9 +40,7 @@ dependencies {
     compileOnly 'world.bentobox:bentobox:1.19.0-SNAPSHOT'
     compileOnly 'com.github.Angeschossen:LandsAPI:4.6.19'
     compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:1.9.0'
-    compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
     compileOnly 'biz.princeps:landlord-core:4.359'
-    compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
 }
 
 
