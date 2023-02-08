@@ -1,6 +1,5 @@
 package de.Ste3et_C0st.ProtectionLib.main;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,13 +90,15 @@ public class ProtectionLib extends JavaPlugin{
 		
 		protectionClasses.entrySet().stream().filter(entry -> entry.getValue().match()).forEach(entry -> {
 			try {
+				getLogger().info(entry.getKey().getSimpleName() + " try to hook into " + entry.getValue().getPluginName());
 				final String pluginName = entry.getValue().getPluginName();
 				final ProtectionClass ppL = new ProtectionClass(pluginName);
 				final protectionObj object = entry.getKey().getDeclaredConstructor(Plugin.class).newInstance(Bukkit.getPluginManager().getPlugin(pluginName));
 				this.protectionClass.add(object);
 				this.protectList.add(ppL);
+				getLogger().info(entry.getKey().getSimpleName() + " hook into: " + object.getPlugin().getName() + " " + object.getPlugin().getDescription().getVersion() + " ✓");
 			}catch (Exception e) {
-				getLogger().info("ProtectionClass: " + entry.getKey().getSimpleName() + " throw an Exception!");
+				getLogger().info("ProtectionClass: " + entry.getKey().descriptorString() + " throw an Exception!");
 				e.printStackTrace();
 			}
 		});

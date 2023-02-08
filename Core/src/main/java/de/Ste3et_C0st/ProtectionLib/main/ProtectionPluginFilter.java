@@ -13,7 +13,7 @@ public class ProtectionPluginFilter{
 
 	private final String pluginName;
 	private Predicate<PluginDescriptionFile> fileFilter;
-	private Supplier<String> packetNameFilter = () -> "";
+	private Supplier<String> className = () -> "";
 	
 	public ProtectionPluginFilter(String pluginName) {
 		this(pluginName, file -> file.getName().equalsIgnoreCase(pluginName));
@@ -29,8 +29,8 @@ public class ProtectionPluginFilter{
 		return containsAuthor(author, true);
 	}
 	
-	public ProtectionPluginFilter containsPacket(String packetName) {
-		this.packetNameFilter = () -> packetName;
+	public ProtectionPluginFilter containsClass(String packetName) {
+		this.className = () -> packetName;
 		return this;
 	}
 	
@@ -58,7 +58,12 @@ public class ProtectionPluginFilter{
 		if(Objects.nonNull(plugin)) {
 			if(plugin.isEnabled()) {
 				Predicate<PluginDescriptionFile> predicate = this.getFileFilter();
-				if(packetNameFilter.get().isEmpty() == false) return Optional.ofNullable(this.getClass().getClassLoader().getDefinedPackage(packetNameFilter.get())).isPresent();
+				if(className.get().isEmpty() == false)
+					try {
+						return Optional.ofNullable(Class.forName(className.get())).isPresent();
+					} catch (ClassNotFoundException e) {
+						return false;
+					}
 				if(predicate.test(plugin.getDescription())) {
 					return true;
 				}

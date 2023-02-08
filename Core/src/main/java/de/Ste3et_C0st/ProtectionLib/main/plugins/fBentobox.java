@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import de.Ste3et_C0st.ProtectionLib.main.protectionObj;
 import world.bentobox.bentobox.BentoBox;
+import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.lists.Flags;
 
@@ -21,7 +22,7 @@ public class fBentobox extends protectionObj{
 		if(getPlugin() == null) return true;
 		if(!BentoBox.getInstance().getIWM().inWorld(loc)) return true;
 		Optional<Island> is = BentoBox.getInstance().getIslands().getProtectedIslandAt(loc);
-		return is.map(x -> x.isAllowed(Flags.PLACE_BLOCKS)).orElse(Flags.PLACE_BLOCKS.isSetForWorld(loc.getWorld()));
+		return is.map(x -> x.isAllowed(User.getInstance(player), Flags.PLACE_BLOCKS)).orElse(Flags.PLACE_BLOCKS.isSetForWorld(loc.getWorld()));
 	}
 
 	public boolean isOwner(Player player, Location loc) {
