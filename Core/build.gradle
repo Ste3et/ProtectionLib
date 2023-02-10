@@ -46,7 +46,7 @@ dependencies {
     compileOnly 'com.massivecraft:Factions:1.6.9.5-U0.6.21'
     compileOnly 'world.bentobox:bentobox:1.19.0-SNAPSHOT'
     compileOnly 'com.github.Angeschossen:LandsAPI:4.6.19'
-    compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:v2022.9'
+    compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:latest'
     compileOnly 'biz.princeps:landlord-core:4.359'
 }
 
