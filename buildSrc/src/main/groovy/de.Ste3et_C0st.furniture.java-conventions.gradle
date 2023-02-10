@@ -47,10 +47,6 @@ repositories {
     }
 
     maven {
-        url = uri('https://nexus.savagelabs.net/repository/maven-releases/')
-    }
-
-    maven {
         url = uri('https://eldonexus.de/repository/maven-releases/')
     }
 
