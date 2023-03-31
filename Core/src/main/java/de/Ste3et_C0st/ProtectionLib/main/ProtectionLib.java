@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -64,11 +63,9 @@ public class ProtectionLib extends JavaPlugin{
 		if(this.metrics) {
 			Metrics metrics = new Metrics(this, plugin_metricsID);
 			metrics.addCustomChart(new Metrics.AdvancedPie("protectionlib_hooked_plugins", () -> {
-				Map<String, Integer> map = new HashMap<>();
-				
+				final Map<String, Integer> map = new HashMap<>();
 				this.protectionClass.stream().filter(protectionObj::isEnabled).forEach(entry -> {
-					String name = entry.getClass().getSimpleName().replace(".java", "").replace(".class", "");
-					map.put(name.substring(1), 1);
+					map.put(entry.getClass().getSimpleName().replace(".java", "").replace(".class", "").substring(1), 1);
 				});
 				
 				return map;
@@ -218,8 +215,7 @@ public class ProtectionLib extends JavaPlugin{
 	}
 	
 	public boolean isOwner(Location loc, Player player){
-		if(hasPermissions(player)) return true;
-		return isOwner(loc, player, player);
+		return hasPermissions(player) == false ? isOwner(loc, player, player) : true;
 	}
 	
 	public boolean isOwner(Location loc, Player player, Player sender){
