@@ -50,8 +50,6 @@ dependencies {
     compileOnly 'biz.princeps:landlord-core:4.359'
 }
 
-
-
 tasks {
    jar {
 	   enabled = true
