@@ -32,13 +32,11 @@ public class fTowny extends protectionObj {
 		if(getPlugin()==null){return true;}
 		 try {
 			 if(TownyAPI.getInstance().getDataSource() == null) return true;
-			 if(TownyAPI.getInstance().getDataSource().getWorld(loc.getWorld().getName()) == null) return true;
-			 if (!TownyAPI.getInstance().getDataSource().getWorld(loc.getWorld().getName()).isUsingTowny()) return true;
+			 if(TownyAPI.getInstance().isTownyWorld(loc.getWorld()) == false) return true;
 			 Town town = WorldCoord.parseWorldCoord(player).getTownBlock().getTown();
 			 if(town==null) return true;
-			 Resident resi = TownyAPI.getInstance().getDataSource().getResident(player.getName());
-			 if(resi==null) return false;
-			 return town.isMayor(resi);
+			 if(town.hasResident(player) == false) return false;
+			 return town.isMayor(TownyAPI.getInstance().getResident(player));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return true;
@@ -48,7 +46,7 @@ public class fTowny extends protectionObj {
 	public boolean isProtectedRegion(Location location) {
 		if(getPlugin()==null){return false;}
 		try {
-			if(TownyAPI.getInstance().getDataSource().getWorld(location.getWorld().getName()) == null) return false;
+			if(TownyAPI.getInstance().isTownyWorld(location.getWorld()) == false) return false;
 			WorldCoord coord = WorldCoord.parseWorldCoord(location);
 			return Objects.nonNull(coord) ? coord.hasTownBlock() : false;
 		} catch (Exception e) {

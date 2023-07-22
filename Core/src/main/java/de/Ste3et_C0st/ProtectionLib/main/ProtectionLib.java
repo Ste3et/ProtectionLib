@@ -95,7 +95,7 @@ public class ProtectionLib extends JavaPlugin{
 				this.protectList.add(ppL);
 				getLogger().info(entry.getKey().getSimpleName() + " hook into: " + object.getPlugin().getName() + " " + object.getPlugin().getDescription().getVersion() + " ✓");
 			}catch (Exception e) {
-				getLogger().info("ProtectionClass: " + entry.getKey().descriptorString() + " throw an Exception!");
+				getLogger().info("ProtectionClass: " + entry.getKey().getSimpleName() + " throw an Exception!");
 				e.printStackTrace();
 			}
 		});
