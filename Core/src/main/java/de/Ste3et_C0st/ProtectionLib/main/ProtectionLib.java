@@ -125,6 +125,7 @@ public class ProtectionLib extends JavaPlugin{
 			
 			if(new Version(System.getProperty("java.version").split("_")[0]).compareTo(new Version("17.0")) >= 0) {
 				this.registerModules("PlotSquaredV6Module", protectetionMap);
+				this.registerModules("PlotSquaredV7Module", protectetionMap);
 			}else {
 				this.getLogger().info("ProtectionLib-Module: PlotSquaredV6Module can't initialized unsuported java version!");
 			}

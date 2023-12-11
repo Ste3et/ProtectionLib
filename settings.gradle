@@ -4,6 +4,7 @@
 
 rootProject.name = 'ProtectionLib'
 include(':Core')
+include(':PlotSquaredV7')
 include(':PlotSquaredV6')
 include(':PlotSquaredV4')
 include(':PlotSquaredV3')

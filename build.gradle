@@ -10,6 +10,7 @@ dependencies {
     implementation project(':PlotSquaredV3')
     implementation project(':PlotSquaredV4')
     implementation project(':PlotSquaredV6')
+    implementation project(':PlotSquaredV7')
     implementation project(':LocalLibary')
 }
 
