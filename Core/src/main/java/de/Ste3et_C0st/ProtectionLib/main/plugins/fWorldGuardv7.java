@@ -50,6 +50,7 @@ public class fWorldGuardv7 extends protectionObj {
 		if(getPlugin()==null){return true;}
 		ProtectedRegion region = getRegion(loc);
 		if(region==null){return true;}
+		if(region.getId().equalsIgnoreCase("__global__")) return true;
 		return region.isOwner(WorldGuardPlugin.inst().wrapPlayer(player));
 	}
 	
