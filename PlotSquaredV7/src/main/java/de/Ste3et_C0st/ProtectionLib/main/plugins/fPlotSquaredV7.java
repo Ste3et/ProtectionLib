@@ -31,6 +31,7 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	@Subscribe
 	public void onPlotClear(PlotClearEvent clearEvent) {
 		if(getObject("RegionClearEvent") == false) return;
+		if(Objects.isNull(clearEvent.getEventResult())) return;
 		if(clearEvent.getEventResult() == Result.DENY) return;
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
@@ -46,6 +47,7 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	@Subscribe
 	public void onPlotDelete(PlotDeleteEvent clearEvent) {
 		if(getObject("RegionClearEvent") == false) return;
+		if(Objects.isNull(clearEvent.getEventResult())) return;
 		if(clearEvent.getEventResult() == Result.DENY) return;
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
@@ -77,13 +79,9 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	public boolean isOwner(Player player, org.bukkit.Location loc) {
 		Location location = Location.at(loc.getWorld().getName(), BlockVector3.at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 		if(location.isPlotArea()) {
-			Plot plot = location.getPlot();
-			if(Objects.nonNull(plot)) {
-				return plot.isOwner(player.getUniqueId());
-			}
-			return false;
+			Plot plot = location.getOwnedPlot();
+			return Objects.nonNull(plot) ? plot.isOwner(player.getUniqueId()) : false;
 		}
-		
 		return true;
 	}
 	

@@ -17,7 +17,7 @@ public class command implements CommandExecutor {
 					+ "\n§f/protectionlib §aplugins" 
 					+ "\n§f/protectionlib §adebug"
 					+ "\n§f/protectionlib §adebug <player>"
-					+ "\n$f/protectionlib §atest (player/me) (build/owner)"
+					+ "\n§f/protectionlib §atest (build/owner) <player/me>"
 					+ "\n§f/protectionlib §areload";
 			
 			if(args.length == 1) {
