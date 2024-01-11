@@ -12,6 +12,7 @@ import com.plotsquared.core.PlotAPI;
 import com.plotsquared.core.events.PlotClearEvent;
 import com.plotsquared.core.events.PlotDeleteEvent;
 import com.plotsquared.core.events.Result;
+import com.plotsquared.core.events.post.PostPlotDeleteEvent;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.plot.Plot;
 import com.plotsquared.core.util.RegionUtil;
@@ -28,32 +29,33 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 		plotAPI.registerListener(this);
 	}
 	
-	@Subscribe
-	public void onPlotClear(PlotClearEvent clearEvent) {
-		if(getObject("RegionClearEvent") == false) return;
-		if(Objects.isNull(clearEvent.getEventResult())) return;
-		if(clearEvent.getEventResult() == Result.DENY) return;
-		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
-		Location plotLocMin = locationList[0];
-		Location plotLocMax = locationList[1];
-
-		World world = Bukkit.getWorld(clearEvent.getWorld());
-		org.bukkit.Location locationMin = new org.bukkit.Location(world, plotLocMin.getX(), plotLocMin.getY(), plotLocMin.getZ());
-		org.bukkit.Location locationMax = new org.bukkit.Location(world, plotLocMax.getX(), plotLocMax.getY(), plotLocMax.getZ());
-		RegionClearEvent event = new RegionClearEvent(locationMin, locationMax);
-		Bukkit.getPluginManager().callEvent(event);
-	}
+//	Temporarily removed
+//	@Subscribe
+//	public void onPlotClear(PlotClearEvent clearEvent) {
+//		if(getObject("RegionClearEvent") == false) return;
+//		Bukkit.broadcastMessage("PlotClearEvent: #getEventResult -> " + (Objects.isNull(clearEvent.getEventResult()) ? "null" : clearEvent.getEventResult().name()));
+//		if(clearEvent.getEventResult() == Result.DENY) return;
+//		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
+//		Location plotLocMin = locationList[0];
+//		Location plotLocMax = locationList[1];
+//
+//		World world = Bukkit.getWorld(clearEvent.getWorld());
+//		org.bukkit.Location locationMin = new org.bukkit.Location(world, plotLocMin.getX(), plotLocMin.getY(), plotLocMin.getZ());
+//		org.bukkit.Location locationMax = new org.bukkit.Location(world, plotLocMax.getX(), plotLocMax.getY(), plotLocMax.getZ());
+//		RegionClearEvent event = new RegionClearEvent(locationMin, locationMax);
+//		Bukkit.getPluginManager().callEvent(event);
+//	}
 	
 	@Subscribe
-	public void onPlotDelete(PlotDeleteEvent clearEvent) {
+	public void onPlotDelete(PostPlotDeleteEvent deleteEvent) {
 		if(getObject("RegionClearEvent") == false) return;
-		if(Objects.isNull(clearEvent.getEventResult())) return;
-		if(clearEvent.getEventResult() == Result.DENY) return;
-		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
+		String worldName = deleteEvent.getPlot().getWorldName();
+		Location[] locationList = RegionUtil.getCorners(worldName, deleteEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
 		Location plotLocMax = locationList[1];
+		
 		if(Objects.nonNull(plotLocMin) && Objects.nonNull(plotLocMax)) {
-			World world = Bukkit.getWorld(clearEvent.getWorld());
+			World world = Bukkit.getWorld(worldName);
 			org.bukkit.Location locationMin = new org.bukkit.Location(world, plotLocMin.getX(), plotLocMin.getY(), plotLocMin.getZ());
 			org.bukkit.Location locationMax = new org.bukkit.Location(world, plotLocMax.getX(), plotLocMax.getY(), plotLocMax.getZ());
 			RegionClearEvent event = new RegionClearEvent(locationMin, locationMax);
