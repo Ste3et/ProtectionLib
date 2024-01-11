@@ -11,12 +11,10 @@ import com.google.common.eventbus.Subscribe;
 import com.plotsquared.core.PlotAPI;
 import com.plotsquared.core.events.PlotClearEvent;
 import com.plotsquared.core.events.PlotDeleteEvent;
+import com.plotsquared.core.events.Result;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.plot.Plot;
-import com.plotsquared.core.plot.PlotArea;
-import com.plotsquared.core.setup.PlotAreaBuilder;
 import com.plotsquared.core.util.RegionUtil;
-import com.plotsquared.core.util.query.PlotQuery;
 import com.sk89q.worldedit.math.BlockVector3;
 
 import de.Ste3et_C0st.ProtectionLib.events.RegionClearEvent;
@@ -33,6 +31,7 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	@Subscribe
 	public void onPlotClear(PlotClearEvent clearEvent) {
 		if(getObject("RegionClearEvent") == false) return;
+		if(clearEvent.getEventResult() == Result.DENY) return;
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
 		Location plotLocMax = locationList[1];
@@ -47,6 +46,7 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	@Subscribe
 	public void onPlotDelete(PlotDeleteEvent clearEvent) {
 		if(getObject("RegionClearEvent") == false) return;
+		if(clearEvent.getEventResult() == Result.DENY) return;
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
 		Location plotLocMax = locationList[1];
