@@ -118,7 +118,7 @@ tasks {
 
 allprojects {
     group = 'de.Ste3et_C0st.furniture'
-    version = '1.8.1'
+    version = '1.8.2'
     compileJava.options.encoding = 'UTF-8'
 	tasks.withType(JavaCompile) {
 	    options.encoding = 'UTF-8'
@@ -131,17 +131,7 @@ publishing {
 			groupId project.group
 			artifactId project.name
 			version project.version
-			artifact "build/libs/${project.name}-${project.version}.jar"
+			from components.java
 		}
-	}
-}
-
-task copyJarToBin {
-	copy {
-	    from "build/libs/${project.name}-${project.version}.jar"
-	    into "build/libs/"
-	    rename { String fileName ->
-        	fileName.replace("-$project.version", "")
-    	}
 	}
 }

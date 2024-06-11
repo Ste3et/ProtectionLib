@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'de.Ste3et_C0st.furniture.java-conventions'
+    id 'de.Ste3et_C0st.furniture.protectionLib'
 }
 
 repositories {

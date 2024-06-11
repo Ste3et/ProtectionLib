@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'de.Ste3et_C0st.furniture.java-conventions'
+    id 'de.Ste3et_C0st.furniture.protectionLib'
 }
 
 repositories {
@@ -42,7 +42,7 @@ dependencies {
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
     
-    implementation files('lib/SaberFactions.jar')
+    compileOnly files('lib/SaberFactions.jar')
 }
 
 tasks {

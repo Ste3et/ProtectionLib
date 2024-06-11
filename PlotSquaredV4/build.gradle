@@ -3,12 +3,12 @@
  */
 
 plugins {
-    id 'de.Ste3et_C0st.furniture.java-conventions'
+    id 'de.Ste3et_C0st.furniture.protectionLib'
 }
 
 dependencies {
     implementation project(':Core')
-    implementation files('lib/PlotSquared-Bukkit-4.4.495.jar')
+    compileOnly files('lib/PlotSquared-Bukkit-4.4.495.jar')
     compileOnly 'com.sk89q:worldedit:6.0.0-SNAPSHOT'
     compileOnly 'com.sk89q:worldguard:6.1.1-SNAPSHOT'
 }

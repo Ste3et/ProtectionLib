@@ -3,22 +3,22 @@
  */
 
 plugins {
-    id 'de.Ste3et_C0st.furniture.java-conventions'
+    id 'de.Ste3et_C0st.furniture.protectionLib'
 }
 
 dependencies {
     implementation project(':Core')
-    implementation files('lib/AreaShop.jar')
-    implementation files('lib/askyblock.jar')
-    implementation files('lib/FactionsLegacy.jar')
-    implementation files('lib/IridiumSkyblock.jar')
-    implementation files('lib/IslandWorld.jar')
-    implementation files('lib/LandLord.jar')
-    implementation files('lib/MassiveCore.jar')
-    implementation files('lib/MyChunk.jar')
-    implementation files('lib/PreciousStones-10.7.2.jar')
-    implementation files('lib/RedProtect-7.7.2-b357-Universal.jar')
-    implementation files('lib/Residence4.8.4.4.jar')
+    compileOnly files('lib/AreaShop.jar')
+    compileOnly files('lib/askyblock.jar')
+    compileOnly files('lib/FactionsLegacy.jar')
+    compileOnly files('lib/IridiumSkyblock.jar')
+    compileOnly files('lib/IslandWorld.jar')
+    compileOnly files('lib/LandLord.jar')
+    compileOnly files('lib/MassiveCore.jar')
+    compileOnly files('lib/MyChunk.jar')
+    compileOnly files('lib/PreciousStones-10.7.2.jar')
+    compileOnly files('lib/RedProtect-7.7.2-b357-Universal.jar')
+    compileOnly files('lib/Residence4.8.4.4.jar')
 }
 
 tasks {

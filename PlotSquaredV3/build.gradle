@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id 'de.Ste3et_C0st.furniture.java-conventions'
+    id 'de.Ste3et_C0st.furniture.protectionLib'
 }
 
 repositories {
@@ -20,8 +20,8 @@ dependencies {
     implementation project(':Core')
     compileOnly 'com.sk89q:worldedit:5.7-SNAPSHOT'
     compileOnly 'com.github.TownyAdvanced:Towny:0.97.1.0'
-    implementation files('lib/PlotSquared.jar')
-    implementation files('lib/worldguard-5.9.1-SNAPSHOT.jar')    
+    compileOnly files('lib/PlotSquared.jar')
+    compileOnly files('lib/worldguard-5.9.1-SNAPSHOT.jar')    
 }
 
 tasks {
