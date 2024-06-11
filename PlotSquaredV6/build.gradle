@@ -37,8 +37,13 @@ java {
 dependencies {
     implementation project(':Core')
     //implementation 'com.github.SaberLLC:Saber-Factions:4.0.0-RC'
-    compileOnly("com.plotsquared:PlotSquared-Core:6.6.0")
-    compileOnly("com.plotsquared:PlotSquared-Bukkit:6.6.0") { transitive = false }
+    compileOnly("com.plotsquared:PlotSquared-Core:6.6.0"){
+    	exclude group: 'net.kyori', module: 'adventure-text-minimessage'
+    }
+    compileOnly("com.plotsquared:PlotSquared-Bukkit:6.6.0") { 
+    	transitive = false 
+    	exclude group: 'net.kyori', module: 'adventure-text-minimessage'
+    }
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
     
