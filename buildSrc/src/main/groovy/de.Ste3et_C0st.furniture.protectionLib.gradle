@@ -118,7 +118,7 @@ tasks {
 
 allprojects {
     group = 'de.Ste3et_C0st.furniture'
-    version = '1.8.2'
+    version = '1.8.3'
     compileJava.options.encoding = 'UTF-8'
 	tasks.withType(JavaCompile) {
 	    options.encoding = 'UTF-8'
