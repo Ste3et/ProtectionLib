@@ -56,17 +56,15 @@ public class ProtectionPluginFilter{
 	public boolean match() {
 		final Plugin plugin = Bukkit.getPluginManager().getPlugin(this.getPluginName());
 		if(Objects.nonNull(plugin)) {
-			if(plugin.isEnabled()) {
-				Predicate<PluginDescriptionFile> predicate = this.getFileFilter();
-				if(className.get().isEmpty() == false)
-					try {
-						return Optional.ofNullable(Class.forName(className.get())).isPresent();
-					} catch (ClassNotFoundException e) {
-						return false;
-					}
-				if(predicate.test(plugin.getDescription())) {
-					return true;
+			Predicate<PluginDescriptionFile> predicate = this.getFileFilter();
+			if(className.get().isEmpty() == false)
+				try {
+					return Optional.ofNullable(Class.forName(className.get())).isPresent();
+				} catch (ClassNotFoundException e) {
+					return false;
 				}
+			if(predicate.test(plugin.getDescription())) {
+				return true;
 			}
 		}
 		return false;

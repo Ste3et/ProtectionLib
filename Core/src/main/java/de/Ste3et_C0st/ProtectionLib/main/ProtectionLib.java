@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -46,18 +45,12 @@ public class ProtectionLib extends JavaPlugin{
 	private final static int plugin_metricsID = 11939;
 	
 	@Override
-	public void onEnable(){
-		instance = this;
-		if(Bukkit.getPluginManager().isPluginEnabled("Vault")){
-			isVaultEnable = true;
-			permissions = new ProtectionVaultPermission();
-		}
+	public void onEnable() {
 		getCommand("protectionlib").setExecutor(new command());
-		addWatchers();
+		
 		
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
-		
 		this.metrics = this.getConfig().getBoolean("config.metrics", true);
 		
 		if(this.metrics) {
@@ -71,6 +64,16 @@ public class ProtectionLib extends JavaPlugin{
 				return map;
 			}));
 		}
+	}
+	
+	@Override
+	public void onLoad() {
+		instance = this;
+		if(Bukkit.getPluginManager().isPluginEnabled("Vault")){
+			isVaultEnable = true;
+			permissions = new ProtectionVaultPermission();
+		}
+		addWatchers();
 	}
 	
 	public void onDisable(){
@@ -241,28 +244,11 @@ public class ProtectionLib extends JavaPlugin{
 		return this.protectionClass.stream().filter(protectionObj::isEnabled).filter(protection -> protection.isProtectedRegion(location)).findFirst().isPresent();
 	}
 	
-	public boolean registerFlag(Plugin plugin, String str, boolean defaultValue) {
-		if(getWatchers().isEmpty()) {
-			this.getLogger().warning("ProtectionLib is not hooked to any Plugin !");
-		    return false;
-		}else {
-			AtomicBoolean feedback = new AtomicBoolean(false);
-			protectionClass.stream().forEach(protection -> {
-				boolean b = protection.registerFlag(plugin, str, defaultValue);
-				if(b) {
-					feedback.set(true);
-					this.getLogger().info("ProtectionLib: " + protection.getPlugin().getName() + " register Customflag " + str + " by " + plugin.getName());
-				}
-			});
-			return feedback.get();
-		}
-	}
-	
 	public List<UUID> getDebugList(){
 		return this.playerList;
 	}
 	
 	public boolean queryFlag(String string, Player player, Location location) {
-		return !this.protectionClass.stream().filter(protection -> protection.queryFlag(string, player, location) == false).findFirst().isPresent();
+		return !this.protectionClass.stream().filter(protectionFlag.class::isInstance).map(protectionFlag.class::cast).filter(protection -> protection.queryFlag(string, player, location) == false).findFirst().isPresent();
 	}
 }

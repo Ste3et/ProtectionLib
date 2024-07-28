@@ -89,12 +89,6 @@ public abstract class protectionObj {
 		return true;
 	}
 	
-	public boolean registerFlag(Plugin plugin, String string, boolean bool) {
-		return false;
-	}
-	
-	public boolean queryFlag(String string, Player player, Location location) {return true;}
-	
 	public boolean isEnabled() {
 		return this.isEnabled;
 	}

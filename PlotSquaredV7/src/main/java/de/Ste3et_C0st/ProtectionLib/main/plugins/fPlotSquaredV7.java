@@ -31,7 +31,6 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 	@Subscribe
 	public void onPlotClear(PlotClearEvent clearEvent) {
 		if(getObject("RegionClearEvent") == false) return;
-		Bukkit.broadcastMessage("PlotClearEvent: #getEventResult -> " + (Objects.isNull(clearEvent.getEventResult()) ? "null" : clearEvent.getEventResult().name()));
 		if(clearEvent.getEventResult() == Result.DENY) return;
 		Location[] locationList = RegionUtil.getCorners(clearEvent.getWorld(), clearEvent.getPlot().getRegions());
 		Location plotLocMin = locationList[0];
