@@ -33,7 +33,7 @@ public class fWorldGuardv7 extends protectionFlag<StateFlag> {
 		return file.getName().equalsIgnoreCase(pluginName) && file.getAPIVersion().isEmpty() == false;
 	};
 	
-	private static final String stateFlag = "Furniture-build";
+	private static final String stateFlag = "furniture-build";
 	
 	public fWorldGuardv7(Plugin pl){
 		super(pl);
