@@ -98,7 +98,7 @@ public class fWorldGuardv7 extends protectionFlag<StateFlag> {
 
 	@Override
 	public void onLoad(Plugin plugin) {
-		registerFlag(plugin, stateFlag, true);
+		registerFlag(plugin, stateFlag, false);
 	}
 
 	@Override
