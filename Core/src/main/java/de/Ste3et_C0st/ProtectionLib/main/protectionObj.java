@@ -96,4 +96,7 @@ public abstract class protectionObj {
 	public void update() {
 		isEnabled = ProtectionLib.getInstance().getConfig().getBoolean("config." + getPlugin().getName() + ".enabled", true);
 	}
+	
+	public void onLoad() {}
+	public boolean onEnable() {return getPlugin().isEnabled();}
 }

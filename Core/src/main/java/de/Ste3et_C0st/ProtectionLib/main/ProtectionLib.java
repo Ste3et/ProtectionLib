@@ -64,6 +64,8 @@ public class ProtectionLib extends JavaPlugin{
 				return map;
 			}));
 		}
+		
+		this.protectionClass.stream().filter(protectionObj::isEnabled).forEach(protectionObj::onEnable);
 	}
 	
 	@Override
@@ -82,7 +84,8 @@ public class ProtectionLib extends JavaPlugin{
 	
 	public void addWatchers() {
 		this.hookIntoPlugins();
-		protectionClass.stream().forEach(entry -> entry.update());
+		this.protectionClass.stream().forEach(entry -> entry.update());
+		this.protectionClass.stream().filter(protectionObj::isEnabled).forEach(protectionObj::onEnable);
 	}
 	
 	private void hookIntoPlugins() {

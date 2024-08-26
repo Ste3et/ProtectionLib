@@ -24,8 +24,15 @@ public class fPlotSquaredV7 extends ProtectionConfig{
 
 	public fPlotSquaredV7(Plugin pl) {
 		super(pl);
-		PlotAPI plotAPI = new PlotAPI();
-		plotAPI.registerListener(this);
+	}
+	
+	public boolean onEnable() {
+		if(super.onEnable()) {
+			PlotAPI plotAPI = new PlotAPI();
+			plotAPI.registerListener(this);
+			return true;
+		}
+		return false;
 	}
 	
 	@Subscribe

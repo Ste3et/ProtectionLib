@@ -11,7 +11,8 @@ public abstract class protectionFlag<K> extends protectionObj{
 	
 	public protectionFlag(Plugin plugin) {
 		super(plugin);
-		if(plugin.isEnabled() == false) this.onLoad(plugin);
+		if(plugin.isEnabled() == false) this.onLoad();
+		if(plugin.isEnabled()) this.onEnable();
 	}
 
 	public abstract Optional<K> registerFlag(Plugin plugin, String string, boolean bool);
@@ -23,7 +24,7 @@ public abstract class protectionFlag<K> extends protectionObj{
 	public abstract boolean queryFlag(String flagName, Player player, Location location);
 	
 	public abstract List<K> getFlags();
-	public abstract void onLoad(Plugin plugin);
+	public abstract void onLoad();
 
 	
 }
