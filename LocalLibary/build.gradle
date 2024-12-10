@@ -19,6 +19,8 @@ dependencies {
     compileOnly files('lib/PreciousStones-10.7.2.jar')
     compileOnly files('lib/RedProtect-7.7.2-b357-Universal.jar')
     compileOnly files('lib/Residence4.8.4.4.jar')
+    compileOnly files('lib/worldguard-5.9.jar')
+    compileOnly files('lib/SaberFactions.jar')
 }
 
 tasks {

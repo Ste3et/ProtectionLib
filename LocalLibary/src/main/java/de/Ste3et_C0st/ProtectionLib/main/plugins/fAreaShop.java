@@ -16,7 +16,18 @@ public class fAreaShop extends ProtectionConfig implements Listener{
 	
 	public fAreaShop(Plugin pl) {
 		super(pl);
-		Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+	}
+	
+	@Override
+	public void onLoad() {}
+	
+	@Override
+	public boolean onEnable() {
+		if(super.onEnable()) {
+			Bukkit.getPluginManager().registerEvents(this, ProtectionLib.getInstance());
+			return true;
+		}
+		return false;
 	}
 	
 	@EventHandler

@@ -42,6 +42,7 @@ dependencies {
     compileOnly("com.intellectualsites.plotsquared:plotsquared-bukkit") { transitive = false }
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.4-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT'
+    compileOnly files('lib/SaberFactions.jar')
 }
 
 tasks {
