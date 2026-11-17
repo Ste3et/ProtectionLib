@@ -78,11 +78,11 @@ repositories {
 subprojects {
 	apply plugin: 'java'
 	apply plugin: 'maven-publish'
-	
-	sourceCompatibility = '1.8'
-	targetCompatibility = '1.8'
 
 	java {
+		toolchain {
+	        languageVersion = JavaLanguageVersion.of(21)
+	    }
 		withSourcesJar()
 		//withJavadocJar()
 	}
@@ -118,7 +118,7 @@ tasks {
 
 allprojects {
     group = 'de.Ste3et_C0st.furniture'
-    version = '1.8.4'
+    version = '1.8.5'
     compileJava.options.encoding = 'UTF-8'
 	tasks.withType(JavaCompile) {
 	    options.encoding = 'UTF-8'
